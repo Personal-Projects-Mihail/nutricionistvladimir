@@ -76,7 +76,9 @@ export function ScrollTimeline({ steps, title, subtitle }: ScrollTimelineProps) 
         {steps.map((step, index) => (
           <div
             key={index}
-            ref={(el) => (stepRefs.current[index] = el)}
+            ref={(el) => {
+              stepRefs.current[index] = el;
+            }}
             className={`relative transition-opacity duration-500 ${
               activeStep === index ? 'opacity-100' : 'opacity-40'
             }`}
