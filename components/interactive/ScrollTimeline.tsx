@@ -24,7 +24,6 @@ export function ScrollTimeline({ steps, title, subtitle }: ScrollTimelineProps) 
     const handleScroll = () => {
       if (!timelineRef.current) return;
 
-      const timelineTop = timelineRef.current.getBoundingClientRect().top;
       const windowHeight = window.innerHeight;
       const triggerPoint = windowHeight / 2;
 
