@@ -22,8 +22,9 @@ export function FadeInView({
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
+      (entries) => {
+        const entry = entries[0];
+        if (entry?.isIntersecting) {
           setTimeout(() => {
             setIsVisible(true);
           }, delay);
