@@ -436,3 +436,7 @@ This website is optimized for:
 **Built with ❤️ for Vladimir - Registered Nutritionist**
 
 *Helping people achieve optimal health through evidence-based nutrition science.*
+
+---
+
+**Last updated:** Initial commit pushed to GitHub
