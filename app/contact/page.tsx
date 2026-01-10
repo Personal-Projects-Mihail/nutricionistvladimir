@@ -3,6 +3,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { generateMetadata } from '@/lib/metadata';
 import { generateBreadcrumbSchema, safeJsonLd } from '@/lib/structured-data';
+import ContactIllustration from '@/components/illustrations/ContactIllustration';
 
 export const metadata: Metadata = generateMetadata('mk', {
   title: 'Контакт | Нутриционист Владимир',
