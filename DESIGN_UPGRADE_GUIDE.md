@@ -42,17 +42,19 @@ This guide documents the design upgrade approach for the nutritionist website. A
 - ✅ Quick contact links
 - ✅ Green CTA section
 
-### 6. **Testimonials Page (app/testimonials/page.tsx)** - ⏳ PENDING
-- ⏳ Needs upgrade with green-themed design
-- ⏳ Vibrant testimonial cards
-- ⏳ Custom illustrations
+### 6. **Testimonials Page (app/testimonials/page.tsx)** - ✅ DONE
+- ✅ Green gradient hero background with decorative blur circles
+- ✅ Custom icons (HeartHealthIcon, EnergyIcon, BalanceIcon, BrainIcon)
+- ✅ Vibrant testimonial cards with varied green shades
+- ✅ Success stats section with gradient cards
+- ✅ Enhanced CTA section
 
-### 7. **English Pages (/en)** - ⏳ PENDING
-- ⏳ /en/about/page.tsx
-- ⏳ /en/services/page.tsx
-- ⏳ /en/booking/page.tsx
-- ⏳ /en/contact/page.tsx
-- ⏳ /en/testimonials/page.tsx
+### 7. **English Pages (/en)** - ✅ DONE
+- ✅ /en/about/page.tsx - Upgraded with green theme, HealthJourneyIllustration
+- ✅ /en/services/page.tsx - Upgraded with ServicesHeroIllustration, custom icons
+- ✅ /en/booking/page.tsx - Upgraded with BookingIllustration, enhanced timeline
+- ✅ /en/contact/page.tsx - Upgraded with ContactIllustration, gradient cards
+- ✅ /en/testimonials/page.tsx - Upgraded with full green theme and custom icons
 
 ---
 
@@ -310,14 +312,14 @@ className="bg-gradient-to-br from-green-500 via-teal-500 to-cyan-600"
 - [x] Services page with 6 service cards (green variations)
 - [x] Booking page with green-themed form and timeline
 - [x] Contact page with green contact cards
+- [x] Testimonials page with green testimonial cards and stats
+- [x] All English (/en) page versions upgraded
 - [x] Custom icons folder structure (11 icons)
 - [x] Custom illustrations folder structure (8+ illustrations)
 - [x] Animations in globals.css
 - [x] Consistent green-only color palette
 
 ### Pending ⏳
-- [ ] Testimonials page upgrade
-- [ ] All English (/en) page versions
 - [ ] Additional illustrations if needed
 - [ ] Responsive design testing on all pages
 - [ ] Dark mode color adjustments if needed
@@ -391,4 +393,4 @@ The design achieves:
 - All animations defined in `app/globals.css`
 - Responsive design tested on mobile, tablet, desktop breakpoints
 
-**Status: Core pages completed with green-themed designs. Testimonials and English versions pending.**
+**Status: All core pages completed with green-themed designs. Both Romanian and English versions fully upgraded with consistent design patterns, custom icons, and illustrations.**

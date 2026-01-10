@@ -8,6 +8,12 @@ import {
   generateBreadcrumbSchema,
   safeJsonLd,
 } from '@/lib/structured-data';
+import HeartHealthIcon from '@/components/icons/HeartHealthIcon';
+import BrainIcon from '@/components/icons/BrainIcon';
+import EnergyIcon from '@/components/icons/EnergyIcon';
+import BalanceIcon from '@/components/icons/BalanceIcon';
+import AppleIcon from '@/components/icons/AppleIcon';
+import HealthJourneyIllustration from '@/components/illustrations/HealthJourneyIllustration';
 
 export const metadata: Metadata = generateMetadata('en', {
   title: 'About Me | Vladimir Nutritionist',
@@ -43,37 +49,65 @@ export default function AboutPageEN() {
       <Header lang="en" />
 
       <main id="main-content">
-        <section className="section bg-gradient-to-b from-background to-background-secondary">
-          <div className="container-custom">
-            <div className="max-w-4xl mx-auto text-center space-y-6">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-text leading-tight">
-                About Me
-              </h1>
-              <p className="text-lg md:text-xl text-text-secondary max-w-2xl mx-auto">
-                Learn more about my journey, education, and approach to nutrition
-              </p>
+        {/* Hero Section */}
+        <section className="relative overflow-hidden bg-gradient-to-br from-primary/20 via-emerald-50/50 to-background pt-20 pb-32">
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <div className="absolute top-20 right-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-pulse-glow"></div>
+            <div className="absolute bottom-20 left-10 w-96 h-96 bg-emerald-100/50 rounded-full blur-3xl"></div>
+          </div>
+
+          <div className="container-custom relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <div className="space-y-6">
+                <div className="inline-flex items-center gap-2 bg-primary/20 text-primary-800 dark:text-primary-200 px-4 py-2 rounded-full text-sm font-medium">
+                  <HeartHealthIcon className="w-5 h-5 text-primary" />
+                  Your Health Partner
+                </div>
+
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+                  About <span className="text-primary">Me</span>
+                </h1>
+
+                <p className="text-xl text-text-secondary leading-relaxed">
+                  Learn more about my journey, education, and passion for helping people achieve optimal health
+                </p>
+              </div>
+
+              <div className="relative">
+                <HealthJourneyIllustration className="w-full h-auto" />
+              </div>
             </div>
           </div>
         </section>
 
-        <section className="section">
+        {/* Personal Story Section */}
+        <section className="section bg-gradient-to-br from-primary/5 via-green-50/50 to-background">
           <div className="container-custom">
-            <div className="max-w-4xl mx-auto">
-              <div className="card">
-                <div className="prose prose-lg max-w-none">
-                  <h2 className="text-3xl font-bold text-text mb-6">My Story</h2>
+            <div className="max-w-5xl mx-auto">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div className="relative h-96 bg-gradient-to-br from-primary/20 to-emerald-100/30 rounded-3xl overflow-hidden p-12 flex items-center justify-center">
+                  <div className="relative z-10 text-center space-y-4">
+                    <div className="inline-block p-6 bg-white rounded-2xl shadow-xl">
+                      <AppleIcon className="w-20 h-20 text-primary" />
+                    </div>
+                    <h3 className="text-2xl font-bold text-primary">Passion for Nutrition</h3>
+                  </div>
+                </div>
+
+                <div className="space-y-6">
+                  <h2 className="text-3xl md:text-4xl font-bold text-text">My Story</h2>
                   <div className="space-y-4 text-text-secondary">
-                    <p>
+                    <p className="text-lg">
                       Welcome! I'm Vladimir, a registered nutritionist with a passion
                       for helping people achieve optimal health through nutrition science.
                     </p>
-                    <p>
+                    <p className="text-lg">
                       My journey into nutrition began from personal experience with the
                       power of proper nutrition to transform health. This passion
                       motivated me to dedicate my life to studying nutrition science and
                       helping others achieve their health goals.
                     </p>
-                    <p>
+                    <p className="text-lg">
                       Today I work with clients across North Macedonia, providing
                       evidence-based consultations tailored to their unique needs,
                       lifestyle, and health goals.
@@ -85,17 +119,25 @@ export default function AboutPageEN() {
           </div>
         </section>
 
-        <section className="section bg-background-secondary">
+        {/* Education Section */}
+        <section className="section bg-gradient-to-br from-primary/20 to-primary/5">
           <div className="container-custom">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl md:text-4xl font-bold text-text text-center mb-12">
-                Education & Qualifications
-              </h2>
+              <div className="text-center mb-12">
+                <div className="inline-block mb-4">
+                  <span className="bg-gradient-to-br from-emerald-500 to-green-600 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
+                    Professional Credentials
+                  </span>
+                </div>
+                <h2 className="text-3xl md:text-4xl font-bold text-text">
+                  Education & Qualifications
+                </h2>
+              </div>
 
-              <div className="space-y-6">
-                <div className="card">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="group relative overflow-hidden bg-gradient-to-br from-primary/10 to-emerald-50 border-2 border-primary/20 rounded-2xl p-6 hover:shadow-lg transition-all duration-300">
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <div className="w-12 h-12 bg-gradient-to-br from-primary to-primary-600 rounded-2xl shadow-lg flex items-center justify-center flex-shrink-0">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="24"
@@ -106,7 +148,7 @@ export default function AboutPageEN() {
                         strokeWidth="2"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        className="text-primary"
+                        className="text-white"
                         aria-hidden="true"
                       >
                         <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
@@ -128,9 +170,9 @@ export default function AboutPageEN() {
                   </div>
                 </div>
 
-                <div className="card">
+                <div className="group relative overflow-hidden bg-gradient-to-br from-emerald-50 to-green-100 border-2 border-emerald-200 rounded-2xl p-6 hover:shadow-lg transition-all duration-300">
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-green-600 rounded-2xl shadow-lg flex items-center justify-center flex-shrink-0">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="24"
@@ -141,7 +183,7 @@ export default function AboutPageEN() {
                         strokeWidth="2"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        className="text-primary"
+                        className="text-white"
                         aria-hidden="true"
                       >
                         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
@@ -166,18 +208,43 @@ export default function AboutPageEN() {
           </div>
         </section>
 
-        <section className="section">
+        {/* CTA Section */}
+        <section className="section bg-gradient-to-br from-primary/5 via-green-50/50 to-background">
           <div className="container-custom">
-            <div className="max-w-3xl mx-auto text-center space-y-6 card bg-gradient-to-br from-primary/5 to-primary/10 border-primary/20">
-              <h2 className="text-3xl md:text-4xl font-bold text-text">
-                Ready to Work Together?
-              </h2>
-              <p className="text-lg text-text-secondary">
-                Book a consultation and start your journey to better health
-              </p>
-              <Link href="/en/booking" className="btn-primary text-lg px-8 py-4 inline-flex">
-                Book Consultation
-              </Link>
+            <div className="max-w-3xl mx-auto relative overflow-hidden rounded-3xl p-12 bg-gradient-to-br from-primary via-primary-500 to-primary-700 text-white shadow-2xl">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-32 -mt-32"></div>
+              <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/10 rounded-full -ml-24 -mb-24"></div>
+              
+              <div className="relative z-10 text-center space-y-6">
+                <BrainIcon className="w-16 h-16 text-white mx-auto" />
+                <h2 className="text-3xl md:text-4xl font-bold">
+                  Ready to Work Together?
+                </h2>
+                <p className="text-lg text-white/90">
+                  Book a consultation and start your journey to better health
+                </p>
+                <Link 
+                  href="/en/booking" 
+                  className="inline-flex items-center gap-2 bg-white text-primary px-8 py-4 rounded-full font-semibold hover:bg-white/90 transition-all duration-300 hover:scale-105 shadow-lg"
+                >
+                  Book Consultation
+                  <svg 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    width="20" 
+                    height="20" 
+                    viewBox="0 0 24 24" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    strokeWidth="2" 
+                    strokeLinecap="round" 
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </Link>
+              </div>
             </div>
           </div>
         </section>
