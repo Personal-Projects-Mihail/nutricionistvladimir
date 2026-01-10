@@ -29,27 +29,37 @@ export default function ContactPage() {
       <Header lang="mk" />
 
       <main id="main-content">
-        {/* Hero Section */}
-        <section className="section bg-gradient-to-b from-background to-background-secondary">
-          <div className="container-custom">
-            <div className="max-w-4xl mx-auto text-center space-y-6">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-text leading-tight">
-                Контактирајте нè
-              </h1>
-              <p className="text-lg md:text-xl text-text-secondary max-w-2xl mx-auto">
-                Имате прашања? Радо ќе ви помогнеме
-              </p>
+        {/* Hero Section with Illustration */}
+        <section className="relative overflow-hidden bg-gradient-to-br from-primary/20 via-emerald-50/50 to-background">
+          {/* Decorative blur circles */}
+          <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl -mr-48 -mt-48"></div>
+          <div className="absolute bottom-0 left-0 w-80 h-80 bg-emerald-200/20 rounded-full blur-3xl -ml-40 -mb-40"></div>
+          
+          <div className="container-custom relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center section">
+              <div className="space-y-6">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-text leading-tight">
+                  Контактирајте нè
+                </h1>
+                <p className="text-lg md:text-xl text-text-secondary max-w-2xl">
+                  Имате прашања? Радо ќе ви помогнеме
+                </p>
+              </div>
+              
+              <div className="relative">
+                <ContactIllustration className="w-full h-auto animate-float" />
+              </div>
             </div>
           </div>
         </section>
 
         {/* Contact Information */}
-        <section className="section">
+        <section className="section bg-gradient-to-br from-primary/5 via-green-50/50 to-background">
           <div className="container-custom">
             <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
               {/* Email */}
-              <div className="card text-center">
-                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="group relative overflow-hidden bg-gradient-to-br from-primary/10 to-emerald-50 border-2 border-primary/20 rounded-2xl p-8 text-center hover:shadow-lg transition-all duration-300 hover:scale-[1.02]">
+                <div className="w-16 h-16 bg-gradient-to-br from-primary to-primary-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="32"
@@ -60,7 +70,7 @@ export default function ContactPage() {
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    className="text-primary"
+                    className="text-white"
                     aria-hidden="true"
                   >
                     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
@@ -70,7 +80,7 @@ export default function ContactPage() {
                 <h3 className="text-xl font-semibold text-text mb-2">Емаил</h3>
                 <a
                   href="mailto:nutricionistvladimir@gmail.com"
-                  className="text-primary hover:underline break-all"
+                  className="text-primary hover:underline break-all font-medium"
                 >
                   nutricionistvladimir@gmail.com
                 </a>
@@ -80,8 +90,8 @@ export default function ContactPage() {
               </div>
 
               {/* Phone */}
-              <div className="card text-center">
-                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="group relative overflow-hidden bg-gradient-to-br from-emerald-50 to-green-100 border-2 border-emerald-200 rounded-2xl p-8 text-center hover:shadow-lg transition-all duration-300 hover:scale-[1.02]">
+                <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="32"
@@ -92,14 +102,14 @@ export default function ContactPage() {
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    className="text-primary"
+                    className="text-white"
                     aria-hidden="true"
                   >
                     <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
                   </svg>
                 </div>
                 <h3 className="text-xl font-semibold text-text mb-2">Телефон</h3>
-                <a href="tel:+389XXXXXXXX" className="text-primary hover:underline">
+                <a href="tel:+389XXXXXXXX" className="text-emerald-700 hover:underline font-medium">
                   +389 XX XXX XXX
                 </a>
                 <p className="text-sm text-text-tertiary mt-2">
@@ -108,8 +118,8 @@ export default function ContactPage() {
               </div>
 
               {/* Location */}
-              <div className="card text-center">
-                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="group relative overflow-hidden bg-gradient-to-br from-primary/10 to-emerald-50 border-2 border-primary/20 rounded-2xl p-8 text-center hover:shadow-lg transition-all duration-300 hover:scale-[1.02]">
+                <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="32"
@@ -120,7 +130,7 @@ export default function ContactPage() {
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    className="text-primary"
+                    className="text-white"
                     aria-hidden="true"
                   >
                     <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
@@ -128,7 +138,7 @@ export default function ContactPage() {
                   </svg>
                 </div>
                 <h3 className="text-xl font-semibold text-text mb-2">Локација</h3>
-                <p className="text-text-secondary">Северна Македонија</p>
+                <p className="text-text-secondary font-medium">Северна Македонија</p>
                 <p className="text-sm text-text-tertiary mt-2">
                   Онлајн консултации достапни
                 </p>
@@ -138,20 +148,27 @@ export default function ContactPage() {
         </section>
 
         {/* Quick Actions */}
-        <section className="section bg-background-secondary">
+        <section className="section bg-gradient-to-br from-primary/20 to-primary/5">
           <div className="container-custom">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl md:text-4xl font-bold text-text text-center mb-12">
-                Брзи акции
-              </h2>
+              <div className="text-center mb-12">
+                <div className="inline-block mb-4">
+                  <span className="bg-gradient-to-br from-emerald-500 to-green-600 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
+                    Брзи акции
+                  </span>
+                </div>
+                <h2 className="text-3xl md:text-4xl font-bold text-text">
+                  Како можете да не контактирате
+                </h2>
+              </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <a
                   href="/booking"
-                  className="card hover:border-primary/40 transition-all group"
+                  className="group relative overflow-hidden bg-gradient-to-br from-primary/10 to-emerald-50 border-2 border-primary/20 rounded-2xl p-6 hover:shadow-lg transition-all duration-300 hover:scale-[1.02]"
                 >
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                    <div className="w-12 h-12 bg-gradient-to-br from-primary to-primary-600 rounded-2xl shadow-lg flex items-center justify-center flex-shrink-0">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="24"
@@ -162,7 +179,7 @@ export default function ContactPage() {
                         strokeWidth="2"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        className="text-primary"
+                        className="text-white"
                         aria-hidden="true"
                       >
                         <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
@@ -185,10 +202,10 @@ export default function ContactPage() {
 
                 <a
                   href="mailto:nutricionistvladimir@gmail.com"
-                  className="card hover:border-primary/40 transition-all group"
+                  className="group relative overflow-hidden bg-gradient-to-br from-emerald-50 to-green-100 border-2 border-emerald-200 rounded-2xl p-6 hover:shadow-lg transition-all duration-300 hover:scale-[1.02]"
                 >
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                    <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-green-600 rounded-2xl shadow-lg flex items-center justify-center flex-shrink-0">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="24"
@@ -199,7 +216,7 @@ export default function ContactPage() {
                         strokeWidth="2"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        className="text-primary"
+                        className="text-white"
                         aria-hidden="true"
                       >
                         <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
@@ -218,10 +235,10 @@ export default function ContactPage() {
 
                 <a
                   href="/services"
-                  className="card hover:border-primary/40 transition-all group"
+                  className="group relative overflow-hidden bg-gradient-to-br from-primary/10 to-emerald-50 border-2 border-primary/20 rounded-2xl p-6 hover:shadow-lg transition-all duration-300 hover:scale-[1.02]"
                 >
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                    <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl shadow-lg flex items-center justify-center flex-shrink-0">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="24"
@@ -232,7 +249,7 @@ export default function ContactPage() {
                         strokeWidth="2"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        className="text-primary"
+                        className="text-white"
                         aria-hidden="true"
                       >
                         <circle cx="12" cy="12" r="10" />
@@ -253,10 +270,10 @@ export default function ContactPage() {
 
                 <a
                   href="/about"
-                  className="card hover:border-primary/40 transition-all group"
+                  className="group relative overflow-hidden bg-gradient-to-br from-emerald-50 to-green-100 border-2 border-emerald-200 rounded-2xl p-6 hover:shadow-lg transition-all duration-300 hover:scale-[1.02]"
                 >
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                    <div className="w-12 h-12 bg-gradient-to-br from-teal-400 to-emerald-600 rounded-2xl shadow-lg flex items-center justify-center flex-shrink-0">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="24"
@@ -267,7 +284,7 @@ export default function ContactPage() {
                         strokeWidth="2"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        className="text-primary"
+                        className="text-white"
                         aria-hidden="true"
                       >
                         <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
@@ -290,15 +307,22 @@ export default function ContactPage() {
         </section>
 
         {/* FAQ */}
-        <section className="section">
+        <section className="section bg-gradient-to-br from-primary/5 via-green-50/50 to-background">
           <div className="container-custom">
             <div className="max-w-3xl mx-auto">
-              <h2 className="text-3xl md:text-4xl font-bold text-text text-center mb-12">
-                Често поставувани прашања
-              </h2>
+              <div className="text-center mb-12">
+                <div className="inline-block mb-4">
+                  <span className="bg-gradient-to-br from-primary to-primary-600 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
+                    FAQ
+                  </span>
+                </div>
+                <h2 className="text-3xl md:text-4xl font-bold text-text">
+                  Често поставувани прашања
+                </h2>
+              </div>
 
-              <div className="space-y-6">
-                <div className="card">
+              <div className="space-y-4">
+                <div className="bg-gradient-to-br from-primary/10 to-emerald-50 border-2 border-primary/20 rounded-2xl p-6">
                   <h3 className="text-lg font-semibold text-text mb-2">
                     Кое е вашето работно време?
                   </h3>
@@ -308,7 +332,7 @@ export default function ContactPage() {
                   </p>
                 </div>
 
-                <div className="card">
+                <div className="bg-gradient-to-br from-emerald-50 to-green-100 border-2 border-emerald-200 rounded-2xl p-6">
                   <h3 className="text-lg font-semibold text-text mb-2">
                     Колку брзо можете да одговорите на емаил?
                   </h3>
@@ -318,7 +342,7 @@ export default function ContactPage() {
                   </p>
                 </div>
 
-                <div className="card">
+                <div className="bg-gradient-to-br from-primary/10 to-emerald-50 border-2 border-primary/20 rounded-2xl p-6">
                   <h3 className="text-lg font-semibold text-text mb-2">
                     Дали нудите групни консултации?
                   </h3>
@@ -328,7 +352,7 @@ export default function ContactPage() {
                   </p>
                 </div>
 
-                <div className="card">
+                <div className="bg-gradient-to-br from-emerald-50 to-green-100 border-2 border-emerald-200 rounded-2xl p-6">
                   <h3 className="text-lg font-semibold text-text mb-2">
                     Како можам да се подготвам за првата консултација?
                   </h3>
@@ -339,7 +363,7 @@ export default function ContactPage() {
                   </p>
                 </div>
 
-                <div className="card">
+                <div className="bg-gradient-to-br from-primary/10 to-emerald-50 border-2 border-primary/20 rounded-2xl p-6">
                   <h3 className="text-lg font-semibold text-text mb-2">
                     Дали работите со клиенти надвор од Северна Македонија?
                   </h3>
@@ -354,26 +378,64 @@ export default function ContactPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="section bg-background-secondary">
+        <section className="section bg-gradient-to-br from-primary/20 to-primary/5">
           <div className="container-custom">
-            <div className="max-w-3xl mx-auto text-center space-y-6 card bg-gradient-to-br from-primary/5 to-primary/10 border-primary/20">
-              <h2 className="text-3xl md:text-4xl font-bold text-text">
-                Подготвени да започнете?
-              </h2>
-              <p className="text-lg text-text-secondary">
-                Закажете вашата прва консултација и направете го првиот чекор кон
-                подобро здравје
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="/booking" className="btn-primary text-lg px-8 py-4">
-                  Закажи консултација
-                </a>
-                <a
-                  href="mailto:nutricionistvladimir@gmail.com"
-                  className="btn-secondary text-lg px-8 py-4"
-                >
-                  Испрати емаил
-                </a>
+            <div className="max-w-3xl mx-auto relative overflow-hidden rounded-3xl p-12 bg-gradient-to-br from-primary via-primary-500 to-primary-700 text-white shadow-2xl">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-32 -mt-32"></div>
+              <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/10 rounded-full -ml-24 -mb-24"></div>
+              
+              <div className="relative z-10 text-center space-y-6">
+                <h2 className="text-3xl md:text-4xl font-bold">
+                  Подготвени да започнете?
+                </h2>
+                <p className="text-lg text-white/90">
+                  Закажете вашата прва консултација и направете го првиот чекор кон
+                  подобро здравје
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <a 
+                    href="/booking" 
+                    className="inline-flex items-center justify-center gap-2 bg-white text-primary px-8 py-4 rounded-full font-semibold hover:bg-white/90 transition-all duration-300 hover:scale-105 shadow-lg"
+                  >
+                    Закажи консултација
+                    <svg 
+                      xmlns="http://www.w3.org/2000/svg" 
+                      width="20" 
+                      height="20" 
+                      viewBox="0 0 24 24" 
+                      fill="none" 
+                      stroke="currentColor" 
+                      strokeWidth="2" 
+                      strokeLinecap="round" 
+                      strokeLinejoin="round"
+                      aria-hidden="true"
+                    >
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                  </a>
+                  <a
+                    href="mailto:nutricionistvladimir@gmail.com"
+                    className="inline-flex items-center justify-center gap-2 bg-white/10 text-white border-2 border-white/30 px-8 py-4 rounded-full font-semibold hover:bg-white/20 transition-all duration-300"
+                  >
+                    <svg 
+                      xmlns="http://www.w3.org/2000/svg" 
+                      width="20" 
+                      height="20" 
+                      viewBox="0 0 24 24" 
+                      fill="none" 
+                      stroke="currentColor" 
+                      strokeWidth="2" 
+                      strokeLinecap="round" 
+                      strokeLinejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                      <polyline points="22,6 12,13 2,6" />
+                    </svg>
+                    Испрати емаил
+                  </a>
+                </div>
               </div>
             </div>
           </div>
