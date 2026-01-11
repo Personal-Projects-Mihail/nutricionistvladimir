@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { generateMetadata } from '@/lib/metadata';
@@ -227,12 +228,14 @@ export default function HomePage() {
                     </svg>
                   </Link>
                 </div>
-                <div className="relative h-96 bg-gradient-to-br from-primary/20 to-primary/5 rounded-3xl overflow-hidden">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <svg className="w-64 h-64 text-primary/20" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v3.586L7.707 9.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 10.586V7z" clipRule="evenodd" />
-                    </svg>
-                  </div>
+                <div className="relative h-[500px] bg-gradient-to-br from-primary/20 to-primary/5 rounded-3xl overflow-hidden flex items-center justify-center">
+                  <Image
+                    src="/front-page/Лого (3).png"
+                    alt="Намалување на тежина"
+                    width={500}
+                    height={500}
+                    className="object-contain w-full h-full p-8"
+                  />
                 </div>
               </div>
 
