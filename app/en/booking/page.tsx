@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import BookingForm from '@/components/BookingForm';
+import IntakeForm from '@/components/IntakeForm';
 import { generateMetadata } from '@/lib/metadata';
 import { generateBreadcrumbSchema, safeJsonLd } from '@/lib/structured-data';
 import BookingIllustration from '@/components/illustrations/BookingIllustration';
@@ -81,7 +81,7 @@ export default function BookingPageEN() {
                 </div>
 
                 <div className="relative z-10">
-                  <BookingForm lang="en" />
+                  <IntakeForm lang="en" />
                 </div>
               </div>
             </div>
