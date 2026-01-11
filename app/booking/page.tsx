@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import BookingForm from '@/components/BookingForm';
+import IntakeForm from '@/components/IntakeForm';
 import { generateMetadata } from '@/lib/metadata';
 import { generateBreadcrumbSchema, safeJsonLd } from '@/lib/structured-data';
 import BookingIllustration from '@/components/illustrations/BookingIllustration';
@@ -92,7 +92,7 @@ export default function BookingPage() {
                     </p>
                   </div>
 
-                  <BookingForm lang="mk" />
+                  <IntakeForm lang="mk" />
                 </div>
               </div>
             </div>
