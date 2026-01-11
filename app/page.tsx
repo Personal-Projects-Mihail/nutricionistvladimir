@@ -231,7 +231,7 @@ export default function HomePage() {
                 <div className="relative h-[500px] bg-gradient-to-br from-primary/20 to-primary/5 rounded-3xl overflow-hidden flex items-center justify-center">
                   <Image
                     src="/front-page/Лого (3).png"
-                    alt="Намалување на тежина"
+                    alt="Илустрација за одржливо намалување на тежина - човечко тело со балансирана исхрана и метаболизам"
                     width={500}
                     height={500}
                     className="object-contain w-full h-full p-8"
