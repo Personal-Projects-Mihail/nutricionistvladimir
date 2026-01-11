@@ -45,15 +45,15 @@ export default function HomePage() {
 
       <main id="main-content">
         {/* VIBRANT HERO SECTION */}
-        <section className="relative overflow-hidden bg-gradient-to-br from-primary/20 via-primary/10 to-background pt-20 pb-32">
+        <section className="relative overflow-hidden bg-gradient-to-br from-primary/20 via-primary/10 to-background pt-4 pb-32">
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <div className="absolute top-20 right-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-pulse-glow"></div>
+            <div className="absolute top-10 right-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-pulse-glow"></div>
             <div className="absolute bottom-20 left-10 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
           </div>
 
-          <div className="container-custom relative z-10">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div className="space-y-8">
+          <div className="container-custom relative z-10 py-4">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+              <div className="space-y-6 pt-4">
                 <div className="inline-flex items-center gap-2 bg-primary/20 text-primary-800 dark:text-primary-200 px-4 py-2 rounded-full text-sm font-medium">
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
@@ -107,41 +107,17 @@ export default function HomePage() {
               {/* Right Illustration */}
               <div className="relative">
                 <div className="relative z-10">
-                  <div className="aspect-square max-w-lg mx-auto">
+                  <div className="max-w-lg mx-auto">
                     <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-primary/10 rounded-full blur-2xl"></div>
-                    <div className="relative">
-                      <svg viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-                        <circle cx="250" cy="250" r="200" fill="#7AC45A" opacity="0.15" />
-                        <ellipse cx="250" cy="180" rx="50" ry="55" fill="#5DA945" />
-                        <path d="M250 240 C200 260, 200 340, 200 380 L200 450 L220 450 L220 380 L280 380 L280 450 L300 450 L300 380 C300 340, 300 260, 250 240Z" fill="#7AC45A" />
-                        
-                        <g className="animate-float" style={{animationDelay: '0s'}}>
-                          <circle cx="120" cy="100" r="25" fill="#EF4444" />
-                          <path d="M120 75 Q125 65, 130 75" stroke="#22C55E" strokeWidth="3" fill="none" />
-                        </g>
-                        
-                        <g className="animate-float" style={{animationDelay: '0.5s'}}>
-                          <circle cx="380" cy="120" r="15" fill="#22C55E" />
-                          <circle cx="395" cy="130" r="12" fill="#22C55E" />
-                          <circle cx="370" cy="135" r="13" fill="#22C55E" />
-                        </g>
-                        
-                        <g className="animate-float" style={{animationDelay: '1s'}}>
-                          <circle cx="420" cy="250" r="22" fill="#FB923C" />
-                          <line x1="420" y1="228" x2="420" y2="272" stroke="#FFF" strokeWidth="2" />
-                          <line x1="398" y1="250" x2="442" y2="250" stroke="#FFF" strokeWidth="2" />
-                        </g>
-                        
-                        <g className="animate-float" style={{animationDelay: '0.3s'}}>
-                          <ellipse cx="400" cy="350" rx="20" ry="28" fill="#4ADE80" />
-                          <ellipse cx="400" cy="350" rx="12" ry="18" fill="#FDE047" />
-                        </g>
-                        
-                        <g opacity="0.6" className="animate-pulse">
-                          <path d="M180 120 L182 125 L187 125 L183 128 L185 133 L180 130 L175 133 L177 128 L173 125 L178 125 Z" fill="#FDE047" />
-                          <path d="M350 180 L352 185 L357 185 L353 188 L355 193 L350 190 L345 193 L347 188 L343 185 L348 185 Z" fill="#FDE047" />
-                        </g>
-                      </svg>
+                    <div className="relative rounded-3xl overflow-hidden">
+                      <Image
+                        src="/front-page/vladimir.png"
+                        alt="Владимир - Регистриран нутриционист"
+                        width={600}
+                        height={600}
+                        className="object-cover w-full h-auto"
+                        priority
+                      />
                     </div>
                   </div>
                 </div>
@@ -228,13 +204,13 @@ export default function HomePage() {
                     </svg>
                   </Link>
                 </div>
-                <div className="relative h-[500px] bg-gradient-to-br from-primary/20 to-primary/5 rounded-3xl overflow-hidden flex items-center justify-center">
+                <div className="relative h-[600px] bg-gradient-to-br from-primary/20 to-primary/5 rounded-3xl overflow-hidden flex items-center justify-center">
                   <Image
-                    src="/front-page/Лого (3).png"
+                    src="/front-page/weight_loss_illustration.svg"
                     alt="Илустрација за одржливо намалување на тежина - човечко тело со балансирана исхрана и метаболизам"
-                    width={500}
-                    height={500}
-                    className="object-contain w-full h-full p-8"
+                    width={600}
+                    height={600}
+                    className="object-contain w-full h-full p-6"
                   />
                 </div>
               </div>

@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import LanguageSwitcher from './LanguageSwitcher';
@@ -55,9 +56,16 @@ export default function Header({ lang }: HeaderProps) {
           {/* Logo */}
           <Link
             href={basePath || '/'}
-            className="text-xl font-semibold text-text hover:text-primary transition-colors"
+            className="flex items-center hover:opacity-80 transition-opacity"
           >
-            {lang === 'mk' ? 'Владимир' : 'Vladimir'}
+            <Image
+              src="/logo.png"
+              alt={lang === 'mk' ? 'Владимир' : 'Vladimir'}
+              width={180}
+              height={60}
+              className="h-14 w-auto md:h-16"
+              priority
+            />
           </Link>
 
           {/* Desktop Navigation */}
