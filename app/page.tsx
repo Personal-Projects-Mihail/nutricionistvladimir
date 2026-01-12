@@ -166,11 +166,6 @@ export default function HomePage() {
               {/* Weight Loss - Image Right */}
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div className="space-y-6">
-                  <div className="inline-block p-4 bg-primary/10 rounded-2xl">
-                    <svg className="w-12 h-12 text-primary" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v3.586L7.707 9.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 10.586V7z" clipRule="evenodd" />
-                    </svg>
-                  </div>
                   <h3 className="text-3xl md:text-4xl font-bold text-text">
                     Намалување на тежина
                   </h3>
@@ -227,12 +222,6 @@ export default function HomePage() {
                   />
                 </div>
                 <div className="space-y-6 lg:order-2">
-                  <div className="inline-block p-4 bg-primary/10 rounded-2xl">
-                    <svg className="w-12 h-12 text-primary" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
-                      <path fillRule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clipRule="evenodd" />
-                    </svg>
-                  </div>
                   <h3 className="text-3xl md:text-4xl font-bold text-text">
                     Здравје на цревата
                   </h3>
@@ -271,11 +260,6 @@ export default function HomePage() {
               {/* Sports Nutrition - Image Right */}
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div className="space-y-6">
-                  <div className="inline-block p-4 bg-primary/10 rounded-2xl">
-                    <svg className="w-12 h-12 text-primary" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
-                    </svg>
-                  </div>
                   <h3 className="text-3xl md:text-4xl font-bold text-text">
                     Спортска исхрана
                   </h3>
