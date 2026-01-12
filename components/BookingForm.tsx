@@ -203,11 +203,22 @@ export default function BookingForm({ lang }: BookingFormProps) {
     setSubmitStatus('idle');
 
     try {
-      // Simulate API call - Replace with actual submission logic
-      // In production, this would send to your backend or email service
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+      // Submit to API endpoint
+      const response = await fetch('/api/booking', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
 
-      console.log('Form submitted:', formData);
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to submit booking');
+      }
+
+      console.log('Booking submitted successfully:', data);
       
       setSubmitStatus('success');
       
