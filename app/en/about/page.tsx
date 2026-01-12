@@ -49,7 +49,7 @@ export default function AboutPageEN() {
       <Header lang="en" />
 
       <main id="main-content">
-        {/* Hero Section */}
+        {/* VIBRANT HERO SECTION */}
         <section className="relative overflow-hidden bg-gradient-to-br from-primary/20 via-emerald-50/50 to-background pt-20 pb-32">
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
             <div className="absolute top-20 right-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-pulse-glow"></div>
@@ -80,37 +80,39 @@ export default function AboutPageEN() {
           </div>
         </section>
 
-        {/* Personal Story Section */}
-        <section className="section bg-gradient-to-br from-primary/5 via-green-50/50 to-background">
+        {/* PERSONAL STORY WITH GRADIENT */}
+        <section className="section">
           <div className="container-custom">
             <div className="max-w-5xl mx-auto">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div className="relative h-96 bg-gradient-to-br from-primary/20 to-emerald-100/30 rounded-3xl overflow-hidden p-12 flex items-center justify-center">
+                <div className="relative h-96 bg-gradient-to-br from-primary/20 to-emerald-100/30 dark:from-primary/20 dark:to-emerald-900/20 rounded-3xl overflow-hidden p-12 flex items-center justify-center">
+                  <div className="absolute inset-0 flex items-center justify-center opacity-20">
+                    <svg className="w-64 h-64" viewBox="0 0 100 100" fill="none">
+                      <circle cx="50" cy="50" r="40" fill="currentColor" className="text-primary" />
+                      <circle cx="40" cy="43" r="5" fill="white" />
+                      <circle cx="60" cy="43" r="5" fill="white" />
+                      <path d="M35 60 Q50 70, 65 60" stroke="white" strokeWidth="3" strokeLinecap="round" fill="none" />
+                    </svg>
+                  </div>
                   <div className="relative z-10 text-center space-y-4">
-                    <div className="inline-block p-6 bg-white rounded-2xl shadow-xl">
+                    <div className="inline-block p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-xl">
                       <AppleIcon className="w-20 h-20 text-primary" />
                     </div>
-                    <h3 className="text-2xl font-bold text-primary">Passion for Nutrition</h3>
+                    <p className="text-lg font-semibold text-primary">Passion for Nutrition</p>
                   </div>
                 </div>
 
                 <div className="space-y-6">
                   <h2 className="text-3xl md:text-4xl font-bold text-text">My Story</h2>
-                  <div className="space-y-4 text-text-secondary">
-                    <p className="text-lg">
-                      Welcome! I'm Vladimir, a registered nutritionist with a passion
-                      for helping people achieve optimal health through nutrition science.
+                  <div className="space-y-4 text-text-secondary leading-relaxed">
+                    <p>
+                      Welcome! I'm <span className="font-semibold text-primary">Vladimir</span>, a registered nutritionist with a passion for helping people achieve optimal health through the science of nutrition.
                     </p>
-                    <p className="text-lg">
-                      My journey into nutrition began from personal experience with the
-                      power of proper nutrition to transform health. This passion
-                      motivated me to dedicate my life to studying nutrition science and
-                      helping others achieve their health goals.
+                    <p>
+                      My journey into nutrition began from personal experience with the power of proper nutrition to transform health. This passion motivated me to dedicate my life to studying the science of nutrition and helping others achieve their health goals.
                     </p>
-                    <p className="text-lg">
-                      Today I work with clients across North Macedonia, providing
-                      evidence-based consultations tailored to their unique needs,
-                      lifestyle, and health goals.
+                    <p>
+                      Today, I work with clients throughout North Macedonia, providing evidence-based consultations that are tailored to their unique needs, lifestyle, and health goals.
                     </p>
                   </div>
                 </div>
@@ -119,132 +121,226 @@ export default function AboutPageEN() {
           </div>
         </section>
 
-        {/* Education Section */}
-        <section className="section bg-gradient-to-br from-primary/20 to-primary/5">
+        {/* EDUCATION WITH COLORFUL CARDS */}
+        <section className="section bg-gradient-to-b from-primary/5 via-emerald-50/30 to-background">
           <div className="container-custom">
-            <div className="max-w-4xl mx-auto">
-              <div className="text-center mb-12">
-                <div className="inline-block mb-4">
-                  <span className="bg-gradient-to-br from-emerald-500 to-green-600 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
-                    Professional Credentials
-                  </span>
-                </div>
-                <h2 className="text-3xl md:text-4xl font-bold text-text">
-                  Education & Qualifications
+            <div className="max-w-5xl mx-auto">
+              <div className="text-center mb-16">
+                <span className="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-4">
+                  Qualifications
+                </span>
+                <h2 className="text-3xl md:text-4xl font-bold text-text mb-4">
+                  Education and Certifications
                 </h2>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="group relative overflow-hidden bg-gradient-to-br from-primary/10 to-emerald-50 border-2 border-primary/20 rounded-2xl p-6 hover:shadow-lg transition-all duration-300">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-primary to-primary-600 rounded-2xl shadow-lg flex items-center justify-center flex-shrink-0">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="text-white"
-                        aria-hidden="true"
-                      >
-                        <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
-                        <path d="M6 12v5c3 3 9 3 12 0v-5" />
-                      </svg>
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-semibold text-text mb-2">
-                        Registered Nutritionist
-                      </h3>
-                      <p className="text-text-secondary mb-2">
-                        [University Name]
-                      </p>
-                      <p className="text-sm text-text-tertiary">
-                        Specialization in clinical nutrition, nutritional biochemistry,
-                        and weight management
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="group relative overflow-hidden bg-gradient-to-br from-emerald-50 to-green-100 border-2 border-emerald-200 rounded-2xl p-6 hover:shadow-lg transition-all duration-300">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-green-600 rounded-2xl shadow-lg flex items-center justify-center flex-shrink-0">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="text-white"
-                        aria-hidden="true"
-                      >
-                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                        <path d="M9 12l2 2 4-4" />
-                      </svg>
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-semibold text-text mb-2">
-                        Registration & License
-                      </h3>
-                      <p className="text-text-secondary mb-2">
-                        Registered nutritionist in North Macedonia
-                      </p>
-                      <p className="text-sm text-text-tertiary">
-                        Active membership in professional nutrition associations
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* CTA Section */}
-        <section className="section bg-gradient-to-br from-primary/5 via-green-50/50 to-background">
-          <div className="container-custom">
-            <div className="max-w-3xl mx-auto relative overflow-hidden rounded-3xl p-12 bg-gradient-to-br from-primary via-primary-500 to-primary-700 text-white shadow-2xl">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-32 -mt-32"></div>
-              <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/10 rounded-full -ml-24 -mb-24"></div>
-              
-              <div className="relative z-10 text-center space-y-6">
-                <BrainIcon className="w-16 h-16 text-white mx-auto" />
-                <h2 className="text-3xl md:text-4xl font-bold">
-                  Ready to Work Together?
-                </h2>
-                <p className="text-lg text-white/90">
-                  Book a consultation and start your journey to better health
+                <p className="text-lg text-text-secondary">
+                  Continuous learning and professional development
                 </p>
-                <Link 
-                  href="/en/booking" 
-                  className="inline-flex items-center gap-2 bg-white text-primary px-8 py-4 rounded-full font-semibold hover:bg-white/90 transition-all duration-300 hover:scale-105 shadow-lg"
-                >
-                  Book Consultation
-                  <svg 
-                    xmlns="http://www.w3.org/2000/svg" 
-                    width="20" 
-                    height="20" 
-                    viewBox="0 0 24 24" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    strokeWidth="2" 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round"
-                    aria-hidden="true"
-                  >
-                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                    <polyline points="12 5 19 12 12 19"></polyline>
-                  </svg>
-                </Link>
               </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="group relative overflow-hidden bg-gradient-to-br from-primary/10 to-emerald-50 dark:from-primary/20 dark:to-emerald-900/20 rounded-2xl p-8 hover:shadow-xl transition-all duration-300 hover:scale-105">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full -mr-16 -mt-16"></div>
+                  <div className="relative z-10">
+                    <div className="w-16 h-16 bg-gradient-to-br from-primary to-primary-600 rounded-2xl flex items-center justify-center mb-4 shadow-lg">
+                      <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z" />
+                      </svg>
+                    </div>
+                    <h3 className="text-xl font-bold text-text mb-2">Nutrition Degree</h3>
+                    <p className="text-text-secondary mb-2">University [University Name]</p>
+                    <p className="text-sm text-text-tertiary">Specialization in clinical nutrition, nutritional biochemistry, and weight management</p>
+                  </div>
+                </div>
+
+                <div className="group relative overflow-hidden bg-gradient-to-br from-emerald-50 to-green-100 dark:from-emerald-900/20 dark:to-green-900/20 rounded-2xl p-8 hover:shadow-xl transition-all duration-300 hover:scale-105">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full -mr-16 -mt-16"></div>
+                  <div className="relative z-10">
+                    <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-green-600 rounded-2xl flex items-center justify-center mb-4 shadow-lg">
+                      <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                    <h3 className="text-xl font-bold text-text mb-2">Registration</h3>
+                    <p className="text-text-secondary mb-2">Registered Nutritionist in North Macedonia</p>
+                    <p className="text-sm text-text-tertiary">Active membership in professional nutrition associations</p>
+                  </div>
+                </div>
+
+                <div className="group relative overflow-hidden bg-gradient-to-br from-green-50 to-teal-50 dark:from-green-900/20 dark:to-teal-900/20 rounded-2xl p-8 hover:shadow-xl transition-all duration-300 hover:scale-105">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-green-500/10 rounded-full -mr-16 -mt-16"></div>
+                  <div className="relative z-10">
+                    <div className="w-16 h-16 bg-gradient-to-br from-green-600 to-teal-600 rounded-2xl flex items-center justify-center mb-4 shadow-lg">
+                      <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z" />
+                      </svg>
+                    </div>
+                    <h3 className="text-xl font-bold text-text mb-2">Continuing Education</h3>
+                    <p className="text-text-secondary mb-2">Regular follow-up of latest research</p>
+                    <p className="text-sm text-text-tertiary">Dedicated to staying current with the latest scientific knowledge</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* PHILOSOPHY WITH ICONS */}
+        <section className="section">
+          <div className="container-custom">
+            <div className="max-w-5xl mx-auto">
+              <div className="text-center mb-16">
+                <span className="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-4">
+                  My Approach
+                </span>
+                <h2 className="text-3xl md:text-4xl font-bold text-text mb-4">
+                  Nutrition Philosophy
+                </h2>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="relative overflow-hidden bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all group">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500"></div>
+                  <div className="relative z-10">
+                    <div className="flex items-start gap-4 mb-4">
+                      <div className="w-12 h-12 bg-gradient-to-br from-primary to-primary-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg">
+                        <BrainIcon className="w-7 h-7 text-white" />
+                      </div>
+                      <h3 className="text-xl font-bold text-text mt-2">Evidence-Based</h3>
+                    </div>
+                    <p className="text-text-secondary leading-relaxed">
+                      Every recommendation is based on the latest scientific research and clinical evidence. I don't follow trends - I stick to what is scientifically proven.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="relative overflow-hidden bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all group">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/5 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500"></div>
+                  <div className="relative z-10">
+                    <div className="flex items-start gap-4 mb-4">
+                      <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg">
+                        <svg className="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 20 20">
+                          <path d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" />
+                        </svg>
+                      </div>
+                      <h3 className="text-xl font-bold text-text mt-2">Individual Approach</h3>
+                    </div>
+                    <p className="text-text-secondary leading-relaxed">
+                      There's no one-size-fits-all solution. Each plan is tailored to your unique needs, preferences, lifestyle, and health goals.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="relative overflow-hidden bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all group">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-green-500/5 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500"></div>
+                  <div className="relative z-10">
+                    <div className="flex items-start gap-4 mb-4">
+                      <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg">
+                        <EnergyIcon className="w-7 h-7 text-white" />
+                      </div>
+                      <h3 className="text-xl font-bold text-text mt-2">Sustainability</h3>
+                    </div>
+                    <p className="text-text-secondary leading-relaxed">
+                      I focus on creating sustainable habits, not quick fixes. The goal is long-term health, not short-term results.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="relative overflow-hidden bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all group">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-teal-500/5 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500"></div>
+                  <div className="relative z-10">
+                    <div className="flex items-start gap-4 mb-4">
+                      <div className="w-12 h-12 bg-gradient-to-br from-teal-500 to-teal-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg">
+                        <HeartHealthIcon className="w-7 h-7 text-white" />
+                      </div>
+                      <h3 className="text-xl font-bold text-text mt-2">Non-Judgmental</h3>
+                    </div>
+                    <p className="text-text-secondary leading-relaxed">
+                      I create a safe space where you can be open about your challenges without fear of judgment. We work together toward your goals.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="relative overflow-hidden bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all group md:col-span-2">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500"></div>
+                  <div className="relative z-10">
+                    <div className="flex items-start gap-4 mb-4">
+                      <div className="w-12 h-12 bg-gradient-to-br from-primary to-emerald-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg">
+                        <BalanceIcon className="w-7 h-7 text-white" />
+                      </div>
+                      <h3 className="text-xl font-bold text-text mt-2">Holistic Approach</h3>
+                    </div>
+                    <p className="text-text-secondary leading-relaxed">
+                      Health is more than just food. I take into account all aspects of your life - sleep, stress, physical activity, and emotional well-being.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* AREAS OF EXPERTISE - VIBRANT GRID */}
+        <section className="section bg-gradient-to-br from-primary/5 via-background to-emerald-50/20">
+          <div className="container-custom">
+            <div className="max-w-5xl mx-auto">
+              <div className="text-center mb-16">
+                <span className="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-4">
+                  Specializations
+                </span>
+                <h2 className="text-3xl md:text-4xl font-bold text-text mb-4">
+                  Areas of Expertise
+                </h2>
+              </div>
+
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                {[
+                  { name: 'Weight Loss', color: 'from-primary to-primary-600' },
+                  { name: 'Gut Health', color: 'from-emerald-400 to-emerald-600' },
+                  { name: 'Hormonal Balance', color: 'from-green-400 to-green-600' },
+                  { name: 'Sports Nutrition', color: 'from-teal-400 to-teal-600' },
+                  { name: 'Family Nutrition', color: 'from-primary-400 to-emerald-500' },
+                  { name: 'Chronic Conditions', color: 'from-green-500 to-teal-500' },
+                  { name: 'Nutritional Biochemistry', color: 'from-emerald-500 to-green-600' },
+                  { name: 'Lifestyle Changes', color: 'from-teal-500 to-emerald-600' },
+                ].map((item, idx) => (
+                  <div key={idx} className="group relative overflow-hidden bg-white dark:bg-gray-800 rounded-xl p-6 text-center shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
+                    <div className={`absolute inset-0 bg-gradient-to-br ${item.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
+                    <div className="relative z-10">
+                      <div className={`w-12 h-12 mx-auto mb-3 rounded-lg bg-gradient-to-br ${item.color} flex items-center justify-center shadow-lg`}>
+                        <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                      </div>
+                      <span className="text-sm font-semibold text-text group-hover:text-primary transition-colors">{item.name}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* CTA SECTION - VIBRANT */}
+        <section className="relative overflow-hidden bg-gradient-to-br from-primary via-primary-500 to-primary-700 py-24">
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full -mr-48 -mt-48"></div>
+            <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/10 rounded-full -ml-32 -mb-32"></div>
+          </div>
+
+          <div className="container-custom relative z-10">
+            <div className="max-w-3xl mx-auto text-center text-white space-y-8">
+              <h2 className="text-4xl md:text-5xl font-bold">
+                Ready to Work Together?
+              </h2>
+              <p className="text-xl text-white/90">
+                Book a consultation and start your journey to better health
+              </p>
+              <Link href="/en/booking" className="inline-flex items-center gap-2 bg-white text-primary hover:bg-gray-50 font-semibold text-lg px-10 py-4 rounded-xl transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105">
+                Book Consultation
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </Link>
             </div>
           </div>
         </section>
