@@ -1,56 +1,85 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" fill="none">
-  <!-- Central happy gut character - friendly and simple -->
-  <g transform="translate(400, 380)">
-    <!-- Main gut body - rounded friendly shape -->
-    <path d="M -80 -100 Q -100 -60 -100 0 Q -100 80 -80 140 Q -60 180 0 200 Q 60 180 80 140 Q 100 80 100 0 Q 100 -60 80 -100 Q 60 -120 0 -130 Q -60 -120 -80 -100 Z" 
-          fill="#7AC45A" opacity="0.9"/>
+  <!-- Simplified intestine/colon shape with happy face -->
+  <g transform="translate(400, 400)">
+    <!-- Intestine outline - recognizable colon shape -->
+    <!-- Top horizontal section -->
+    <path d="M -80 -120 L 80 -120 Q 100 -120 100 -100 L 100 -40" 
+          stroke="#5DA945" stroke-width="50" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <!-- Right vertical section going down -->
+    <path d="M 100 -40 L 100 80 Q 100 100 80 100" 
+          stroke="#5DA945" stroke-width="50" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <!-- Bottom horizontal section going left -->
+    <path d="M 80 100 L -80 100 Q -100 100 -100 80" 
+          stroke="#5DA945" stroke-width="50" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <!-- Left vertical section going up -->
+    <path d="M -100 80 L -100 -100 Q -100 -120 -80 -120" 
+          stroke="#5DA945" stroke-width="50" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <!-- Inner lighter color for depth -->
+    <path d="M -80 -120 L 80 -120 Q 95 -120 95 -105 L 95 -40" 
+          stroke="#7AC45A" stroke-width="35" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <path d="M 95 -40 L 95 75 Q 95 95 80 95" 
+          stroke="#7AC45A" stroke-width="35" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <path d="M 80 95 L -80 95 Q -95 95 -95 80" 
+          stroke="#7AC45A" stroke-width="35" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <path d="M -95 80 L -95 -100 Q -95 -120 -80 -120" 
+          stroke="#7AC45A" stroke-width="35" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <!-- Happy face in the center -->
+    <ellipse cx="0" cy="-10" rx="50" ry="55" fill="#A8DF8E" opacity="0.9"/>
     
     <!-- Cute smile -->
-    <path d="M -40 20 Q -20 40 0 42 Q 20 40 40 20" 
-          stroke="#5DA945" stroke-width="6" fill="none" stroke-linecap="round"/>
+    <path d="M -25 10 Q -12 22 0 24 Q 12 22 25 10" 
+          stroke="#5DA945" stroke-width="5" fill="none" stroke-linecap="round"/>
     
     <!-- Happy eyes -->
-    <circle cx="-30" cy="-20" r="8" fill="#5DA945"/>
-    <circle cx="30" cy="-20" r="8" fill="#5DA945"/>
-    <circle cx="-27" cy="-22" r="4" fill="#A8DF8E"/>
-    <circle cx="33" cy="-22" r="4" fill="#A8DF8E"/>
+    <circle cx="-18" cy="-20" r="6" fill="#5DA945"/>
+    <circle cx="18" cy="-20" r="6" fill="#5DA945"/>
+    <circle cx="-16" cy="-22" r="3" fill="white"/>
+    <circle cx="20" cy="-22" r="3" fill="white"/>
     
     <!-- Rosy cheeks -->
-    <circle cx="-65" cy="10" r="15" fill="#A8DF8E" opacity="0.6"/>
-    <circle cx="65" cy="10" r="15" fill="#A8DF8E" opacity="0.6"/>
+    <circle cx="-40" cy="5" r="10" fill="#5DA945" opacity="0.3"/>
+    <circle cx="40" cy="5" r="10" fill="#5DA945" opacity="0.3"/>
     
-    <!-- Heart on belly for love/health -->
-    <path d="M -15 80 Q -15 65 -25 65 Q -35 65 -35 75 Q -35 90 -15 105 Q 5 90 5 75 Q 5 65 -5 65 Q -15 65 -15 80 Z" 
-          fill="#5DA945"/>
+    <!-- Small heart -->
+    <path d="M -8 35 Q -8 28 -12 28 Q -16 28 -16 32 Q -16 38 -8 44 Q 0 38 0 32 Q 0 28 -4 28 Q -8 28 -8 35 Z" 
+          fill="#5DA945" opacity="0.6"/>
   </g>
   
-  <!-- Floating good bacteria - happy little circles -->
-  <g transform="translate(250, 280)">
-    <circle cx="0" cy="0" r="20" fill="#5DA945" opacity="0.8"/>
-    <circle cx="-6" cy="-4" r="3" fill="white"/>
-    <circle cx="6" cy="-4" r="3" fill="white"/>
+  <!-- Floating good bacteria - happy little circles inside and around -->
+  <g transform="translate(320, 350)">
+    <circle cx="0" cy="0" r="18" fill="#5DA945" opacity="0.8"/>
+    <circle cx="-5" cy="-3" r="2" fill="white"/>
+    <circle cx="5" cy="-3" r="2" fill="white"/>
+    <path d="M -7 3 Q 0 7 7 3" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/>
+  </g>
+  
+  <g transform="translate(480, 360)">
+    <circle cx="0" cy="0" r="20" fill="#7AC45A" opacity="0.8"/>
+    <circle cx="-6" cy="-4" r="2" fill="white"/>
+    <circle cx="6" cy="-4" r="2" fill="white"/>
     <path d="M -8 4 Q 0 8 8 4" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/>
   </g>
   
-  <g transform="translate(550, 300)">
-    <circle cx="0" cy="0" r="22" fill="#7AC45A" opacity="0.8"/>
-    <circle cx="-7" cy="-5" r="3" fill="white"/>
-    <circle cx="7" cy="-5" r="3" fill="white"/>
-    <path d="M -9 5 Q 0 9 9 5" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/>
+  <g transform="translate(360, 480)">
+    <circle cx="0" cy="0" r="16" fill="#A8DF8E" opacity="0.9"/>
+    <circle cx="-4" cy="-3" r="2" fill="#5DA945"/>
+    <circle cx="4" cy="-3" r="2" fill="#5DA945"/>
+    <path d="M -6 3 Q 0 6 6 3" stroke="#5DA945" stroke-width="2" stroke-linecap="round" fill="none"/>
   </g>
   
-  <g transform="translate(300, 480)">
-    <circle cx="0" cy="0" r="18" fill="#A8DF8E" opacity="0.9"/>
-    <circle cx="-5" cy="-3" r="2" fill="#5DA945"/>
-    <circle cx="5" cy="-3" r="2" fill="#5DA945"/>
-    <path d="M -7 3 Q 0 6 7 3" stroke="#5DA945" stroke-width="2" stroke-linecap="round" fill="none"/>
-  </g>
-  
-  <g transform="translate(500, 460)">
-    <circle cx="0" cy="0" r="19" fill="#5DA945" opacity="0.8"/>
-    <circle cx="-5" cy="-4" r="3" fill="white"/>
-    <circle cx="5" cy="-4" r="3" fill="white"/>
-    <path d="M -7 4 Q 0 7 7 4" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/>
+  <g transform="translate(440, 470)">
+    <circle cx="0" cy="0" r="17" fill="#5DA945" opacity="0.8"/>
+    <circle cx="-4" cy="-3" r="2" fill="white"/>
+    <circle cx="4" cy="-3" r="2" fill="white"/>
+    <path d="M -6 3 Q 0 6 6 3" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/>
   </g>
   
   <!-- Probiotic foods with simple, clear icons -->
@@ -93,22 +122,22 @@
   </g>
   
   <!-- Plus signs for "good/positive" -->
-  <g transform="translate(320, 200)">
+  <g transform="translate(280, 250)">
     <line x1="-12" y1="0" x2="12" y2="0" stroke="#A8DF8E" stroke-width="4" stroke-linecap="round"/>
     <line x1="0" y1="-12" x2="0" y2="12" stroke="#A8DF8E" stroke-width="4" stroke-linecap="round"/>
   </g>
   
-  <g transform="translate(480, 220)">
+  <g transform="translate(520, 260)">
     <line x1="-10" y1="0" x2="10" y2="0" stroke="#7AC45A" stroke-width="4" stroke-linecap="round"/>
     <line x1="0" y1="-10" x2="0" y2="10" stroke="#7AC45A" stroke-width="4" stroke-linecap="round"/>
   </g>
   
-  <g transform="translate(350, 600)">
+  <g transform="translate(320, 600)">
     <line x1="-10" y1="0" x2="10" y2="0" stroke="#A8DF8E" stroke-width="4" stroke-linecap="round"/>
     <line x1="0" y1="-10" x2="0" y2="10" stroke="#A8DF8E" stroke-width="4" stroke-linecap="round"/>
   </g>
   
-  <g transform="translate(450, 580)">
+  <g transform="translate(480, 590)">
     <line x1="-10" y1="0" x2="10" y2="0" stroke="#7AC45A" stroke-width="4" stroke-linecap="round"/>
     <line x1="0" y1="-10" x2="0" y2="10" stroke="#7AC45A" stroke-width="4" stroke-linecap="round"/>
   </g>
@@ -130,9 +159,16 @@
     <path d="M 0 -10 L -2 -2 L -10 0 L -2 2 L 0 10 L 2 2 L 10 0 L 2 -2 Z" fill="#5DA945" opacity="0.7"/>
   </g>
   
-  <!-- Gentle waves around the gut for harmony -->
-  <g transform="translate(400, 380)">
-    <ellipse cx="0" cy="0" rx="160" ry="240" fill="none" stroke="#A8DF8E" stroke-width="3" opacity="0.3" stroke-dasharray="15,8"/>
+  <!-- Gentle waves around for harmony -->
+  <g transform="translate(400, 400)">
+    <path d="M -180 -160 Q -180 -140 -160 -140 Q -140 -140 -140 -120" 
+          stroke="#A8DF8E" stroke-width="3" opacity="0.3" fill="none" stroke-linecap="round"/>
+    <path d="M 180 -160 Q 180 -140 160 -140 Q 140 -140 140 -120" 
+          stroke="#A8DF8E" stroke-width="3" opacity="0.3" fill="none" stroke-linecap="round"/>
+    <path d="M -180 160 Q -180 140 -160 140 Q -140 140 -140 120" 
+          stroke="#7AC45A" stroke-width="3" opacity="0.3" fill="none" stroke-linecap="round"/>
+    <path d="M 180 160 Q 180 140 160 140 Q 140 140 140 120" 
+          stroke="#7AC45A" stroke-width="3" opacity="0.3" fill="none" stroke-linecap="round"/>
   </g>
   
   <!-- Small decorative circles for balance -->
@@ -141,12 +177,25 @@
   <circle cx="170" cy="720" r="7" fill="#5DA945" opacity="0.4"/>
   <circle cx="630" cy="710" r="9" fill="#A8DF8E" opacity="0.5"/>
   
-  <!-- Hearts floating up (gut-brain connection) -->
-  <g transform="translate(280, 150)">
+  <!-- Hearts floating (gut health connection) -->
+  <g transform="translate(260, 150)">
     <path d="M 0 5 Q -5 0 -5 -5 Q -5 -12 0 -12 Q 5 -12 5 -5 Q 5 0 0 5 Z" fill="#7AC45A" opacity="0.6"/>
   </g>
   
-  <g transform="translate(520, 160)">
+  <g transform="translate(540, 160)">
     <path d="M 0 6 Q -6 0 -6 -6 Q -6 -14 0 -14 Q 6 -14 6 -6 Q 6 0 0 6 Z" fill="#A8DF8E" opacity="0.6"/>
+  </g>
+  
+  <!-- Arrows showing flow/movement through digestive tract -->
+  <g transform="translate(400, 300)">
+    <path d="M 50 0 L 30 0 L 35 -5 M 30 0 L 35 5" stroke="#A8DF8E" stroke-width="3" opacity="0.5" stroke-linecap="round"/>
+  </g>
+  
+  <g transform="translate(500, 400)">
+    <path d="M 0 -50 L 0 -30 L -5 -35 M 0 -30 L 5 -35" stroke="#A8DF8E" stroke-width="3" opacity="0.5" stroke-linecap="round"/>
+  </g>
+  
+  <g transform="translate(400, 500)">
+    <path d="M -50 0 L -30 0 L -35 -5 M -30 0 L -35 5" stroke="#7AC45A" stroke-width="3" opacity="0.5" stroke-linecap="round"/>
   </g>
 </svg>
