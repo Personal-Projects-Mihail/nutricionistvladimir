@@ -425,6 +425,7 @@ export default function BookingForm({ lang }: BookingFormProps) {
           className={`w-full px-4 py-3 rounded-lg border ${
             errors.consultationType ? 'border-red-500' : 'border-border'
           } bg-background text-text focus:outline-none focus:ring-2 focus:ring-primary`}
+          style={{ maxHeight: '200px', overflowY: 'auto' }}
           aria-required="true"
           aria-invalid={!!errors.consultationType}
           aria-describedby={errors.consultationType ? 'consultationType-error' : undefined}
@@ -472,6 +473,7 @@ export default function BookingForm({ lang }: BookingFormProps) {
             value={formData.ageRange}
             onChange={handleChange}
             className="w-full px-4 py-3 rounded-lg border border-border bg-background text-text focus:outline-none focus:ring-2 focus:ring-primary"
+            style={{ maxHeight: '200px', overflowY: 'auto' }}
           >
             <option value="">{t.selectOption}</option>
             <option value="under18">{t.ageRanges.under18}</option>
@@ -492,6 +494,7 @@ export default function BookingForm({ lang }: BookingFormProps) {
             value={formData.gender}
             onChange={handleChange}
             className="w-full px-4 py-3 rounded-lg border border-border bg-background text-text focus:outline-none focus:ring-2 focus:ring-primary"
+            style={{ maxHeight: '200px', overflowY: 'auto' }}
           >
             <option value="">{t.selectOption}</option>
             <option value="male">{t.genders.male}</option>
