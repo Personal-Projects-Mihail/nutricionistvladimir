@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import ScrollProcessEN from '@/components/ScrollProcessEN';
 import { generateMetadata } from '@/lib/metadata';
 import {
   generatePersonSchema,
@@ -317,83 +318,8 @@ export default function HomePageEN() {
           </div>
         </section>
 
-        {/* PROCESS ROADMAP - Vertical Timeline */}
-        <section className="section bg-gradient-to-b from-primary/5 to-background">
-          <div className="container-custom">
-            <div className="text-center mb-16">
-              <span className="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-4">
-                How We Work
-              </span>
-              <h2 className="text-4xl md:text-5xl font-bold text-text mb-4">
-                Your Path to Success
-              </h2>
-              <p className="text-xl text-text-secondary max-w-2xl mx-auto">
-                Simple and effective process to achieve your goals
-              </p>
-            </div>
-
-            <div className="max-w-4xl mx-auto">
-              <div className="relative">
-                {/* Vertical Line */}
-                <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-primary-400 to-primary-200"></div>
-
-                {/* Steps */}
-                <div className="space-y-16">
-                  {[
-                    {
-                      num: '01',
-                      title: 'Initial Consultation',
-                      desc: 'Detailed review of your nutrition, health history and goals. We listen to your story.',
-                      color: 'primary'
-                    },
-                    {
-                      num: '02',
-                      title: 'Personalized Plan',
-                      desc: 'We create a unique plan tailored to your needs, preferences and lifestyle.',
-                      color: 'blue'
-                    },
-                    {
-                      num: '03',
-                      title: 'Implementation',
-                      desc: 'You start the plan with our support. Regular monitoring and adjustments.',
-                      color: 'green'
-                    },
-                    {
-                      num: '04',
-                      title: 'Monitoring and Adjustment',
-                      desc: 'Regular follow-ups to ensure everything is working. We make changes as needed.',
-                      color: 'purple'
-                    },
-                    {
-                      num: '05',
-                      title: 'Long-Term Success',
-                      desc: 'Building sustainable habits for long-term health and well-being.',
-                      color: 'primary'
-                    }
-                  ].map((step, idx) => (
-                    <div key={idx} className={`relative flex items-center ${idx % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} flex-col md:gap-16`}>
-                      {/* Timeline Dot */}
-                      <div className="absolute left-8 md:left-1/2 -translate-x-1/2 w-16 h-16 bg-primary rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg z-10">
-                        {step.num}
-                      </div>
-
-                      {/* Content */}
-                      <div className={`w-full md:w-5/12 ${idx % 2 === 0 ? 'md:text-right md:pr-24' : 'md:pl-24'} pl-24 md:pl-0`}>
-                        <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
-                          <h3 className="text-2xl font-bold text-text mb-2">{step.title}</h3>
-                          <p className="text-text-secondary">{step.desc}</p>
-                        </div>
-                      </div>
-
-                      {/* Spacer for alternating layout */}
-                      <div className="hidden md:block w-5/12"></div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        {/* PROCESS ROADMAP - Scroll-based highlighting */}
+        <ScrollProcessEN />
 
         {/* CTA SECTION - Full Width Vibrant */}
         <section className="relative overflow-hidden bg-gradient-to-br from-primary via-primary-500 to-primary-700 py-24">
