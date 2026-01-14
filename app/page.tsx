@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import ScrollProcess from '@/components/ScrollProcess';
 import { generateMetadata } from '@/lib/metadata';
 import {
   generatePersonSchema,
@@ -317,83 +318,8 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* PROCESS ROADMAP - Vertical Timeline */}
-        <section className="section bg-gradient-to-b from-primary/5 to-background">
-          <div className="container-custom">
-            <div className="text-center mb-16">
-              <span className="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-4">
-                Како работиме
-              </span>
-              <h2 className="text-4xl md:text-5xl font-bold text-text mb-4">
-                Вашиот пат до успех
-              </h2>
-              <p className="text-xl text-text-secondary max-w-2xl mx-auto">
-                Едноставен и ефективен процес за постигнување на вашите цели
-              </p>
-            </div>
-
-            <div className="max-w-4xl mx-auto">
-              <div className="relative">
-                {/* Vertical Line */}
-                <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-primary-400 to-primary-200"></div>
-
-                {/* Steps */}
-                <div className="space-y-16">
-                  {[
-                    {
-                      num: '01',
-                      title: 'Првична Консултација',
-                      desc: 'Детален преглед на вашата исхрана, здравствена историја и цели. Слушаме ваworkshops приказна.',
-                      color: 'primary'
-                    },
-                    {
-                      num: '02',
-                      title: 'Персонализиран План',
-                      desc: 'Креираме уникатен план прилагоден на вашите потреби, преференции и животен стил.',
-                      color: 'blue'
-                    },
-                    {
-                      num: '03',
-                      title: 'Имплементација',
-                      desc: 'Почнувате со планот со наша поддршка. Редовно следење и прилагодување.',
-                      color: 'green'
-                    },
-                    {
-                      num: '04',
-                      title: 'Следење и Прилагодување',
-                      desc: 'Редовни follow-ups за да осигураме дека сè функционира. Правиме промени по потреба.',
-                      color: 'purple'
-                    },
-                    {
-                      num: '05',
-                      title: 'Долгорочен Успех',
-                      desc: 'Градиме одржливи навики за долгорочно здравје и благосостојба.',
-                      color: 'primary'
-                    }
-                  ].map((step, idx) => (
-                    <div key={idx} className={`relative flex items-center ${idx % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} flex-col md:gap-16`}>
-                      {/* Timeline Dot */}
-                      <div className="absolute left-8 md:left-1/2 -translate-x-1/2 w-16 h-16 bg-primary rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg z-10">
-                        {step.num}
-                      </div>
-
-                      {/* Content */}
-                      <div className={`w-full md:w-5/12 ${idx % 2 === 0 ? 'md:text-right md:pr-24' : 'md:pl-24'} pl-24 md:pl-0`}>
-                        <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
-                          <h3 className="text-2xl font-bold text-text mb-2">{step.title}</h3>
-                          <p className="text-text-secondary">{step.desc}</p>
-                        </div>
-                      </div>
-
-                      {/* Spacer for alternating layout */}
-                      <div className="hidden md:block w-5/12"></div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        {/* PROCESS ROADMAP - Scroll-based highlighting */}
+        <ScrollProcess />
 
         {/* CTA SECTION - Full Width Vibrant */}
         <section className="relative overflow-hidden bg-gradient-to-br from-primary via-primary-500 to-primary-700 py-24">
