@@ -126,7 +126,9 @@ export default function ScrollProcess() {
               {steps.map((step, index) => (
                 <div
                   key={index}
-                  ref={(el) => (stepRefs.current[index] = el)}
+                  ref={(el) => {
+                    stepRefs.current[index] = el;
+                  }}
                   className="relative"
                 >
                   <div className="flex items-start gap-6 md:gap-12">
