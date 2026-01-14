@@ -1,12 +1,12 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, ReactElement } from 'react';
 
 interface ProcessStep {
   num: string;
   title: string;
   desc: string;
-  icon: JSX.Element;
+  icon: ReactElement;
 }
 
 const steps: ProcessStep[] = [
