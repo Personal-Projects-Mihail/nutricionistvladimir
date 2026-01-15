@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 interface IntakeFormProps {
   lang: 'mk' | 'en';
@@ -14,6 +14,9 @@ interface FormData {
   gender: string;
   contact: string;
   mainGoals: string[];
+  preferredDate: string;
+  preferredTime: string;
+  appointmentDuration: string;
   healthConditions: string;
   medications: string;
   mealsPerDay: string;
@@ -39,7 +42,10 @@ export default function IntakeForm({ lang }: IntakeFormProps) {
     gender: '',
     contact: '',
     mainGoals: [],
-    healthConditions: '',
+        preferredDate: '',
+        preferredTime: '',
+        appointmentDuration: '30',
+        healthConditions: '',
     medications: '',
     mealsPerDay: '',
     mealsPerDayOther: '',
@@ -55,9 +61,12 @@ export default function IntakeForm({ lang }: IntakeFormProps) {
     otherGoal: '',
   });
 
-  const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>> & { mainGoals?: string }>({});
+  const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>> & { mainGoals?: string; preferredDate?: string; preferredTime?: string; appointmentDuration?: string }>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [availabilityStatus, setAvailabilityStatus] = useState<'idle' | 'checking' | 'available' | 'unavailable'>('idle');
+  const [unavailableSlots, setUnavailableSlots] = useState<Set<string>>(new Set());
+  const [loadingUnavailableSlots, setLoadingUnavailableSlots] = useState(false);
 
   const content = {
     mk: {
@@ -72,6 +81,14 @@ export default function IntakeForm({ lang }: IntakeFormProps) {
         female: 'Женски',
       },
       contact: 'Контакт (телефон/е-маил/Instagram)',
+      preferredDate: 'Преферирана дата за консултација',
+      preferredTime: 'Преферирано време за консултација',
+      appointmentDuration: 'Времетраење на консултација',
+      appointmentDurations: {
+        '15': '15 минути',
+        '30': '30 минути',
+        '45': '45 минути',
+      },
       mainGoal: 'Главна цел',
       mainGoalNote: '(Можеш да одбереш повеќе од една)',
       mainGoals: {
@@ -141,6 +158,14 @@ export default function IntakeForm({ lang }: IntakeFormProps) {
         female: 'Female',
       },
       contact: 'Contact (phone/email/Instagram)',
+      preferredDate: 'Preferred Consultation Date',
+      preferredTime: 'Preferred Consultation Time',
+      appointmentDuration: 'Appointment Duration',
+      appointmentDurations: {
+        '15': '15 minutes',
+        '30': '30 minutes',
+        '45': '45 minutes',
+      },
       mainGoal: 'Main Goal',
       mainGoalNote: '(You can select more than one)',
       mainGoals: {
@@ -197,6 +222,9 @@ export default function IntakeForm({ lang }: IntakeFormProps) {
       errorMessage: 'An error occurred. Please try again.',
       required: 'This field is required',
       selectOption: 'Select an option',
+      checkingAvailability: 'Checking availability...',
+      available: '✅ This time slot is available',
+      unavailable: '❌ This time slot is not available. Please choose a different time.',
     },
   };
 
@@ -233,6 +261,18 @@ export default function IntakeForm({ lang }: IntakeFormProps) {
       newErrors.mainGoals = t.required;
     }
 
+    if (!formData.preferredDate) {
+      newErrors.preferredDate = t.required;
+    }
+
+    if (!formData.preferredTime) {
+      newErrors.preferredTime = t.required;
+    }
+
+    if (!formData.appointmentDuration) {
+      newErrors.appointmentDuration = t.required;
+    }
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -248,10 +288,30 @@ export default function IntakeForm({ lang }: IntakeFormProps) {
     setSubmitStatus('idle');
 
     try {
-      // Simulate API call - Replace with actual submission logic
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+      // Debug: Log form data before sending
+      console.log('📤 Submitting form data:', {
+        preferredDate: formData.preferredDate,
+        preferredTime: formData.preferredTime,
+        appointmentDuration: formData.appointmentDuration,
+        fullFormData: formData,
+      });
 
-      console.log('Form submitted:', formData);
+      // Submit to API endpoint
+      const response = await fetch('/api/intake', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to submit intake form');
+      }
+
+      console.log('Intake form submitted successfully:', data);
       
       setSubmitStatus('success');
       
@@ -264,6 +324,9 @@ export default function IntakeForm({ lang }: IntakeFormProps) {
         gender: '',
         contact: '',
         mainGoals: [],
+        preferredDate: '',
+        preferredTime: '',
+        appointmentDuration: '30',
         healthConditions: '',
         medications: '',
         mealsPerDay: '',
@@ -279,13 +342,102 @@ export default function IntakeForm({ lang }: IntakeFormProps) {
         hasLabResults: '',
         otherGoal: '',
       });
-    } catch (error) {
+    } catch (error: any) {
       console.error('Form submission error:', error);
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
     }
   };
+
+  // Debounce timer for availability checking
+  const availabilityCheckTimeout = useRef<NodeJS.Timeout | null>(null);
+
+  // Fetch unavailable slots when date changes
+  useEffect(() => {
+    if (!formData.preferredDate) {
+      setUnavailableSlots(new Set());
+      return;
+    }
+
+    setLoadingUnavailableSlots(true);
+    
+    // Debounce the API call
+    const timeout = setTimeout(async () => {
+      try {
+        const response = await fetch(`/api/unavailable-slots?date=${formData.preferredDate}`);
+        const data = await response.json();
+
+        if (data.success && Array.isArray(data.unavailableSlots)) {
+          const unavailableSet = new Set(data.unavailableSlots);
+          setUnavailableSlots(unavailableSet);
+          
+          // Clear selected time if it becomes unavailable
+          if (formData.preferredTime && unavailableSet.has(formData.preferredTime)) {
+            setFormData((prev) => ({ 
+              ...prev, 
+              preferredTime: '' // Always use empty string, never undefined
+            }));
+            setAvailabilityStatus('idle');
+          }
+        } else {
+          setUnavailableSlots(new Set());
+        }
+      } catch (error) {
+        console.error('Error fetching unavailable slots:', error);
+        setUnavailableSlots(new Set());
+      } finally {
+        setLoadingUnavailableSlots(false);
+      }
+    }, 300);
+
+    return () => clearTimeout(timeout);
+  }, [formData.preferredDate]);
+
+  // Check availability when date or time changes
+  useEffect(() => {
+    // Clear any existing timeout
+    if (availabilityCheckTimeout.current) {
+      clearTimeout(availabilityCheckTimeout.current);
+    }
+
+    // Only check if date, time, and duration are provided
+    if (!formData.preferredDate || !formData.preferredTime || !formData.appointmentDuration) {
+      setAvailabilityStatus('idle');
+      return;
+    }
+
+    // Set checking status immediately
+    setAvailabilityStatus('checking');
+
+      // Debounce the API call (wait 500ms after user stops typing)
+      availabilityCheckTimeout.current = setTimeout(async () => {
+        try {
+          const response = await fetch(
+            `/api/availability?date=${formData.preferredDate}&time=${formData.preferredTime}&duration=${formData.appointmentDuration}`
+          );
+          const data = await response.json();
+
+          if (data.success && data.available !== undefined) {
+            setAvailabilityStatus(data.available ? 'available' : 'unavailable');
+          } else {
+            // If check fails, assume available (fail open)
+            setAvailabilityStatus('available');
+          }
+        } catch (error) {
+          console.error('Error checking availability:', error);
+          // Fail open - assume available
+          setAvailabilityStatus('available');
+        }
+      }, 500);
+
+    // Cleanup timeout on unmount or when dependencies change
+    return () => {
+      if (availabilityCheckTimeout.current) {
+        clearTimeout(availabilityCheckTimeout.current);
+      }
+    };
+  }, [formData.preferredDate, formData.preferredTime]);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -312,16 +464,41 @@ export default function IntakeForm({ lang }: IntakeFormProps) {
         }
       }
     } else {
-      setFormData((prev) => ({ ...prev, [name]: value }));
+      // Ensure value is always a string (never undefined)
+      const stringValue = value || '';
+      setFormData((prev) => ({ ...prev, [name]: stringValue }));
       
       // Clear error when user starts typing
       if (errors[name as keyof FormData]) {
         setErrors((prev) => ({ ...prev, [name]: undefined }));
       }
+
+      // Reset availability status when date/time/duration changes (will be updated by useEffect)
+      if (name === 'preferredDate' || name === 'preferredTime' || name === 'appointmentDuration') {
+        setAvailabilityStatus('idle');
+      }
     }
   };
 
   const today = new Date().toISOString().split('T')[0];
+
+  // Generate time slots in 15-minute intervals from 09:00 to 17:00 (9 AM to 5 PM)
+  const generateTimeSlots = (): string[] => {
+    const slots: string[] = [];
+    for (let hour = 9; hour <= 17; hour++) {
+      for (let minute = 0; minute < 60; minute += 15) {
+        // Skip 17:15, 17:30, 17:45 since we only go up to 17:00 (5 PM)
+        if (hour === 17 && minute > 0) {
+          break;
+        }
+        const timeString = `${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}`;
+        slots.push(timeString);
+      }
+    }
+    return slots;
+  };
+
+  const timeSlots = generateTimeSlots();
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6 max-w-3xl mx-auto">
@@ -474,6 +651,135 @@ export default function IntakeForm({ lang }: IntakeFormProps) {
         />
         {errors.contact && (
           <p className="mt-1 text-sm text-red-500">{errors.contact}</p>
+        )}
+      </div>
+
+      {/* Preferred Date and Time */}
+      <div className="space-y-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label htmlFor="preferredDate" className="block text-sm font-medium text-text mb-2">
+              {t.preferredDate} <span className="text-red-500">*</span>
+            </label>
+            <input
+              type="date"
+              id="preferredDate"
+              name="preferredDate"
+              value={formData.preferredDate}
+              onChange={handleChange}
+              min={today}
+              className={`w-full px-4 py-3 rounded-lg border ${
+                errors.preferredDate ? 'border-red-500' : 'border-border'
+              } bg-background text-text focus:outline-none focus:ring-2 focus:ring-primary`}
+              aria-required="true"
+              aria-invalid={!!errors.preferredDate}
+              aria-describedby={errors.preferredDate ? 'preferredDate-error' : undefined}
+            />
+            {errors.preferredDate && (
+              <p id="preferredDate-error" className="mt-1 text-sm text-red-500">
+                {errors.preferredDate}
+              </p>
+            )}
+          </div>
+
+          <div>
+            <label htmlFor="preferredTime" className="block text-sm font-medium text-text mb-2">
+              {t.preferredTime} <span className="text-red-500">*</span>
+            </label>
+            <select
+              id="preferredTime"
+              name="preferredTime"
+              value={formData.preferredTime}
+              onChange={handleChange}
+              disabled={loadingUnavailableSlots}
+              className={`w-full px-4 py-3 rounded-lg border ${
+                errors.preferredTime ? 'border-red-500' : 'border-border'
+              } bg-background text-text focus:outline-none focus:ring-2 focus:ring-primary disabled:opacity-50 disabled:cursor-not-allowed`}
+              aria-required="true"
+              aria-invalid={!!errors.preferredTime}
+              aria-describedby={errors.preferredTime ? 'preferredTime-error' : undefined}
+            >
+              <option value="">{loadingUnavailableSlots ? (lang === 'mk' ? 'Вчитување...' : 'Loading...') : t.selectOption}</option>
+              {timeSlots.map((time) => {
+                const isUnavailable = unavailableSlots.has(time);
+                return (
+                  <option 
+                    key={time} 
+                    value={time}
+                    disabled={isUnavailable}
+                    className={isUnavailable ? 'text-gray-400 bg-gray-100' : ''}
+                  >
+                    {time} {isUnavailable ? (lang === 'mk' ? '(Зафатено)' : '(Unavailable)') : ''}
+                  </option>
+                );
+              })}
+            </select>
+            {errors.preferredTime && (
+              <p id="preferredTime-error" className="mt-1 text-sm text-red-500">
+                {errors.preferredTime}
+              </p>
+            )}
+          </div>
+        </div>
+
+        {/* Appointment Duration */}
+        <div>
+          <label htmlFor="appointmentDuration" className="block text-sm font-medium text-text mb-2">
+            {t.appointmentDuration} <span className="text-red-500">*</span>
+          </label>
+          <select
+            id="appointmentDuration"
+            name="appointmentDuration"
+            value={formData.appointmentDuration}
+            onChange={handleChange}
+            className={`w-full px-4 py-3 rounded-lg border ${
+              errors.appointmentDuration ? 'border-red-500' : 'border-border'
+            } bg-background text-text focus:outline-none focus:ring-2 focus:ring-primary`}
+            aria-required="true"
+            aria-invalid={!!errors.appointmentDuration}
+            aria-describedby={errors.appointmentDuration ? 'appointmentDuration-error' : undefined}
+          >
+            <option value="">{t.selectOption}</option>
+            <option value="15">{t.appointmentDurations['15']}</option>
+            <option value="30">{t.appointmentDurations['30']}</option>
+            <option value="45">{t.appointmentDurations['45']}</option>
+          </select>
+          {errors.appointmentDuration && (
+            <p id="appointmentDuration-error" className="mt-1 text-sm text-red-500">
+              {errors.appointmentDuration}
+            </p>
+          )}
+        </div>
+
+        {/* Availability Status */}
+        {formData.preferredDate && formData.preferredTime && formData.appointmentDuration && (
+          <div className="mt-2">
+            {availabilityStatus === 'checking' && (
+              <div className="flex items-center gap-2 text-sm text-text-secondary">
+                <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                <span>{t.checkingAvailability}</span>
+              </div>
+            )}
+            {availabilityStatus === 'available' && (
+              <div className="flex items-center gap-2 text-sm text-green-600 dark:text-green-400 font-medium">
+                <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+                <span>{t.available}</span>
+              </div>
+            )}
+            {availabilityStatus === 'unavailable' && (
+              <div className="flex items-center gap-2 text-sm text-red-600 dark:text-red-400 font-medium">
+                <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+                </svg>
+                <span>{t.unavailable}</span>
+              </div>
+            )}
+          </div>
         )}
       </div>
 
@@ -723,11 +1029,16 @@ export default function IntakeForm({ lang }: IntakeFormProps) {
       {/* Submit Button */}
       <button
         type="submit"
-        disabled={isSubmitting}
+        disabled={isSubmitting || availabilityStatus === 'unavailable' || availabilityStatus === 'checking'}
         className="btn-primary w-full text-lg py-4 disabled:opacity-50 disabled:cursor-not-allowed"
       >
         {isSubmitting ? t.submitting : t.submit}
       </button>
+      {availabilityStatus === 'unavailable' && (
+        <p className="text-sm text-red-600 dark:text-red-400 text-center mt-2">
+          {t.unavailable}
+        </p>
+      )}
     </form>
   );
 }

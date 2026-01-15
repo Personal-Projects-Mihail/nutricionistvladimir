@@ -356,3 +356,19 @@ a:hover {
 .animate-pulse-glow {
   animation: pulse-glow 2s ease-in-out infinite;
 }
+
+/* ============================================
+   SELECT OPTION STYLES
+   ============================================ */
+
+select option:disabled {
+  color: #9CA3AF;
+  background-color: #F3F4F6;
+  cursor: not-allowed;
+  font-style: italic;
+}
+
+.dark select option:disabled {
+  color: #6B7280;
+  background-color: #1F2937;
+}

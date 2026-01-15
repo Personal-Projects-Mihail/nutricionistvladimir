@@ -149,8 +149,14 @@ export async function POST(request: NextRequest) {
           await sendBookingConfirmationToClient(bookingData);
           console.log('✅ Confirmation email sent to client');
         }
-      } catch (error) {
+      } catch (error: any) {
         console.error('❌ Failed to send emails:', error);
+        console.error('Error details:', {
+          message: error?.message,
+          stack: error?.stack,
+          code: error?.code,
+          response: error?.response,
+        });
         
         // If calendar was created but email failed, still return success
         // but note the email failure
@@ -160,14 +166,16 @@ export async function POST(request: NextRequest) {
             message: 'Booking created in calendar but email notification failed',
             calendarLink,
             emailSent: false,
+            error: error?.message || 'Email sending failed',
           });
         }
         
-        // If both failed, return error
+        // If both failed, return error with details
         return NextResponse.json(
           { 
             success: false, 
-            error: 'Failed to send email notifications. Please try again or contact us directly.' 
+            error: error?.message || 'Failed to send email notifications. Please try again or contact us directly.',
+            details: process.env.NODE_ENV === 'development' ? error?.stack : undefined,
           },
           { status: 500 }
         );

@@ -27,11 +27,22 @@ export function createEmailTransporter() {
   
   if (emailService === 'gmail') {
     // Gmail configuration using App Password
+    // Remove spaces from app password if present (Gmail app passwords are 16 chars without spaces)
+    const appPassword = process.env.EMAIL_APP_PASSWORD?.replace(/\s+/g, '') || '';
+    
+    if (!appPassword) {
+      throw new Error('EMAIL_APP_PASSWORD is not set or is empty');
+    }
+    
+    if (!process.env.EMAIL_USER) {
+      throw new Error('EMAIL_USER is not set');
+    }
+    
     return nodemailer.createTransport({
       service: 'gmail',
       auth: {
         user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_APP_PASSWORD, // Gmail App Password
+        pass: appPassword, // Gmail App Password (spaces removed)
       },
     });
   } else {
@@ -366,14 +377,15 @@ function generateClientEmailHTML(data: BookingEmailData): string {
  * Sends booking notification email to the nutritionist
  */
 export async function sendBookingNotificationToNutritionist(data: BookingEmailData): Promise<void> {
-  const transporter = createEmailTransporter();
-  
-  const mailOptions = {
-    from: `"Nutritionist Website" <${process.env.EMAIL_USER}>`,
-    to: process.env.NUTRITIONIST_EMAIL || 'nutricionistvladimir@gmail.com',
-    subject: `🗓️ New Booking Request - ${data.fullName} (${data.preferredDate})`,
-    html: generateNutritionistEmailHTML(data),
-    text: `
+  try {
+    const transporter = createEmailTransporter();
+    
+    const mailOptions = {
+      from: `"Nutritionist Website" <${process.env.EMAIL_USER}>`,
+      to: process.env.NUTRITIONIST_EMAIL || 'nutricionistvladimir@gmail.com',
+      subject: `🗓️ New Booking Request - ${data.fullName} (${data.preferredDate})`,
+      html: generateNutritionistEmailHTML(data),
+      text: `
 New Consultation Booking Request
 
 Client: ${data.fullName}
@@ -390,10 +402,16 @@ ${data.allergies ? `Allergies: ${data.allergies}` : ''}
 ${data.message ? `Message: ${data.message}` : ''}
 
 Submitted: ${new Date().toLocaleString()}
-    `.trim(),
-  };
+      `.trim(),
+    };
 
-  await transporter.sendMail(mailOptions);
+    const result = await transporter.sendMail(mailOptions);
+    console.log('✅ Email sent successfully:', result.messageId);
+  } catch (error: any) {
+    console.error('❌ Failed to send notification email:', error);
+    // Re-throw with more context
+    throw new Error(`Failed to send email to nutritionist: ${error.message || error}`);
+  }
 }
 
 /**
@@ -405,14 +423,15 @@ export async function sendBookingConfirmationToClient(data: BookingEmailData): P
     return;
   }
 
-  const transporter = createEmailTransporter();
-  
-  const mailOptions = {
-    from: `"Vladimir - Nutritionist" <${process.env.EMAIL_USER}>`,
-    to: data.email,
-    subject: 'Booking Request Received - Примено барање за термин',
-    html: generateClientEmailHTML(data),
-    text: `
+  try {
+    const transporter = createEmailTransporter();
+    
+    const mailOptions = {
+      from: `"Vladimir - Nutritionist" <${process.env.EMAIL_USER}>`,
+      to: data.email,
+      subject: 'Booking Request Received - Примено барање за термин',
+      html: generateClientEmailHTML(data),
+      text: `
 Dear ${data.fullName},
 
 Thank you for your interest in scheduling a consultation. We have received your booking request and will get back to you shortly to confirm your appointment.
@@ -431,8 +450,342 @@ Website: nutricionistvladimir.com
 ---
 
 Ви благодариме за вашиот интерес. Примено е вашето барање и наскоро ќе ве контактираме за да го потврдиме терминот.
-    `.trim(),
+      `.trim(),
+    };
+
+    const result = await transporter.sendMail(mailOptions);
+    console.log('✅ Confirmation email sent successfully:', result.messageId);
+  } catch (error: any) {
+    console.error('❌ Failed to send confirmation email:', error);
+    // Re-throw with more context
+    throw new Error(`Failed to send confirmation email to client: ${error.message || error}`);
+  }
+}
+
+/**
+ * Interface for intake form data
+ */
+export interface IntakeFormData {
+  fullName: string;
+  age: string;
+  height: string;
+  currentWeight: string;
+  gender: string;
+  contact: string;
+  mainGoals: string[];
+  preferredDate: string;
+  preferredTime: string;
+  healthConditions?: string;
+  medications?: string;
+  mealsPerDay?: string;
+  mealsPerDayOther?: string;
+  eatingTime?: string;
+  foodRestrictions?: string;
+  preferredFoods?: string;
+  physicalActivity?: string;
+  physicalActivityOther?: string;
+  waterIntake?: string;
+  waterIntakeOther?: string;
+  startDate?: string;
+  hasLabResults?: string;
+  otherGoal?: string;
+}
+
+/**
+ * Generates HTML email content for intake form submission
+ */
+function generateIntakeFormEmailHTML(data: IntakeFormData): string {
+  const goalLabels: Record<string, string> = {
+    weightLoss: 'Weight Loss / Намалување на телесна тежина',
+    weightGain: 'Weight Gain / Зголемување на телесна тежина',
+    muscleGain: 'Muscle Mass Increase / Зголемување мускулна маса',
+    weightMaintenance: 'Weight Maintenance / Одржување на телесна тежина',
+    healthImprovement: 'Health Improvement / Подобрување на здравје',
+    nutritionForCondition: 'Nutrition for Illness/Condition / Исхрана при болест/состојба',
+    other: 'Other / Друго',
   };
 
-  await transporter.sendMail(mailOptions);
+  const genderLabels: Record<string, string> = {
+    male: 'Male / Машки',
+    female: 'Female / Женски',
+  };
+
+  const formatGoals = (goals: string[]) => {
+    return goals.map(goal => goalLabels[goal] || goal).join(', ');
+  };
+
+  return `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Intake Form Submission</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f5f5f5;
+    }
+    .container {
+      background-color: #ffffff;
+      border-radius: 8px;
+      padding: 30px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .header {
+      background-color: #A8DF8E;
+      color: #1a1a1a;
+      padding: 20px;
+      border-radius: 8px 8px 0 0;
+      margin: -30px -30px 30px -30px;
+    }
+    h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+    .section {
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    .section:last-child {
+      border-bottom: none;
+    }
+    .label {
+      font-weight: 600;
+      color: #666;
+      font-size: 12px;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+    .value {
+      font-size: 16px;
+      color: #1a1a1a;
+      margin-bottom: 15px;
+    }
+    .highlight {
+      background-color: #fff9e6;
+      padding: 15px;
+      border-left: 4px solid #A8DF8E;
+      margin: 20px 0;
+    }
+    .footer {
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid #e0e0e0;
+      font-size: 12px;
+      color: #999;
+      text-align: center;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+    @media (max-width: 600px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>📋 New Intake Form Submission</h1>
+    </div>
+
+    ${data.preferredDate && data.preferredTime ? `
+    <div class="highlight">
+      <div class="label">Preferred Consultation Date & Time</div>
+      <div class="value" style="font-size: 18px; font-weight: 600;">
+        📅 ${data.preferredDate} at ${data.preferredTime}
+      </div>
+      <div class="value" style="margin-top: 10px;">
+        ⏱️ Duration: ${data.appointmentDuration || '30'} minutes
+      </div>
+    </div>
+    ` : ''}
+
+    <div class="section">
+      <h2 style="margin-top: 0;">Client Information</h2>
+      
+      <div class="grid">
+        <div>
+          <div class="label">Full Name</div>
+          <div class="value">${data.fullName}</div>
+        </div>
+        <div>
+          <div class="label">Age</div>
+          <div class="value">${data.age}</div>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div>
+          <div class="label">Height</div>
+          <div class="value">${data.height} cm</div>
+        </div>
+        <div>
+          <div class="label">Current Weight</div>
+          <div class="value">${data.currentWeight} kg</div>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div>
+          <div class="label">Gender</div>
+          <div class="value">${genderLabels[data.gender] || data.gender}</div>
+        </div>
+        <div>
+          <div class="label">Contact</div>
+          <div class="value">${data.contact}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="highlight">
+      <div class="label">Main Goals</div>
+      <div class="value" style="font-size: 18px; font-weight: 600;">
+        ${formatGoals(data.mainGoals)}
+      </div>
+      ${data.otherGoal ? `<div class="value" style="margin-top: 10px;"><strong>Other Goal:</strong> ${data.otherGoal}</div>` : ''}
+    </div>
+
+    ${data.healthConditions || data.medications ? `
+    <div class="section">
+      <h2>Health Information</h2>
+      
+      ${data.healthConditions ? `
+      <div class="label">Health Conditions</div>
+      <div class="value">${data.healthConditions}</div>
+      ` : ''}
+
+      ${data.medications ? `
+      <div class="label">Medications / Supplements</div>
+      <div class="value">${data.medications}</div>
+      ` : ''}
+    </div>
+    ` : ''}
+
+    ${data.mealsPerDay || data.eatingTime || data.foodRestrictions || data.preferredFoods ? `
+    <div class="section">
+      <h2>Nutrition Habits</h2>
+      
+      ${data.mealsPerDay ? `
+      <div class="label">Meals Per Day</div>
+      <div class="value">${data.mealsPerDay === 'other' ? data.mealsPerDayOther : data.mealsPerDay}</div>
+      ` : ''}
+
+      ${data.eatingTime ? `
+      <div class="label">Eating Time</div>
+      <div class="value">${data.eatingTime}</div>
+      ` : ''}
+
+      ${data.foodRestrictions ? `
+      <div class="label">Food Restrictions / Allergies</div>
+      <div class="value">${data.foodRestrictions}</div>
+      ` : ''}
+
+      ${data.preferredFoods ? `
+      <div class="label">Preferred Foods</div>
+      <div class="value">${data.preferredFoods}</div>
+      ` : ''}
+    </div>
+    ` : ''}
+
+    ${data.physicalActivity || data.waterIntake ? `
+    <div class="section">
+      <h2>Lifestyle</h2>
+      
+      ${data.physicalActivity ? `
+      <div class="label">Physical Activity</div>
+      <div class="value">${data.physicalActivity === 'other' ? data.physicalActivityOther : data.physicalActivity}</div>
+      ` : ''}
+
+      ${data.waterIntake ? `
+      <div class="label">Water Intake</div>
+      <div class="value">${data.waterIntake === 'other' ? data.waterIntakeOther : data.waterIntake}</div>
+      ` : ''}
+    </div>
+    ` : ''}
+
+    ${data.startDate || data.hasLabResults ? `
+    <div class="section">
+      <h2>Additional Information</h2>
+      
+      ${data.startDate ? `
+      <div class="label">Preferred Start Date</div>
+      <div class="value">${data.startDate}</div>
+      ` : ''}
+
+      ${data.hasLabResults ? `
+      <div class="label">Has Lab Results</div>
+      <div class="value">${data.hasLabResults === 'yes' ? 'Yes / Да' : 'No / Не'}</div>
+      ` : ''}
+    </div>
+    ` : ''}
+
+    <div class="footer">
+      <p>This intake form was submitted via nutricionistvladimir.com</p>
+      <p>Timestamp: ${new Date().toLocaleString('en-US', { timeZone: 'Europe/Skopje' })} (Europe/Skopje)</p>
+    </div>
+  </div>
+</body>
+</html>
+  `;
+}
+
+/**
+ * Sends intake form notification email to the nutritionist
+ */
+export async function sendIntakeFormEmail(data: IntakeFormData): Promise<void> {
+  try {
+    const transporter = createEmailTransporter();
+    
+    const mailOptions = {
+      from: `"Nutritionist Website" <${process.env.EMAIL_USER}>`,
+      to: process.env.NUTRITIONIST_EMAIL || 'nutricionistvladimir@gmail.com',
+      subject: `📋 New Intake Form - ${data.fullName}`,
+      html: generateIntakeFormEmailHTML(data),
+      text: `
+New Intake Form Submission
+
+Client: ${data.fullName}
+Age: ${data.age}
+Height: ${data.height} cm
+Weight: ${data.currentWeight} kg
+Gender: ${data.gender}
+Contact: ${data.contact}
+
+Main Goals: ${data.mainGoals.join(', ')}
+${data.otherGoal ? `Other Goal: ${data.otherGoal}` : ''}
+
+${data.healthConditions ? `Health Conditions: ${data.healthConditions}` : ''}
+${data.medications ? `Medications: ${data.medications}` : ''}
+${data.mealsPerDay ? `Meals Per Day: ${data.mealsPerDay === 'other' ? data.mealsPerDayOther : data.mealsPerDay}` : ''}
+${data.eatingTime ? `Eating Time: ${data.eatingTime}` : ''}
+${data.foodRestrictions ? `Food Restrictions: ${data.foodRestrictions}` : ''}
+${data.preferredFoods ? `Preferred Foods: ${data.preferredFoods}` : ''}
+${data.physicalActivity ? `Physical Activity: ${data.physicalActivity === 'other' ? data.physicalActivityOther : data.physicalActivity}` : ''}
+${data.waterIntake ? `Water Intake: ${data.waterIntake === 'other' ? data.waterIntakeOther : data.waterIntake}` : ''}
+${data.startDate ? `Start Date: ${data.startDate}` : ''}
+${data.hasLabResults ? `Has Lab Results: ${data.hasLabResults}` : ''}
+
+Submitted: ${new Date().toLocaleString()}
+      `.trim(),
+    };
+
+    const result = await transporter.sendMail(mailOptions);
+    console.log('✅ Intake form email sent successfully:', result.messageId);
+  } catch (error: any) {
+    console.error('❌ Failed to send intake form email:', error);
+    // Re-throw with more context
+    throw new Error(`Failed to send intake form email: ${error.message || error}`);
+  }
 }
