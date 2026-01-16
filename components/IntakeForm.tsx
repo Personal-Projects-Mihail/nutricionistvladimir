@@ -302,7 +302,10 @@ export default function IntakeForm({ lang }: IntakeFormProps) {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          lang, // Include language for calendar event
+        }),
       });
 
       const data = await response.json();

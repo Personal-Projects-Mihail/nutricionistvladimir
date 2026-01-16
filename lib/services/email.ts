@@ -475,6 +475,8 @@ export interface IntakeFormData {
   mainGoals: string[];
   preferredDate: string;
   preferredTime: string;
+  appointmentDuration?: string;
+  lang?: 'mk' | 'en'; // Language for calendar event
   healthConditions?: string;
   medications?: string;
   mealsPerDay?: string;

@@ -8,7 +8,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "test:email": "node scripts/test-email.js",
+    "test:email:mk": "node scripts/test-email.js mk",
+    "test:email:en": "node scripts/test-email.js en"
   },
   "dependencies": {
     "googleapis": "^170.0.0",

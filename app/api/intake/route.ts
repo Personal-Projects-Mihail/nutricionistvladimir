@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { sendIntakeFormEmail } from '@/lib/services/email';
+import { sendIntakeFormEmail, type IntakeFormData } from '@/lib/services/email';
 import { addIntakeFormToCalendar, checkAvailability } from '@/lib/services/calendar';
 
 /**
@@ -86,7 +86,7 @@ export async function POST(request: NextRequest) {
       appointmentDuration: body.appointmentDuration,
     });
 
-    const intakeData = {
+    const intakeData: IntakeFormData = {
       fullName: body.fullName,
       age: body.age,
       height: body.height,
@@ -97,6 +97,7 @@ export async function POST(request: NextRequest) {
       preferredDate: body.preferredDate || '',
       preferredTime: body.preferredTime || '',
       appointmentDuration: body.appointmentDuration || '30',
+      lang: body.lang || 'en', // Default to English if not provided
       healthConditions: body.healthConditions || '',
       medications: body.medications || '',
       mealsPerDay: body.mealsPerDay || '',
