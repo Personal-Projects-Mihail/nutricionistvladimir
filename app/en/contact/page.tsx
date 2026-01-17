@@ -6,9 +6,9 @@ import { generateBreadcrumbSchema, safeJsonLd } from '@/lib/structured-data';
 import ContactIllustration from '@/components/illustrations/ContactIllustration';
 
 export const metadata: Metadata = generateMetadata('en', {
-  title: 'Contact | Нутриционист Владимир',
+  title: 'Contact | Vladimir Nutritionist',
   description:
-    'Contactирајте го нутриционист Владимир за прашања, консултации или информации за услугите. Available online and by phone.',
+    'Contact nutritionist Vladimir for questions, consultations, or service information. Available online and by phone.',
   path: '/contact',
   keywords: ['contact', 'email', 'phone', 'location', 'working hours'],
 });
@@ -39,7 +39,7 @@ export default function ContactPage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center section">
               <div className="space-y-6">
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-text leading-tight">
-                  Contactирајте нè
+                  Contact Us
                 </h1>
                 <p className="text-lg md:text-xl text-text-secondary max-w-2xl">
                   Have questions? We're happy to help
@@ -109,8 +109,8 @@ export default function ContactPage() {
                   </svg>
                 </div>
                 <h3 className="text-xl font-semibold text-text mb-2">Phone</h3>
-                <a href="tel:+389XXXXXXXX" className="text-emerald-700 hover:underline font-medium">
-                  +389 XX XXX XXX
+                <a href="https://wa.me/38975453434" target="_blank" rel="noopener noreferrer" className="text-emerald-700 hover:underline font-medium">
+                  +389 75 453 434
                 </a>
                 <p className="text-sm text-text-tertiary mt-2">
                   Mon-Fri, 09:00-18:00
@@ -158,13 +158,13 @@ export default function ContactPage() {
                   </span>
                 </div>
                 <h2 className="text-3xl md:text-4xl font-bold text-text">
-                  Како можете да не contactирате
+                  How You Can Reach Us
                 </h2>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <a
-                  href="/booking"
+                  href="/en/booking"
                   className="group relative overflow-hidden bg-gradient-to-br from-primary/10 to-emerald-50 border-2 border-primary/20 rounded-2xl p-6 hover:shadow-lg transition-all duration-300 hover:scale-[1.02]"
                 >
                   <div className="flex items-start gap-4">
@@ -193,8 +193,8 @@ export default function ContactPage() {
                         Book Consultation
                       </h3>
                       <p className="text-text-secondary">
-                        Резервирајте вашиот термин онлајн за првична или follow-up
-                        консултација
+                        Book your appointment online for initial or follow-up
+                        consultation
                       </p>
                     </div>
                   </div>
@@ -227,14 +227,14 @@ export default function ContactPage() {
                         Send Message
                       </h3>
                       <p className="text-text-secondary">
-                        Contactирајте нè преку email за општи прашања или информации
+                        Contact us via email for general questions or information
                       </p>
                     </div>
                   </div>
                 </a>
 
                 <a
-                  href="/services"
+                  href="/en/services"
                   className="group relative overflow-hidden bg-gradient-to-br from-primary/10 to-emerald-50 border-2 border-primary/20 rounded-2xl p-6 hover:shadow-lg transition-all duration-300 hover:scale-[1.02]"
                 >
                   <div className="flex items-start gap-4">
@@ -269,7 +269,7 @@ export default function ContactPage() {
                 </a>
 
                 <a
-                  href="/about"
+                  href="/en/about"
                   className="group relative overflow-hidden bg-gradient-to-br from-emerald-50 to-green-100 border-2 border-emerald-200 rounded-2xl p-6 hover:shadow-lg transition-all duration-300 hover:scale-[1.02]"
                 >
                   <div className="flex items-start gap-4">
@@ -324,21 +324,21 @@ export default function ContactPage() {
               <div className="space-y-4">
                 <div className="bg-gradient-to-br from-primary/10 to-emerald-50 border-2 border-primary/20 rounded-2xl p-6">
                   <h3 className="text-lg font-semibold text-text mb-2">
-                    Кое е вашето working hours?
+                    What are your working hours?
                   </h3>
                   <p className="text-text-secondary">
-                    Работам од понеделник до петок, 09:00-18:00. Викенд термини се
-                    достапни по договор.
+                    I work Monday to Friday, 09:00-18:00. Weekend appointments are
+                    available by arrangement.
                   </p>
                 </div>
 
                 <div className="bg-gradient-to-br from-emerald-50 to-green-100 border-2 border-emerald-200 rounded-2xl p-6">
                   <h3 className="text-lg font-semibold text-text mb-2">
-                    Колку брзо можете да одговорите на email?
+                    How quickly can you respond to emails?
                   </h3>
                   <p className="text-text-secondary">
-                    Обично одговарам во рок од 24 часа. За итни прашања, ве молиме
-                    јавете се phoneски.
+                    I usually respond within 24 hours. For urgent matters, please
+                    call by phone.
                   </p>
                 </div>
 
@@ -347,8 +347,8 @@ export default function ContactPage() {
                     Do you offer group consultations?
                   </h3>
                   <p className="text-text-secondary">
-                    Да, достапни се групни консултации за семејства или мали групи.
-                    Contactирајте нè за повеќе информации.
+                    Yes, group consultations are available for families or small groups.
+                    Contact us for more information.
                   </p>
                 </div>
 
@@ -357,19 +357,19 @@ export default function ContactPage() {
                     How can I prepare for the first consultation?
                   </h3>
                   <p className="text-text-secondary">
-                    По закажувањето, ќе ви испратиме прашалник за пополнување.
-                    Добро е да имате список на лекови и резултати од скорешни
-                    анализи.
+                    After booking, we will send you a questionnaire to fill out.
+                    It's good to have a list of medications and results from recent
+                    tests.
                   </p>
                 </div>
 
                 <div className="bg-gradient-to-br from-primary/10 to-emerald-50 border-2 border-primary/20 rounded-2xl p-6">
                   <h3 className="text-lg font-semibold text-text mb-2">
-                    Дали работите со клиенти надвор од Macedonia?
+                    Do you work with clients outside of Macedonia?
                   </h3>
                   <p className="text-text-secondary">
-                    Моментално работам само со клиенти од Macedonia.
-                    Онлајн консултации се достапни за сите региони во земјата.
+                    Currently I work only with clients from Macedonia.
+                    Online consultations are available for all regions in the country.
                   </p>
                 </div>
               </div>
@@ -389,12 +389,12 @@ export default function ContactPage() {
                   Ready to Get Started?
                 </h2>
                 <p className="text-lg text-white/90">
-                  Закажете вашата прва консултација и направете го првиот чекор кон
-                  подобро здравје
+                  Book your first consultation and take the first step toward
+                  better health
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <a 
-                    href="/booking" 
+                  <a
+                    href="/en/booking"
                     className="inline-flex items-center justify-center gap-2 bg-white text-primary px-8 py-4 rounded-full font-semibold hover:bg-white/90 transition-all duration-300 hover:scale-105 shadow-lg"
                   >
                     Book Consultation
@@ -433,7 +433,7 @@ export default function ContactPage() {
                       <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
                       <polyline points="22,6 12,13 2,6" />
                     </svg>
-                    Испрати email
+                    Send Email
                   </a>
                 </div>
               </div>

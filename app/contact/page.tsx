@@ -109,8 +109,8 @@ export default function ContactPage() {
                   </svg>
                 </div>
                 <h3 className="text-xl font-semibold text-text mb-2">Телефон</h3>
-                <a href="tel:+389XXXXXXXX" className="text-emerald-700 hover:underline font-medium">
-                  +389 XX XXX XXX
+                <a href="https://wa.me/38975453434" target="_blank" rel="noopener noreferrer" className="text-emerald-700 hover:underline font-medium">
+                  +389 75 453 434
                 </a>
                 <p className="text-sm text-text-tertiary mt-2">
                   Пон-Пет, 09:00-18:00
