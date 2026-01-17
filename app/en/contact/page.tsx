@@ -113,7 +113,7 @@ export default function ContactPage() {
                   +389 75 453 434
                 </a>
                 <p className="text-sm text-text-tertiary mt-2">
-                  Mon-Fri, 09:00-18:00
+                  Mon-Fri, 09:00-17:00
                 </p>
               </div>
 
@@ -327,7 +327,7 @@ export default function ContactPage() {
                     What are your working hours?
                   </h3>
                   <p className="text-text-secondary">
-                    I work Monday to Friday, 09:00-18:00. Weekend appointments are
+                    I work Monday to Friday, 09:00-17:00. Weekend appointments are
                     available by arrangement.
                   </p>
                 </div>
@@ -357,9 +357,7 @@ export default function ContactPage() {
                     How can I prepare for the first consultation?
                   </h3>
                   <p className="text-text-secondary">
-                    After booking, we will send you a questionnaire to fill out.
-                    It's good to have a list of medications and results from recent
-                    tests.
+                    It's good to have a list of medications you are taking and results from any recent tests, blood tests you've run (if available).
                   </p>
                 </div>
 

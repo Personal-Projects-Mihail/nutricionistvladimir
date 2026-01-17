@@ -61,6 +61,16 @@ export default function BookingPage() {
                 <p className="text-xl text-text-secondary leading-relaxed">
                   Првиот чекор кон подобро здравје започнува тука. Изберете термин кој ви одговара
                 </p>
+                
+                <div className="flex items-start gap-3 p-4 bg-primary/10 dark:bg-primary/20 rounded-xl border border-primary/20">
+                  <svg className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                  </svg>
+                  <div>
+                    <p className="font-semibold text-text mb-1">Онлајн консултации по ваша преференца</p>
+                    <p className="text-sm text-text-secondary">Консултациите се одржуваат онлајн преку Google Meet, Viber, WhatsApp или друга платформа според вашата преференца.</p>
+                  </div>
+                </div>
               </div>
 
               <div className="relative">
@@ -87,9 +97,15 @@ export default function BookingPage() {
                     <h2 className="text-3xl font-bold text-text mb-3">
                       Пополнете го формуларот
                     </h2>
-                    <p className="text-text-secondary">
+                    <p className="text-text-secondary mb-4">
                       Ќе ве контактираме во рок од 24 часа за да го потврдиме вашиот термин
                     </p>
+                    <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-lg text-sm font-medium">
+                      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                      </svg>
+                      Онлајн консултации по ваша преференца (Google Meet, Viber, WhatsApp, итн.)
+                    </div>
                   </div>
 
                   <IntakeForm lang="mk" />
@@ -102,121 +118,38 @@ export default function BookingPage() {
         {/* WHAT HAPPENS NEXT - TIMELINE */}
         <section className="section bg-gradient-to-b from-primary/5 via-emerald-50/30 to-background">
           <div className="container-custom">
-            <div className="max-w-4xl mx-auto">
-              <div className="text-center mb-16">
-                <span className="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-4">
-                  Процес
-                </span>
-                <h2 className="text-3xl md:text-4xl font-bold text-text mb-4">
-                  Што се случува потоа?
-                </h2>
-              </div>
+            <div className="text-center mb-16">
+              <span className="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-4">
+                Процес
+              </span>
+              <h2 className="text-3xl md:text-4xl font-bold text-text mb-4">
+                Што се случува потоа?
+              </h2>
+            </div>
 
-              <div className="space-y-8">
-                {[
-                  { num: '01', title: 'Потврда на термин', desc: 'Ќе ве контактираме во рок од 24 часа за да го потврдиме вашиот преферирани датум и време, или да предложиме алтернативни термини.', color: 'from-primary to-primary-600' },
-                  { num: '02', title: 'Прашалник за здравје', desc: 'Ќе добиете детален прашалник за да можеме подобро да се подготвиме за вашата консултација и да ги разбереме вашите потреби.', color: 'from-emerald-400 to-emerald-600' },
-                  { num: '03', title: 'Првична консултација', desc: 'Средба од 45 минути каде што ќе разговараме за вашата исхрана, здравствени цели и ќе креираме персонализиран план.', color: 'from-green-400 to-green-600' },
-                  { num: '04', title: 'Вашиот персонализиран план', desc: 'По консултацијата, ќе добиете детален план за исхрана со конкретни препораки, рецепти и насоки.', color: 'from-teal-400 to-teal-600' }
-                ].map((step, idx) => (
-                  <div key={idx} className="flex gap-6">
-                    <div className={`flex-shrink-0 w-16 h-16 bg-gradient-to-br ${step.color} rounded-2xl flex items-center justify-center text-white font-bold text-xl shadow-xl`}>
+            <div className="flex flex-col md:flex-row items-stretch gap-4 md:gap-6">
+              {[
+                { num: '01', title: 'Потврда на термин', desc: 'Ќе ве контактираме во рок од 24 часа за да го потврдиме вашиот преферирани датум и време, или да предложиме алтернативни термини.', color: 'from-primary to-primary-600' },
+                { num: '02', title: 'Првична консултација', desc: 'Онлајн средба од 45 минути (Google Meet, Viber, WhatsApp или друга платформа по ваша преференца) каде што ќе разговараме за вашата исхрана, здравствени цели и ќе креираме персонализиран план.', color: 'from-green-400 to-green-600' },
+                { num: '03', title: 'Вашиот персонализиран план', desc: 'По консултацијата, ќе добиете детален план за исхрана со конкретни препораки, рецепти и насоки.', color: 'from-teal-400 to-teal-600' }
+              ].map((step, idx) => (
+                <div key={idx} className="flex flex-col md:flex-row items-center flex-1">
+                  <div className="flex flex-col items-center text-center w-full py-8">
+                    <div className={`w-16 h-16 bg-gradient-to-br ${step.color} rounded-2xl flex items-center justify-center text-white font-bold text-xl shadow-xl mb-4`}>
                       {step.num}
                     </div>
-                    <div className="flex-1 bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
-                      <h3 className="text-xl font-bold text-text mb-2">{step.title}</h3>
-                      <p className="text-text-secondary">{step.desc}</p>
-                    </div>
+                    <h3 className="text-xl font-bold text-text mb-3">{step.title}</h3>
+                    <p className="text-text-secondary">{step.desc}</p>
                   </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* CONSULTATION OPTIONS */}
-        <section className="section">
-          <div className="container-custom">
-            <div className="max-w-5xl mx-auto">
-              <div className="text-center mb-16">
-                <span className="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-4">
-                  Опции
-                </span>
-                <h2 className="text-3xl md:text-4xl font-bold text-text mb-4">
-                  Изберете го типот на консултација
-                </h2>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div className="group relative overflow-hidden bg-gradient-to-br from-primary/10 to-emerald-50 dark:from-primary/20 dark:to-emerald-900/10 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 border-2 border-primary/20">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500"></div>
-
-                  <div className="relative z-10">
-                    <div className="w-16 h-16 bg-gradient-to-br from-primary to-primary-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform">
-                      <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2" strokeWidth="2" />
-                        <line x1="8" y1="21" x2="16" y2="21" strokeWidth="2" />
-                        <line x1="12" y1="17" x2="12" y2="21" strokeWidth="2" />
+                  {idx < 2 && (
+                    <div className="hidden md:flex items-center justify-center mx-4 flex-shrink-0">
+                      <svg className="w-8 h-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                       </svg>
                     </div>
-
-                    <h3 className="text-2xl font-bold text-text mb-3 group-hover:text-primary transition-colors">
-                      Онлајн консултација
-                    </h3>
-
-                    <p className="text-text-secondary mb-6">
-                      Удобна видео консултација од вашиот дом. Достапно за клиенти низ цела Македонија.
-                    </p>
-
-                    <ul className="space-y-3">
-                      {['Флексибилно време', 'Без патување', 'Иста квалитет на грижа', 'Безбедно и приватно'].map((feature, idx) => (
-                        <li key={idx} className="flex items-center gap-3">
-                          <div className="w-6 h-6 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
-                            <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                              <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                            </svg>
-                          </div>
-                          <span className="text-text-secondary">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                  )}
                 </div>
-
-                <div className="group relative overflow-hidden bg-gradient-to-br from-emerald-50 to-green-100 dark:from-emerald-900/10 dark:to-green-900/10 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 border-2 border-emerald-200 dark:border-emerald-800">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500"></div>
-
-                  <div className="relative z-10">
-                    <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-green-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform">
-                      <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-                        <polyline points="9 22 9 12 15 12 15 22" />
-                      </svg>
-                    </div>
-
-                    <h3 className="text-2xl font-bold text-text mb-3 group-hover:text-emerald-600 transition-colors">
-                      Лична консултација
-                    </h3>
-
-                    <p className="text-text-secondary mb-6">
-                      Лице-в-лице консултација во удобна и професионална средина.
-                    </p>
-
-                    <ul className="space-y-3">
-                      {['Персонална интеракција', 'Детални мерења', 'Традиционален пристап', 'Дискретна локација'].map((feature, idx) => (
-                        <li key={idx} className="flex items-center gap-3">
-                          <div className="w-6 h-6 rounded-full bg-emerald-500 flex items-center justify-center flex-shrink-0">
-                            <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                              <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                            </svg>
-                          </div>
-                          <span className="text-text-secondary">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </section>
@@ -237,9 +170,8 @@ export default function BookingPage() {
               <div className="space-y-4">
                 {[
                   { q: 'Колку трае првичната консултација?', a: 'Првичната консултација обично трае 45 минути. Ова ни дава доволно време за детален преглед на вашата исхрана, здравствена историја и креирање на персонализиран план.' },
-                  { q: 'Дали консултациите се покриени со осигурување?', a: 'Тоа зависи од вашиот осигурувач. Ве молиме консултирајте се со вашата осигурителна компанија за детали. Можеме да обезбедиме потврда за услугата.' },
-                  { q: 'Што треба да подготвам за првата консултација?', a: 'Ќе ви испратиме прашалник за пополнување пред консултацијата. Добро е да имате список на лекови кои ги земате и резултати од скорешни анализи (ако имате).' },
-                  { q: 'Колку често треба да имам follow-up консултации?', a: 'Обично препорачувам follow-up на секои 2-4 недели, зависно од вашите цели и напредок. Ова можеме да го прилагодиме според вашите потреби.' },
+                  { q: 'Што треба да подготвам за првата консултација?', a: 'Добро е да имате список на лекови кои ги земате и резултати од скорешни крвни анализи (ако имате).' },
+                  { q: 'Колку често треба да имам follow-up консултации?', a: 'Обично препорачувам follow-up на секои 14-15 дена, зависно од вашите цели и напредок. Ова можеме да го прилагодиме според вашите потреби.' },
                   { q: 'Можам ли да откажам или преместам термин?', a: 'Да, ве молиме известете нè најмалку 24 часа однапред за да можеме да го преместиме вашиот термин без дополнителни трошоци.' }
                 ].map((faq, idx) => (
                   <div key={idx} className="group bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all hover:scale-[1.02]">

@@ -471,7 +471,8 @@ export interface IntakeFormData {
   height: string;
   currentWeight: string;
   gender: string;
-  contact: string;
+  phone: string;
+  email: string;
   mainGoals: string[];
   preferredDate: string;
   preferredTime: string;
@@ -645,8 +646,12 @@ function generateIntakeFormEmailHTML(data: IntakeFormData): string {
           <div class="value">${genderLabels[data.gender] || data.gender}</div>
         </div>
         <div>
-          <div class="label">Contact</div>
-          <div class="value">${data.contact}</div>
+          <div class="label">Phone</div>
+          <div class="value"><a href="tel:${data.phone}">${data.phone}</a></div>
+        </div>
+        <div>
+          <div class="label">Email</div>
+          <div class="value"><a href="mailto:${data.email}">${data.email}</a></div>
         </div>
       </div>
     </div>
@@ -763,11 +768,8 @@ Age: ${data.age}
 Height: ${data.height} cm
 Weight: ${data.currentWeight} kg
 Gender: ${data.gender}
-Contact: ${data.contact}
-
-Main Goals: ${data.mainGoals.join(', ')}
-${data.otherGoal ? `Other Goal: ${data.otherGoal}` : ''}
-
+Phone: ${data.phone}
+Email: ${data.email}
 ${data.healthConditions ? `Health Conditions: ${data.healthConditions}` : ''}
 ${data.medications ? `Medications: ${data.medications}` : ''}
 ${data.mealsPerDay ? `Meals Per Day: ${data.mealsPerDay === 'other' ? data.mealsPerDayOther : data.mealsPerDay}` : ''}
@@ -789,5 +791,188 @@ Submitted: ${new Date().toLocaleString()}
     console.error('❌ Failed to send intake form email:', error);
     // Re-throw with more context
     throw new Error(`Failed to send intake form email: ${error.message || error}`);
+  }
+}
+
+/**
+ * Generates HTML email content for intake form confirmation to client
+ */
+function generateIntakeFormConfirmationEmailHTML(data: IntakeFormData, lang: 'mk' | 'en'): string {
+  const isMacedonian = lang === 'mk';
+
+  return `
+<!DOCTYPE html>
+<html lang="${lang}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>${isMacedonian ? 'Примено барање' : 'Form Submission Received'}</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f5f5f5;
+    }
+    .container {
+      background-color: #ffffff;
+      border-radius: 8px;
+      padding: 30px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .header {
+      background-color: #A8DF8E;
+      color: #1a1a1a;
+      padding: 20px;
+      border-radius: 8px 8px 0 0;
+      margin: -30px -30px 30px -30px;
+      text-align: center;
+    }
+    h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+    .highlight {
+      background-color: #f0fbe8;
+      padding: 20px;
+      border-radius: 8px;
+      margin: 20px 0;
+      text-align: center;
+    }
+    .highlight-large {
+      font-size: 18px;
+      font-weight: 600;
+      color: #2d5016;
+      margin: 5px 0;
+    }
+    .content {
+      margin: 20px 0;
+    }
+    .footer {
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid #e0e0e0;
+      font-size: 14px;
+      color: #666;
+    }
+    .contact-info {
+      background-color: #f9f9f9;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>${isMacedonian ? '✅ Вашите информации се примени!' : '✅ Form Submission Received!'}</h1>
+      <p style="margin: 10px 0 0 0;">${isMacedonian ? 'Form Submission Received!' : 'Your information has been received!'}</p>
+    </div>
+
+    <div class="content">
+      <p>${isMacedonian ? `Почитуван/а ${data.fullName},` : `Dear ${data.fullName},`}</p>
+      
+      <p>${isMacedonian 
+        ? 'Благодариме! Вашите информации се примени. Ќе ве контактираме наскоро за да го потврдиме вашиот термин и да го продолжиме процесот.' 
+        : 'Thank you! Your information has been received. We will contact you soon to confirm your appointment and continue the process.'}</p>
+      
+      ${data.preferredDate && data.preferredTime ? `
+      <div class="highlight">
+        <div style="color: #666; font-size: 14px; margin-bottom: 5px;">${isMacedonian ? 'ПРЕФЕРИРАН ДАТУМ И ВРЕМЕ' : 'PREFERRED DATE & TIME'}</div>
+        <div class="highlight-large">📅 ${data.preferredDate}</div>
+        <div class="highlight-large">🕐 ${data.preferredTime}</div>
+        ${data.appointmentDuration ? `<div style="margin-top: 5px; color: #666; font-size: 14px;">${isMacedonian ? `Времетраење: ${data.appointmentDuration} минути` : `Duration: ${data.appointmentDuration} minutes`}</div>` : ''}
+      </div>
+      ` : ''}
+    </div>
+
+    <div class="contact-info">
+      <p style="margin: 0 0 10px 0;"><strong>${isMacedonian ? 'Што се случува потоа?' : 'What happens next?'}</strong></p>
+      <ul style="margin: 0; padding-left: 20px;">
+        <li>${isMacedonian ? 'Ќе ве контактираме во рок од 24 часа за да го потврдиме вашиот термин' : 'We will contact you within 24 hours to confirm your appointment'}</li>
+        <li>${isMacedonian ? 'Ќе разговараме за вашите цели и потреби' : 'We will discuss your goals and needs'}</li>
+        <li>${isMacedonian ? 'Ако имате прашања, слободно контактирајте нè' : 'If you have any questions, feel free to contact us'}</li>
+      </ul>
+    </div>
+
+    <div class="content">
+      <p><strong>${isMacedonian ? 'Вашите информации:' : 'Your Information:'}</strong></p>
+      <p>
+        ${isMacedonian ? 'Име и презиме:' : 'Full Name:'} ${data.fullName}<br>
+        ${isMacedonian ? 'Телефон:' : 'Phone:'} ${data.phone}<br>
+        ${isMacedonian ? 'Е-маил:' : 'Email:'} ${data.email}
+      </p>
+    </div>
+
+    <div class="footer">
+      <p><strong>${isMacedonian ? 'Контакт информации:' : 'Contact Information:'}</strong></p>
+      <p>
+        📧 Email: nutricionistvladimir@gmail.com<br>
+        📱 ${isMacedonian ? 'Телефон:' : 'Phone:'} +389 75 453 434<br>
+        🌐 Website: nutricionistvladimir.com
+      </p>
+      <p style="margin-top: 20px; font-size: 12px; color: #999;">
+        ${isMacedonian ? 'Ако не го направивте ова барање, ве молиме занемарајте го овој емаил.' : 'If you did not make this request, please ignore this email.'}
+      </p>
+    </div>
+  </div>
+</body>
+</html>
+  `;
+}
+
+/**
+ * Sends confirmation email to the client for intake form submission
+ */
+export async function sendIntakeFormConfirmationToClient(data: IntakeFormData, lang: 'mk' | 'en' = 'en'): Promise<void> {
+  try {
+    const transporter = createEmailTransporter();
+    const isMacedonian = lang === 'mk';
+    
+    const mailOptions = {
+      from: `"Vladimir - Nutritionist" <${process.env.EMAIL_USER}>`,
+      to: data.email,
+      subject: isMacedonian 
+        ? 'Вашите информации се примени - Form Submission Received'
+        : 'Form Submission Received - Вашите информации се примени',
+      html: generateIntakeFormConfirmationEmailHTML(data, lang),
+      text: `
+${isMacedonian ? `Почитуван/а ${data.fullName},` : `Dear ${data.fullName},`}
+
+${isMacedonian 
+  ? 'Благодариме! Вашите информации се примени. Ќе ве контактираме наскоро за да го потврдиме вашиот термин и да го продолжиме процесот.' 
+  : 'Thank you! Your information has been received. We will contact you soon to confirm your appointment and continue the process.'}
+
+${data.preferredDate && data.preferredTime ? `
+${isMacedonian ? 'Префериран датум и време:' : 'Preferred Date & Time:'} ${data.preferredDate} at ${data.preferredTime}
+${data.appointmentDuration ? `${isMacedonian ? 'Времетраење:' : 'Duration:'} ${data.appointmentDuration} minutes` : ''}
+` : ''}
+
+${isMacedonian ? 'Што се случува потоа?' : 'What happens next?'}
+- ${isMacedonian ? 'Ќе ве контактираме во рок од 24 часа за да го потврдиме вашиот термин' : 'We will contact you within 24 hours to confirm your appointment'}
+- ${isMacedonian ? 'Ќе разговараме за вашите цели и потреби' : 'We will discuss your goals and needs'}
+- ${isMacedonian ? 'Ако имате прашања, слободно контактирајте нè' : 'If you have any questions, feel free to contact us'}
+
+${isMacedonian ? 'Контакт информации:' : 'Contact Information:'}
+Email: nutricionistvladimir@gmail.com
+${isMacedonian ? 'Телефон:' : 'Phone:'} +389 75 453 434
+Website: nutricionistvladimir.com
+
+${isMacedonian ? '---' : '---'}
+${isMacedonian ? 'If you did not make this request, please ignore this email.' : 'Ако не го направивте ова барање, ве молиме занемарајте го овој емаил.'}
+      `.trim(),
+    };
+
+    const result = await transporter.sendMail(mailOptions);
+    console.log('✅ Intake form confirmation email sent successfully:', result.messageId);
+  } catch (error: any) {
+    console.error('❌ Failed to send intake form confirmation email:', error);
+    // Don't throw error - confirmation email failure shouldn't block form submission
+    // Log the error but continue
+    console.warn('⚠️ Continuing despite confirmation email failure');
   }
 }

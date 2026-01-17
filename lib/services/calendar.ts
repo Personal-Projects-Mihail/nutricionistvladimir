@@ -347,7 +347,8 @@ ${t.age}: ${data.age}
 ${t.height}: ${data.height} cm
 ${t.weight}: ${data.currentWeight} kg
 ${t.gender}: ${data.gender}
-${t.contact}: ${data.contact}
+${isMacedonian ? 'Телефон' : 'Phone'}: ${data.phone}
+${isMacedonian ? 'Е-маил' : 'Email'}: ${data.email}
 
 ${t.mainGoals}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -495,9 +496,8 @@ export async function addIntakeFormToCalendar(data: IntakeFormData): Promise<str
     endDate.getMinutes()
   );
 
-  // Extract email from contact if it's an email, otherwise use contact as display name
-  const contactEmail = data.contact.includes('@') ? data.contact : undefined;
-  const contactName = contactEmail ? data.fullName : data.contact;
+  // Use email for calendar attendee
+  const contactEmail = data.email;
 
   const lang = data.lang || 'en';
   const isMacedonian = lang === 'mk';

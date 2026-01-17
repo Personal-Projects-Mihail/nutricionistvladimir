@@ -12,7 +12,8 @@ interface FormData {
   height: string;
   currentWeight: string;
   gender: string;
-  contact: string;
+  phone: string;
+  email: string;
   mainGoals: string[];
   preferredDate: string;
   preferredTime: string;
@@ -40,7 +41,8 @@ export default function IntakeForm({ lang }: IntakeFormProps) {
     height: '',
     currentWeight: '',
     gender: '',
-    contact: '',
+    phone: '',
+    email: '',
     mainGoals: [],
         preferredDate: '',
         preferredTime: '',
@@ -61,7 +63,7 @@ export default function IntakeForm({ lang }: IntakeFormProps) {
     otherGoal: '',
   });
 
-  const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>> & { mainGoals?: string; preferredDate?: string; preferredTime?: string; appointmentDuration?: string }>({});
+  const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>> & { mainGoals?: string; preferredDate?: string; preferredTime?: string; appointmentDuration?: string; phone?: string; email?: string }>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [availabilityStatus, setAvailabilityStatus] = useState<'idle' | 'checking' | 'available' | 'unavailable'>('idle');
@@ -80,7 +82,8 @@ export default function IntakeForm({ lang }: IntakeFormProps) {
         male: 'Машки',
         female: 'Женски',
       },
-      contact: 'Контакт (телефон/е-маил/Instagram)',
+      phone: 'Телефон',
+      email: 'Е-маил',
       preferredDate: 'Преферирана дата за консултација',
       preferredTime: 'Преферирано време за консултација',
       appointmentDuration: 'Времетраење на консултација',
@@ -141,7 +144,7 @@ export default function IntakeForm({ lang }: IntakeFormProps) {
       },
       submit: 'Испрати',
       submitting: 'Се праќа...',
-      successMessage: 'Благодариме! Вашите информации се примена. Ќе ве контактираме наскоро.',
+      successMessage: 'Благодариме! Вашите информации се примени. Ќе ве контактираме наскоро.',
       errorMessage: 'Се појави грешка. Ве молиме обидете се повторно.',
       required: 'Ова поле е задолжително',
       selectOption: 'Изберете опција',
@@ -160,7 +163,8 @@ export default function IntakeForm({ lang }: IntakeFormProps) {
         male: 'Male',
         female: 'Female',
       },
-      contact: 'Contact (phone/email/Instagram)',
+      phone: 'Phone',
+      email: 'Email',
       preferredDate: 'Preferred Consultation Date',
       preferredTime: 'Preferred Consultation Time',
       appointmentDuration: 'Appointment Duration',
@@ -256,8 +260,18 @@ export default function IntakeForm({ lang }: IntakeFormProps) {
       newErrors.gender = t.required;
     }
 
-    if (!formData.contact.trim()) {
-      newErrors.contact = t.required;
+    if (!formData.phone.trim()) {
+      newErrors.phone = t.required;
+    }
+
+    if (!formData.email.trim()) {
+      newErrors.email = t.required;
+    } else {
+      // Basic email validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(formData.email.trim())) {
+        newErrors.email = lang === 'mk' ? 'Внесете валидна е-маил адреса' : 'Please enter a valid email address';
+      }
     }
 
     if (formData.mainGoals.length === 0) {
@@ -328,7 +342,8 @@ export default function IntakeForm({ lang }: IntakeFormProps) {
         height: '',
         currentWeight: '',
         gender: '',
-        contact: '',
+        phone: '',
+        email: '',
         mainGoals: [],
         preferredDate: '',
         preferredTime: '',
@@ -507,22 +522,43 @@ export default function IntakeForm({ lang }: IntakeFormProps) {
   const timeSlots = generateTimeSlots();
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6 max-w-3xl mx-auto">
-      <h2 className="text-2xl md:text-3xl font-bold text-text mb-6">{t.title}</h2>
-
-      {/* Success Message */}
+    <>
+      {/* Success Modal Popup */}
       {submitStatus === 'success' && (
-        <div className="p-4 bg-primary/10 border border-primary/20 rounded-lg">
-          <p className="text-primary font-medium">{t.successMessage}</p>
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in">
+          <div className="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full mx-4 p-8 text-center animate-scale-in">
+            <div className="mb-6">
+              <div className="w-16 h-16 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-green-600 dark:text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <h3 className="text-2xl font-bold text-text mb-2">
+                {lang === 'mk' ? 'Успешно!' : 'Success!'}
+              </h3>
+            </div>
+            <p className="text-lg text-text-secondary mb-6 leading-relaxed">
+              {t.successMessage}
+            </p>
+            <button
+              onClick={() => setSubmitStatus('idle')}
+              className="w-full bg-primary hover:bg-primary-600 text-white font-semibold px-6 py-3 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
+            >
+              {lang === 'mk' ? 'Затвори' : 'Close'}
+            </button>
+          </div>
         </div>
       )}
 
-      {/* Error Message */}
-      {submitStatus === 'error' && (
-        <div className="p-4 bg-red-50 dark:bg-red-900/10 border border-red-200 dark:border-red-800 rounded-lg">
-          <p className="text-red-600 dark:text-red-400 font-medium">{t.errorMessage}</p>
-        </div>
-      )}
+      <form onSubmit={handleSubmit} className="space-y-6 max-w-3xl mx-auto">
+        <h2 className="text-2xl md:text-3xl font-bold text-text mb-6">{t.title}</h2>
+
+        {/* Error Message */}
+        {submitStatus === 'error' && (
+          <div className="p-4 bg-red-50 dark:bg-red-900/10 border border-red-200 dark:border-red-800 rounded-lg">
+            <p className="text-red-600 dark:text-red-400 font-medium">{t.errorMessage}</p>
+          </div>
+        )}
 
       {/* Full Name */}
       <div>
@@ -639,24 +675,45 @@ export default function IntakeForm({ lang }: IntakeFormProps) {
         )}
       </div>
 
-      {/* Contact */}
+      {/* Phone */}
       <div>
-        <label htmlFor="contact" className="block text-sm font-medium text-text mb-2">
-          {t.contact} <span className="text-red-500">*</span>
+        <label htmlFor="phone" className="block text-sm font-medium text-text mb-2">
+          {t.phone} <span className="text-red-500">*</span>
         </label>
         <input
-          type="text"
-          id="contact"
-          name="contact"
-          value={formData.contact}
+          type="tel"
+          id="phone"
+          name="phone"
+          value={formData.phone}
           onChange={handleChange}
           className={`w-full px-4 py-3 rounded-lg border ${
-            errors.contact ? 'border-red-500' : 'border-border'
+            errors.phone ? 'border-red-500' : 'border-border'
           } bg-background text-text focus:outline-none focus:ring-2 focus:ring-primary`}
           required
         />
-        {errors.contact && (
-          <p className="mt-1 text-sm text-red-500">{errors.contact}</p>
+        {errors.phone && (
+          <p className="mt-1 text-sm text-red-500">{errors.phone}</p>
+        )}
+      </div>
+
+      {/* Email */}
+      <div>
+        <label htmlFor="email" className="block text-sm font-medium text-text mb-2">
+          {t.email} <span className="text-red-500">*</span>
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          className={`w-full px-4 py-3 rounded-lg border ${
+            errors.email ? 'border-red-500' : 'border-border'
+          } bg-background text-text focus:outline-none focus:ring-2 focus:ring-primary`}
+          required
+        />
+        {errors.email && (
+          <p className="mt-1 text-sm text-red-500">{errors.email}</p>
         )}
       </div>
 
@@ -1046,5 +1103,6 @@ export default function IntakeForm({ lang }: IntakeFormProps) {
         </p>
       )}
     </form>
+    </>
   );
 }

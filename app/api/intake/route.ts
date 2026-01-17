@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { sendIntakeFormEmail, type IntakeFormData } from '@/lib/services/email';
+import { sendIntakeFormEmail, sendIntakeFormConfirmationToClient, type IntakeFormData } from '@/lib/services/email';
 import { addIntakeFormToCalendar, checkAvailability } from '@/lib/services/calendar';
 
 /**
@@ -20,7 +20,8 @@ export async function POST(request: NextRequest) {
       'height',
       'currentWeight',
       'gender',
-      'contact',
+      'phone',
+      'email',
       'mainGoals',
       'preferredDate',
       'preferredTime',
@@ -92,7 +93,8 @@ export async function POST(request: NextRequest) {
       height: body.height,
       currentWeight: body.currentWeight,
       gender: body.gender,
-      contact: body.contact,
+      phone: body.phone,
+      email: body.email,
       mainGoals: body.mainGoals,
       preferredDate: body.preferredDate || '',
       preferredTime: body.preferredTime || '',
@@ -180,6 +182,16 @@ export async function POST(request: NextRequest) {
       try {
         await sendIntakeFormEmail(intakeData);
         console.log('✅ Intake form email sent to nutritionist');
+        
+        // Send confirmation email to client (don't block on failure)
+        try {
+          const clientLang = intakeData.lang || 'en';
+          await sendIntakeFormConfirmationToClient(intakeData, clientLang);
+          console.log('✅ Confirmation email sent to client');
+        } catch (confirmationError: any) {
+          console.error('❌ Failed to send confirmation email to client:', confirmationError);
+          // Continue even if confirmation email fails
+        }
       } catch (error: any) {
         console.error('❌ Failed to send intake form email:', error);
         console.error('Error details:', {
