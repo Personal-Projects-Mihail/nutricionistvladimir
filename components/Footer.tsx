@@ -26,7 +26,7 @@ export default function Footer({ lang }: FooterProps) {
         home: 'Почетна',
         about: 'За мене',
         services: 'Услуги',
-        testimonials: 'Сведоштва',
+        testimonials: 'Рецензии',
         booking: 'Закажи консултација',
         contact: 'Контакт',
       },
