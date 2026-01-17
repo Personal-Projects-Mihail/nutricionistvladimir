@@ -46,7 +46,8 @@ export async function POST(request: NextRequest) {
       height: '175',
       currentWeight: '75',
       gender: 'male',
-      contact: 'mihailtalevtest@gmail.com',
+      phone: '+38970123456',
+      email: 'mihailtalevtest@gmail.com',
       mainGoals: ['weightLoss', 'healthImprovement'],
       preferredDate: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // 7 days from now
       preferredTime: '14:00',
