@@ -145,6 +145,9 @@ export default function IntakeForm({ lang }: IntakeFormProps) {
       errorMessage: 'Се појави грешка. Ве молиме обидете се повторно.',
       required: 'Ова поле е задолжително',
       selectOption: 'Изберете опција',
+      checkingAvailability: 'Проверка на достапност...',
+      available: '✅ Овој термин е достапен',
+      unavailable: '❌ Овој термин не е достапен. Ве молиме изберете друго време.',
     },
     en: {
       title: 'Please fill in these brief information about you',
@@ -372,7 +375,7 @@ export default function IntakeForm({ lang }: IntakeFormProps) {
         const data = await response.json();
 
         if (data.success && Array.isArray(data.unavailableSlots)) {
-          const unavailableSet = new Set(data.unavailableSlots);
+          const unavailableSet = new Set<string>(data.unavailableSlots as string[]);
           setUnavailableSlots(unavailableSet);
           
           // Clear selected time if it becomes unavailable
