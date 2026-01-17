@@ -4,13 +4,8 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { generateMetadata } from '@/lib/metadata';
 import { generateBreadcrumbSchema, safeJsonLd } from '@/lib/structured-data';
-import WeightLossIcon from '@/components/icons/WeightLossIcon';
-import GutHealthIcon from '@/components/icons/GutHealthIcon';
-import HormoneIcon from '@/components/icons/HormoneIcon';
-import DumbbellIcon from '@/components/icons/DumbbellIcon';
-import FamilyIcon from '@/components/icons/FamilyIcon';
-import HeartHealthIcon from '@/components/icons/HeartHealthIcon';
 import ServicesHeroIllustration from '@/components/illustrations/ServicesHeroIllustration';
+import ExpandableServiceCards from '@/components/ExpandableServiceCards';
 
 export const metadata: Metadata = generateMetadata('en', {
   title: 'Services | Vladimir Nutritionist',
@@ -34,7 +29,7 @@ export default function ServicesPageEN() {
   const services = [
     {
       title: 'Weight Loss',
-      icon: WeightLossIcon,
+      iconName: 'WeightLossIcon',
       description: 'Sustainable evidence-based strategies for weight loss without extreme diets.',
       gradient: 'from-primary via-primary-500 to-primary-600',
       bgGradient: 'from-primary/10 to-emerald-50',
@@ -46,21 +41,8 @@ export default function ServicesPageEN() {
       ]
     },
     {
-      title: 'Gut Health',
-      icon: GutHealthIcon,
-      description: 'Improve digestive system health and resolve bloating and IBS issues.',
-      gradient: 'from-emerald-400 via-emerald-500 to-green-600',
-      bgGradient: 'from-emerald-50 to-green-50',
-      features: [
-        'Microbiome optimization',
-        'IBS management',
-        'Trigger identification',
-        'FODMAP protocol'
-      ]
-    },
-    {
       title: 'Hormonal Balance',
-      icon: HormoneIcon,
+      iconName: 'HormoneIcon',
       description: 'Natural support for hormonal health through proper nutrition and lifestyle changes.',
       gradient: 'from-green-400 via-green-500 to-emerald-600',
       bgGradient: 'from-green-50 to-emerald-50',
@@ -73,7 +55,7 @@ export default function ServicesPageEN() {
     },
     {
       title: 'Sports Nutrition',
-      icon: DumbbellIcon,
+      iconName: 'DumbbellIcon',
       description: 'Optimize performance, recovery, and muscle building with precise nutrition.',
       gradient: 'from-teal-400 via-teal-500 to-emerald-600',
       bgGradient: 'from-teal-50 to-emerald-50',
@@ -86,7 +68,7 @@ export default function ServicesPageEN() {
     },
     {
       title: 'Family Nutrition',
-      icon: FamilyIcon,
+      iconName: 'FamilyIcon',
       description: 'Healthy eating habits for the whole family, including children and adolescents.',
       gradient: 'from-primary-400 via-emerald-500 to-green-600',
       bgGradient: 'from-primary-50 to-emerald-50',
@@ -99,7 +81,7 @@ export default function ServicesPageEN() {
     },
     {
       title: 'Chronic Conditions',
-      icon: HeartHealthIcon,
+      iconName: 'HeartHealthIcon',
       description: 'Nutritional support for managing diabetes, cardiovascular disease, and other conditions.',
       gradient: 'from-green-500 via-teal-500 to-cyan-600',
       bgGradient: 'from-green-50 to-teal-50',
@@ -228,48 +210,7 @@ export default function ServicesPageEN() {
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {services.map((service, idx) => (
-                  <div key={idx} className="group relative overflow-hidden bg-white dark:bg-gray-800 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
-                    <div className={`absolute inset-0 bg-gradient-to-br ${service.bgGradient} opacity-50 dark:opacity-20`}></div>
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-white/20 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500"></div>
-
-                    <div className="relative z-10 p-8">
-                      <div className={`w-16 h-16 bg-gradient-to-br ${service.gradient} rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform`}>
-                        <service.icon className="w-8 h-8 text-white" />
-                      </div>
-
-                      <h3 className="text-2xl font-bold text-text mb-3 group-hover:text-primary transition-colors">
-                        {service.title}
-                      </h3>
-
-                      <p className="text-text-secondary mb-6 leading-relaxed">
-                        {service.description}
-                      </p>
-
-                      <ul className="space-y-3 mb-6">
-                        {service.features.map((feature, featureIdx) => (
-                          <li key={featureIdx} className="flex items-center gap-2 text-sm text-text-secondary">
-                            <div className={`w-5 h-5 rounded-full bg-gradient-to-br ${service.gradient} flex items-center justify-center flex-shrink-0`}>
-                              <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                              </svg>
-                            </div>
-                            {feature}
-                          </li>
-                        ))}
-                      </ul>
-
-                      <Link href="/en/booking" className="inline-flex items-center gap-2 text-primary font-semibold hover:gap-3 transition-all">
-                        Book Consultation
-                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                        </svg>
-                      </Link>
-                    </div>
-                  </div>
-                ))}
-              </div>
+              <ExpandableServiceCards services={services} lang="en" />
             </div>
           </div>
         </section>
@@ -287,29 +228,19 @@ export default function ServicesPageEN() {
                 </h2>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="flex flex-wrap justify-center gap-4 md:gap-6">
                 {[
-                  { title: 'People wanting to lose weight', desc: 'Sustainable strategies without extreme diets', gradient: 'from-primary to-primary-600' },
-                  { title: 'Those with digestive issues', desc: 'Addressing IBS, bloating, and other problems', gradient: 'from-emerald-400 to-green-600' },
-                  { title: 'Athletes and active people', desc: 'Optimizing performance and recovery', gradient: 'from-teal-400 to-teal-600' },
-                  { title: 'Families', desc: 'Building healthy habits for the whole family', gradient: 'from-green-400 to-emerald-600' },
-                  { title: 'Women with hormonal issues', desc: 'PCOS, menopause, and other disorders', gradient: 'from-emerald-500 to-teal-600' },
-                  { title: 'People with chronic conditions', desc: 'Nutritional support for diabetes, heart disease', gradient: 'from-green-500 to-cyan-600' }
-                ].map((item, idx) => (
-                  <div key={idx} className="group relative overflow-hidden bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
-                    <div className={`absolute inset-0 bg-gradient-to-br ${item.gradient} opacity-0 group-hover:opacity-10 transition-opacity`}></div>
-                    <div className="relative z-10 flex items-start gap-4">
-                      <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${item.gradient} flex items-center justify-center flex-shrink-0 shadow-lg`}>
-                        <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                      </div>
-                      <div>
-                        <h3 className="font-bold text-text mb-2 group-hover:text-primary transition-colors">{item.title}</h3>
-                        <p className="text-sm text-text-secondary">{item.desc}</p>
-                      </div>
-                    </div>
-                  </div>
+                  'People wanting to lose weight',
+                  'Those with digestive issues',
+                  'Athletes and active people',
+                  'Families',
+                  'Women with hormonal issues',
+                  'People with chronic conditions'
+                ].map((title, idx) => (
+                  <span key={idx} className="text-base md:text-lg text-text-secondary font-medium">
+                    {title}
+                    {idx < 5 && <span className="mx-2 text-primary">•</span>}
+                  </span>
                 ))}
               </div>
             </div>
@@ -319,34 +250,62 @@ export default function ServicesPageEN() {
         {/* PROCESS TIMELINE */}
         <section className="section bg-gradient-to-br from-primary/5 via-background to-emerald-50/20">
           <div className="container-custom">
-            <div className="max-w-4xl mx-auto">
-              <div className="text-center mb-16">
-                <span className="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-4">
-                  Process
-                </span>
-                <h2 className="text-3xl md:text-4xl font-bold text-text mb-4">
-                  What to Expect
-                </h2>
-              </div>
+            <div className="text-center mb-12 md:mb-16">
+              <span className="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-4">
+                Process
+              </span>
+              <h2 className="text-3xl md:text-4xl font-bold text-text mb-4">
+                What to Expect
+              </h2>
+            </div>
 
-              <div className="space-y-8">
-                {[
-                  { num: '01', title: 'Initial Consultation', desc: 'Detailed review of your nutrition, health history, lifestyle, and goals. Duration: 60-90 minutes.', color: 'from-primary to-primary-600' },
-                  { num: '02', title: 'Personalized Plan', desc: 'You receive a detailed nutrition plan tailored to your needs, with specific recommendations and recipes.', color: 'from-emerald-400 to-emerald-600' },
-                  { num: '03', title: 'Regular Follow-ups', desc: 'Progress monitoring, plan adjustments, and addressing challenges. Usually every 2-4 weeks.', color: 'from-green-400 to-green-600' },
-                  { num: '04', title: 'Ongoing Support', desc: 'Email support between consultations for questions and motivation throughout the process.', color: 'from-teal-400 to-teal-600' }
-                ].map((step, idx) => (
-                  <div key={idx} className="flex gap-6">
-                    <div className={`flex-shrink-0 w-16 h-16 bg-gradient-to-br ${step.color} rounded-2xl flex items-center justify-center text-white font-bold text-xl shadow-xl`}>
-                      {step.num}
-                    </div>
-                    <div className="flex-1 bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
-                      <h3 className="text-xl font-bold text-text mb-2">{step.title}</h3>
-                      <p className="text-text-secondary">{step.desc}</p>
-                    </div>
+            <div className="relative w-full min-h-[600px] md:min-h-[700px] py-8">
+              {/* Connecting diagonal lines */}
+              <svg className="hidden md:block absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 0 }}>
+                {[0, 1, 2].map((idx) => {
+                  const startX = idx === 0 ? '8%' : idx === 1 ? '30%' : '52%';
+                  const startY = idx === 0 ? '80px' : idx === 1 ? '230px' : '380px';
+                  const endX = idx === 0 ? '28%' : idx === 1 ? '50%' : '72%';
+                  const endY = idx === 0 ? '230px' : idx === 1 ? '380px' : '530px';
+                  return (
+                    <line
+                      key={idx}
+                      x1={startX}
+                      y1={startY}
+                      x2={endX}
+                      y2={endY}
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeDasharray="4 4"
+                      className="text-primary/20"
+                    />
+                  );
+                })}
+              </svg>
+
+              {[
+                { num: '01', title: 'Initial Consultation', desc: 'Detailed review of your nutrition, health history, lifestyle, and goals. Duration: 45 minutes.', color: 'from-primary to-primary-600', left: '0', top: '0' },
+                { num: '02', title: 'Personalized Plan', desc: 'You receive a detailed nutrition plan tailored to your needs, with specific recommendations and recipes.', color: 'from-emerald-400 to-emerald-600', left: '20%', top: '150px' },
+                { num: '03', title: 'Regular Follow-ups', desc: 'Progress monitoring, plan adjustments, and addressing challenges. Usually every 2-4 weeks.', color: 'from-green-400 to-green-600', left: '40%', top: '300px' },
+                { num: '04', title: 'Ongoing Support', desc: 'Email support between consultations for questions and motivation throughout the process.', color: 'from-teal-400 to-teal-600', left: '60%', top: '450px' }
+              ].map((step, idx) => (
+                <div
+                  key={idx}
+                  className="absolute flex gap-4 md:gap-6 w-full md:w-auto max-w-sm md:max-w-md z-10"
+                  style={{
+                    left: step.left,
+                    top: step.top,
+                  }}
+                >
+                  <div className={`flex-shrink-0 w-14 h-14 md:w-16 md:h-16 bg-gradient-to-br ${step.color} rounded-2xl flex items-center justify-center text-white font-bold text-lg md:text-xl shadow-xl relative z-10`}>
+                    {step.num}
                   </div>
-                ))}
-              </div>
+                  <div className="bg-white dark:bg-gray-800 rounded-2xl p-4 md:p-6 shadow-lg hover:shadow-xl transition-shadow relative z-10">
+                    <h3 className="text-base md:text-lg lg:text-xl font-bold text-text mb-2">{step.title}</h3>
+                    <p className="text-sm md:text-base text-text-secondary leading-relaxed">{step.desc}</p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>

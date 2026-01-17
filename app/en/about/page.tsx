@@ -137,7 +137,7 @@ export default function AboutPageEN() {
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="group relative overflow-hidden bg-gradient-to-br from-primary/10 to-emerald-50 dark:from-primary/20 dark:to-emerald-900/20 rounded-2xl p-8 hover:shadow-xl transition-all duration-300 hover:scale-105">
                   <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full -mr-16 -mt-16"></div>
                   <div className="relative z-10">
@@ -146,23 +146,9 @@ export default function AboutPageEN() {
                         <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z" />
                       </svg>
                     </div>
-                    <h3 className="text-xl font-bold text-text mb-2">Nutrition Degree</h3>
-                    <p className="text-text-secondary mb-2">University [University Name]</p>
+                    <h3 className="text-xl font-bold text-text mb-2">Masters in Nutrition</h3>
+                    <p className="text-text-secondary mb-2">Ss. Cyril and Methodius University</p>
                     <p className="text-sm text-text-tertiary">Specialization in clinical nutrition, nutritional biochemistry, and weight management</p>
-                  </div>
-                </div>
-
-                <div className="group relative overflow-hidden bg-gradient-to-br from-emerald-50 to-green-100 dark:from-emerald-900/20 dark:to-green-900/20 rounded-2xl p-8 hover:shadow-xl transition-all duration-300 hover:scale-105">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full -mr-16 -mt-16"></div>
-                  <div className="relative z-10">
-                    <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-green-600 rounded-2xl flex items-center justify-center mb-4 shadow-lg">
-                      <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                      </svg>
-                    </div>
-                    <h3 className="text-xl font-bold text-text mb-2">Registration</h3>
-                    <p className="text-text-secondary mb-2">Registered Nutritionist in Macedonia</p>
-                    <p className="text-sm text-text-tertiary">Active membership in professional nutrition associations</p>
                   </div>
                 </div>
 
@@ -174,9 +160,9 @@ export default function AboutPageEN() {
                         <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z" />
                       </svg>
                     </div>
-                    <h3 className="text-xl font-bold text-text mb-2">Continuing Education</h3>
-                    <p className="text-text-secondary mb-2">Regular follow-up of latest research</p>
-                    <p className="text-sm text-text-tertiary">Dedicated to staying current with the latest scientific knowledge</p>
+                    <h3 className="text-xl font-bold text-text mb-2">Doctorate</h3>
+                    <p className="text-text-secondary mb-2">Currently pursuing Doctorate</p>
+                    <p className="text-sm text-text-tertiary">Advanced research and academic development</p>
                   </div>
                 </div>
               </div>
@@ -184,11 +170,11 @@ export default function AboutPageEN() {
           </div>
         </section>
 
-        {/* PHILOSOPHY WITH ICONS */}
+        {/* PHILOSOPHY WITH ICONS - COMPACT */}
         <section className="section">
           <div className="container-custom">
             <div className="max-w-5xl mx-auto">
-              <div className="text-center mb-16">
+              <div className="text-center mb-8">
                 <span className="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-4">
                   My Approach
                 </span>
@@ -197,81 +183,46 @@ export default function AboutPageEN() {
                 </h2>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div className="relative overflow-hidden bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all group">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500"></div>
-                  <div className="relative z-10">
-                    <div className="flex items-start gap-4 mb-4">
-                      <div className="w-12 h-12 bg-gradient-to-br from-primary to-primary-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg">
-                        <BrainIcon className="w-7 h-7 text-white" />
-                      </div>
-                      <h3 className="text-xl font-bold text-text mt-2">Evidence-Based</h3>
-                    </div>
-                    <p className="text-text-secondary leading-relaxed">
-                      Every recommendation is based on the latest scientific research and clinical evidence. I don't follow trends - I stick to what is scientifically proven.
-                    </p>
+              <div className="space-y-3">
+                <div className="flex items-start gap-3 text-text-secondary">
+                  <BrainIcon className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                  <div>
+                    <span className="font-semibold text-text">Evidence-Based: </span>
+                    Every recommendation is based on the latest scientific research and clinical evidence. I don't follow trends - I stick to what is scientifically proven.
                   </div>
                 </div>
 
-                <div className="relative overflow-hidden bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all group">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/5 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500"></div>
-                  <div className="relative z-10">
-                    <div className="flex items-start gap-4 mb-4">
-                      <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg">
-                        <svg className="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 20 20">
-                          <path d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" />
-                        </svg>
-                      </div>
-                      <h3 className="text-xl font-bold text-text mt-2">Individual Approach</h3>
-                    </div>
-                    <p className="text-text-secondary leading-relaxed">
-                      There's no one-size-fits-all solution. Each plan is tailored to your unique needs, preferences, lifestyle, and health goals.
-                    </p>
+                <div className="flex items-start gap-3 text-text-secondary">
+                  <svg className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" />
+                  </svg>
+                  <div>
+                    <span className="font-semibold text-text">Individual Approach: </span>
+                    There's no one-size-fits-all solution. Each plan is tailored to your unique needs, preferences, lifestyle, and health goals.
                   </div>
                 </div>
 
-                <div className="relative overflow-hidden bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all group">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-green-500/5 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500"></div>
-                  <div className="relative z-10">
-                    <div className="flex items-start gap-4 mb-4">
-                      <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg">
-                        <EnergyIcon className="w-7 h-7 text-white" />
-                      </div>
-                      <h3 className="text-xl font-bold text-text mt-2">Sustainability</h3>
-                    </div>
-                    <p className="text-text-secondary leading-relaxed">
-                      I focus on creating sustainable habits, not quick fixes. The goal is long-term health, not short-term results.
-                    </p>
+                <div className="flex items-start gap-3 text-text-secondary">
+                  <EnergyIcon className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                  <div>
+                    <span className="font-semibold text-text">Sustainability: </span>
+                    I focus on creating sustainable habits, not quick fixes. The goal is long-term health, not short-term results.
                   </div>
                 </div>
 
-                <div className="relative overflow-hidden bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all group">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-teal-500/5 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500"></div>
-                  <div className="relative z-10">
-                    <div className="flex items-start gap-4 mb-4">
-                      <div className="w-12 h-12 bg-gradient-to-br from-teal-500 to-teal-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg">
-                        <HeartHealthIcon className="w-7 h-7 text-white" />
-                      </div>
-                      <h3 className="text-xl font-bold text-text mt-2">Non-Judgmental</h3>
-                    </div>
-                    <p className="text-text-secondary leading-relaxed">
-                      I create a safe space where you can be open about your challenges without fear of judgment. We work together toward your goals.
-                    </p>
+                <div className="flex items-start gap-3 text-text-secondary">
+                  <HeartHealthIcon className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                  <div>
+                    <span className="font-semibold text-text">Non-Judgmental: </span>
+                    I create a safe space where you can be open about your challenges without fear of judgment. We work together toward your goals.
                   </div>
                 </div>
 
-                <div className="relative overflow-hidden bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all group md:col-span-2">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500"></div>
-                  <div className="relative z-10">
-                    <div className="flex items-start gap-4 mb-4">
-                      <div className="w-12 h-12 bg-gradient-to-br from-primary to-emerald-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg">
-                        <BalanceIcon className="w-7 h-7 text-white" />
-                      </div>
-                      <h3 className="text-xl font-bold text-text mt-2">Holistic Approach</h3>
-                    </div>
-                    <p className="text-text-secondary leading-relaxed">
-                      Health is more than just food. I take into account all aspects of your life - sleep, stress, physical activity, and emotional well-being.
-                    </p>
+                <div className="flex items-start gap-3 text-text-secondary">
+                  <BalanceIcon className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                  <div>
+                    <span className="font-semibold text-text">Holistic Approach: </span>
+                    Health is more than just food. I take into account all aspects of your life - sleep, stress, physical activity, and emotional well-being.
                   </div>
                 </div>
               </div>
@@ -279,11 +230,11 @@ export default function AboutPageEN() {
           </div>
         </section>
 
-        {/* AREAS OF EXPERTISE - VIBRANT GRID */}
+        {/* AREAS OF EXPERTISE - COMPACT */}
         <section className="section bg-gradient-to-br from-primary/5 via-background to-emerald-50/20">
           <div className="container-custom">
             <div className="max-w-5xl mx-auto">
-              <div className="text-center mb-16">
+              <div className="text-center mb-8">
                 <span className="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-4">
                   Specializations
                 </span>
@@ -292,28 +243,26 @@ export default function AboutPageEN() {
                 </h2>
               </div>
 
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div className="flex flex-wrap gap-2 justify-center">
                 {[
-                  { name: 'Weight Loss', color: 'from-primary to-primary-600' },
-                  { name: 'Gut Health', color: 'from-emerald-400 to-emerald-600' },
-                  { name: 'Hormonal Balance', color: 'from-green-400 to-green-600' },
-                  { name: 'Sports Nutrition', color: 'from-teal-400 to-teal-600' },
-                  { name: 'Family Nutrition', color: 'from-primary-400 to-emerald-500' },
-                  { name: 'Chronic Conditions', color: 'from-green-500 to-teal-500' },
-                  { name: 'Nutritional Biochemistry', color: 'from-emerald-500 to-green-600' },
-                  { name: 'Lifestyle Changes', color: 'from-teal-500 to-emerald-600' },
-                ].map((item, idx) => (
-                  <div key={idx} className="group relative overflow-hidden bg-white dark:bg-gray-800 rounded-xl p-6 text-center shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
-                    <div className={`absolute inset-0 bg-gradient-to-br ${item.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
-                    <div className="relative z-10">
-                      <div className={`w-12 h-12 mx-auto mb-3 rounded-lg bg-gradient-to-br ${item.color} flex items-center justify-center shadow-lg`}>
-                        <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                      </div>
-                      <span className="text-sm font-semibold text-text group-hover:text-primary transition-colors">{item.name}</span>
-                    </div>
-                  </div>
+                  'Weight Loss',
+                  'Gut Health',
+                  'Hormonal Balance',
+                  'Sports Nutrition',
+                  'Family Nutrition',
+                  'Chronic Conditions',
+                  'Nutritional Biochemistry',
+                  'Lifestyle Changes',
+                ].map((name, idx) => (
+                  <span
+                    key={idx}
+                    className="inline-flex items-center gap-1.5 bg-white dark:bg-gray-800 text-text border border-primary/20 px-4 py-2 rounded-full text-sm font-medium hover:bg-primary/5 hover:border-primary/40 transition-colors"
+                  >
+                    <svg className="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                    {name}
+                  </span>
                 ))}
               </div>
             </div>

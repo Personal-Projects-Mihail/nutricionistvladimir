@@ -85,7 +85,7 @@ export default function AboutPage() {
           <div className="container-custom">
             <div className="max-w-5xl mx-auto">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div className="relative h-96 bg-gradient-to-br from-primary/20 to-emerald-100/30 dark:from-primary/20 dark:to-emerald-900/20 rounded-3xl overflow-hidden p-12 flex items-center justify-center">
+                <div className="relative h-96 bg-gradient-to-br from-primary/20 to-emerald-100/30 dark:from-primary/20 dark:to-emerald-900/20 rounded-3xl overflow-hidden p-12 flex items-center justify-center order-2 lg:order-1">
                   <div className="absolute inset-0 flex items-center justify-center opacity-20">
                     <svg className="w-64 h-64" viewBox="0 0 100 100" fill="none">
                       <circle cx="50" cy="50" r="40" fill="currentColor" className="text-primary" />
@@ -102,7 +102,7 @@ export default function AboutPage() {
                   </div>
                 </div>
 
-                <div className="space-y-6">
+                <div className="space-y-6 order-1 lg:order-2">
                   <h2 className="text-3xl md:text-4xl font-bold text-text">Моја приказна</h2>
                   <div className="space-y-4 text-text-secondary leading-relaxed">
                     <p>
@@ -137,7 +137,7 @@ export default function AboutPage() {
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="group relative overflow-hidden bg-gradient-to-br from-primary/10 to-emerald-50 dark:from-primary/20 dark:to-emerald-900/20 rounded-2xl p-8 hover:shadow-xl transition-all duration-300 hover:scale-105">
                   <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full -mr-16 -mt-16"></div>
                   <div className="relative z-10">
@@ -146,23 +146,9 @@ export default function AboutPage() {
                         <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z" />
                       </svg>
                     </div>
-                    <h3 className="text-xl font-bold text-text mb-2">Дипломиран Нутриционист</h3>
-                    <p className="text-text-secondary mb-2">Универзитет [Име на Универзитетот]</p>
+                    <h3 className="text-xl font-bold text-text mb-2">Магистер по Нутриција</h3>
+                    <p className="text-text-secondary mb-2">Универзитет „Св. Кирил и Методиј"</p>
                     <p className="text-sm text-text-tertiary">Специјализација во клиничка нутриција, нутритивна биохемија и управување со тежината</p>
-                  </div>
-                </div>
-
-                <div className="group relative overflow-hidden bg-gradient-to-br from-emerald-50 to-green-100 dark:from-emerald-900/20 dark:to-green-900/20 rounded-2xl p-8 hover:shadow-xl transition-all duration-300 hover:scale-105">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full -mr-16 -mt-16"></div>
-                  <div className="relative z-10">
-                    <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-green-600 rounded-2xl flex items-center justify-center mb-4 shadow-lg">
-                      <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                      </svg>
-                    </div>
-                    <h3 className="text-xl font-bold text-text mb-2">Регистрација</h3>
-                    <p className="text-text-secondary mb-2">Регистриран нутриционист во Македонија</p>
-                    <p className="text-sm text-text-tertiary">Активна членство во професионални здруженија за нутриција</p>
                   </div>
                 </div>
 
@@ -174,9 +160,9 @@ export default function AboutPage() {
                         <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z" />
                       </svg>
                     </div>
-                    <h3 className="text-xl font-bold text-text mb-2">Континуирано Образование</h3>
-                    <p className="text-text-secondary mb-2">Редовно следење на најнови истражувања</p>
-                    <p className="text-sm text-text-tertiary">Посветен на останување во тек со најновите научни сознанија</p>
+                    <h3 className="text-xl font-bold text-text mb-2">Докторски Студии</h3>
+                    <p className="text-text-secondary mb-2">Моментално студирам Докторат</p>
+                    <p className="text-sm text-text-tertiary">Напредни истражувања и академски развој</p>
                   </div>
                 </div>
               </div>
@@ -184,11 +170,11 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* PHILOSOPHY WITH ICONS */}
+        {/* PHILOSOPHY WITH ICONS - COMPACT */}
         <section className="section">
           <div className="container-custom">
             <div className="max-w-5xl mx-auto">
-              <div className="text-center mb-16">
+              <div className="text-center mb-8">
                 <span className="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-4">
                   Мој пристап
                 </span>
@@ -197,81 +183,46 @@ export default function AboutPage() {
                 </h2>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div className="relative overflow-hidden bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all group">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500"></div>
-                  <div className="relative z-10">
-                    <div className="flex items-start gap-4 mb-4">
-                      <div className="w-12 h-12 bg-gradient-to-br from-primary to-primary-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg">
-                        <BrainIcon className="w-7 h-7 text-white" />
-                      </div>
-                      <h3 className="text-xl font-bold text-text mt-2">Базирано на наука</h3>
-                    </div>
-                    <p className="text-text-secondary leading-relaxed">
-                      Секоја препорака е заснована на најновите научни истражувања и клинички докази. Не следам трендови - се држам до она што е научно докажано.
-                    </p>
+              <div className="space-y-3">
+                <div className="flex items-start gap-3 text-text-secondary">
+                  <BrainIcon className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                  <div>
+                    <span className="font-semibold text-text">Базирано на наука: </span>
+                    Секоја препорака е заснована на најновите научни истражувања и клинички докази. Не следам трендови - се држам до она што е научно докажано.
                   </div>
                 </div>
 
-                <div className="relative overflow-hidden bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all group">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/5 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500"></div>
-                  <div className="relative z-10">
-                    <div className="flex items-start gap-4 mb-4">
-                      <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg">
-                        <svg className="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 20 20">
-                          <path d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" />
-                        </svg>
-                      </div>
-                      <h3 className="text-xl font-bold text-text mt-2">Індивидуален пристап</h3>
-                    </div>
-                    <p className="text-text-secondary leading-relaxed">
-                      Нема универзално решение. Секој план е прилагоден на вашите уникатни потреби, преференции, животен стил и здравствени цели.
-                    </p>
+                <div className="flex items-start gap-3 text-text-secondary">
+                  <svg className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" />
+                  </svg>
+                  <div>
+                    <span className="font-semibold text-text">Индивидуален пристап: </span>
+                    Нема универзално решение. Секој план е прилагоден на вашите уникатни потреби, преференции, животен стил и здравствени цели.
                   </div>
                 </div>
 
-                <div className="relative overflow-hidden bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all group">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-green-500/5 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500"></div>
-                  <div className="relative z-10">
-                    <div className="flex items-start gap-4 mb-4">
-                      <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg">
-                        <EnergyIcon className="w-7 h-7 text-white" />
-                      </div>
-                      <h3 className="text-xl font-bold text-text mt-2">Одржливост</h3>
-                    </div>
-                    <p className="text-text-secondary leading-relaxed">
-                      Фокусиран сум на создавање одржливи навики, не брзи решенија. Целта е долгорочно здравје, не краткорочни резултати.
-                    </p>
+                <div className="flex items-start gap-3 text-text-secondary">
+                  <EnergyIcon className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                  <div>
+                    <span className="font-semibold text-text">Одржливост: </span>
+                    Фокусиран сум на создавање одржливи навики, не брзи решенија. Целта е долгорочно здравје, не краткорочни резултати.
                   </div>
                 </div>
 
-                <div className="relative overflow-hidden bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all group">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-teal-500/5 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500"></div>
-                  <div className="relative z-10">
-                    <div className="flex items-start gap-4 mb-4">
-                      <div className="w-12 h-12 bg-gradient-to-br from-teal-500 to-teal-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg">
-                        <HeartHealthIcon className="w-7 h-7 text-white" />
-                      </div>
-                      <h3 className="text-xl font-bold text-text mt-2">Без осудување</h3>
-                    </div>
-                    <p className="text-text-secondary leading-relaxed">
-                      Создавам безбеден простор каде што можете да бидете отворени за вашите предизвици без страв од осудување. Заедно работиме кон вашите цели.
-                    </p>
+                <div className="flex items-start gap-3 text-text-secondary">
+                  <HeartHealthIcon className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                  <div>
+                    <span className="font-semibold text-text">Без осудување: </span>
+                    Создавам безбеден простор каде што можете да бидете отворени за вашите предизвици без страв од осудување. Заедно работиме кон вашите цели.
                   </div>
                 </div>
 
-                <div className="relative overflow-hidden bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all group md:col-span-2">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500"></div>
-                  <div className="relative z-10">
-                    <div className="flex items-start gap-4 mb-4">
-                      <div className="w-12 h-12 bg-gradient-to-br from-primary to-emerald-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg">
-                        <BalanceIcon className="w-7 h-7 text-white" />
-                      </div>
-                      <h3 className="text-xl font-bold text-text mt-2">Холистички пристап</h3>
-                    </div>
-                    <p className="text-text-secondary leading-relaxed">
-                      Здравјето е повеќе од само храна. Ги земам предвид сите аспекти на вашиот живот - сон, стрес, физичка активност и емоционално благосостојба.
-                    </p>
+                <div className="flex items-start gap-3 text-text-secondary">
+                  <BalanceIcon className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                  <div>
+                    <span className="font-semibold text-text">Холистички пристап: </span>
+                    Здравјето е повеќе од само храна. Ги земам предвид сите аспекти на вашиот живот - сон, стрес, физичка активност и емоционално благосостојба.
                   </div>
                 </div>
               </div>
@@ -279,11 +230,11 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* AREAS OF EXPERTISE - VIBRANT GRID */}
+        {/* AREAS OF EXPERTISE - COMPACT */}
         <section className="section bg-gradient-to-br from-primary/5 via-background to-emerald-50/20">
           <div className="container-custom">
             <div className="max-w-5xl mx-auto">
-              <div className="text-center mb-16">
+              <div className="text-center mb-8">
                 <span className="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-4">
                   Специјализации
                 </span>
@@ -292,28 +243,26 @@ export default function AboutPage() {
                 </h2>
               </div>
 
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div className="flex flex-wrap gap-2 justify-center">
                 {[
-                  { name: 'Намалување на тежина', color: 'from-primary to-primary-600' },
-                  { name: 'Здравје на цревата', color: 'from-emerald-400 to-emerald-600' },
-                  { name: 'Хормонален баланс', color: 'from-green-400 to-green-600' },
-                  { name: 'Спортска исхрана', color: 'from-teal-400 to-teal-600' },
-                  { name: 'Семејна исхрана', color: 'from-primary-400 to-emerald-500' },
-                  { name: 'Хронични состојби', color: 'from-green-500 to-teal-500' },
-                  { name: 'Нутритивна биохемија', color: 'from-emerald-500 to-green-600' },
-                  { name: 'Промени во животниот стил', color: 'from-teal-500 to-emerald-600' },
-                ].map((item, idx) => (
-                  <div key={idx} className="group relative overflow-hidden bg-white dark:bg-gray-800 rounded-xl p-6 text-center shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
-                    <div className={`absolute inset-0 bg-gradient-to-br ${item.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
-                    <div className="relative z-10">
-                      <div className={`w-12 h-12 mx-auto mb-3 rounded-lg bg-gradient-to-br ${item.color} flex items-center justify-center shadow-lg`}>
-                        <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                      </div>
-                      <span className="text-sm font-semibold text-text group-hover:text-primary transition-colors">{item.name}</span>
-                    </div>
-                  </div>
+                  'Намалување на тежина',
+                  'Здравје на цревата',
+                  'Хормонален баланс',
+                  'Спортска исхрана',
+                  'Семејна исхрана',
+                  'Хронични состојби',
+                  'Нутритивна биохемија',
+                  'Промени во животниот стил',
+                ].map((name, idx) => (
+                  <span
+                    key={idx}
+                    className="inline-flex items-center gap-1.5 bg-white dark:bg-gray-800 text-text border border-primary/20 px-4 py-2 rounded-full text-sm font-medium hover:bg-primary/5 hover:border-primary/40 transition-colors"
+                  >
+                    <svg className="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                    {name}
+                  </span>
                 ))}
               </div>
             </div>

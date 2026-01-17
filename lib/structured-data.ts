@@ -39,7 +39,7 @@ export function generatePersonSchema(lang: 'mk' | 'en') {
     ],
     alumniOf: {
       '@type': 'EducationalOrganization',
-      name: 'University Name', // Replace with actual university
+      name: lang === 'mk' ? 'Св. Кирил и Методиј' : 'Ss. Cyril and Methodius',
     },
   };
 }
