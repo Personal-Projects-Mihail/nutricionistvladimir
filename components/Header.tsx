@@ -28,7 +28,7 @@ export default function Header({ lang }: HeaderProps) {
           { href: `${basePath}/`, label: 'Почетна' },
           { href: `${basePath}/about`, label: 'За мене' },
           { href: `${basePath}/services`, label: 'Услуги' },
-          { href: `${basePath}/testimonials`, label: 'Сведоштва' },
+          { href: `${basePath}/testimonials`, label: 'Рецензии' },
           { href: `${basePath}/contact`, label: 'Контакт' },
         ]
       : [
