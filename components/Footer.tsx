@@ -166,25 +166,15 @@ export default function Footer({ lang }: FooterProps) {
                 <span className="font-medium">{t.phone}:</span>
                 <br />
                 <a
-                  href="tel:+389XXXXXXXX"
+                  href="https://wa.me/38975453434"
                   className="hover:text-primary transition-colors"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  +389 XX XXX XXX
+                  +389 75 453 434
                 </a>
               </li>
             </ul>
-          </div>
-        </div>
-
-        {/* Disclaimer */}
-        <div className="py-6 border-t border-border">
-          <div className="bg-background-tertiary rounded-lg p-4">
-            <h4 className="text-sm font-semibold text-text mb-2">
-              {t.disclaimer}
-            </h4>
-            <p className="text-xs text-text-secondary leading-relaxed">
-              {t.disclaimerText}
-            </p>
           </div>
         </div>
 

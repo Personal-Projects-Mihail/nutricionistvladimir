@@ -22,7 +22,7 @@ const steps: ProcessStep[] = [
   },
   {
     num: '2',
-    title: 'Get Matched With Expert',
+    title: 'Connect with Vladimir',
     desc: 'Our system connects you with Vladimir - expert tailored to your needs',
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">

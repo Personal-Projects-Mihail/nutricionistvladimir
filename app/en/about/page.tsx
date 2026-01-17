@@ -112,7 +112,7 @@ export default function AboutPageEN() {
                       My journey into nutrition began from personal experience with the power of proper nutrition to transform health. This passion motivated me to dedicate my life to studying the science of nutrition and helping others achieve their health goals.
                     </p>
                     <p>
-                      Today, I work with clients throughout North Macedonia, providing evidence-based consultations that are tailored to their unique needs, lifestyle, and health goals.
+                      Today, I work with clients throughout Macedonia, providing evidence-based consultations that are tailored to their unique needs, lifestyle, and health goals.
                     </p>
                   </div>
                 </div>
@@ -161,7 +161,7 @@ export default function AboutPageEN() {
                       </svg>
                     </div>
                     <h3 className="text-xl font-bold text-text mb-2">Registration</h3>
-                    <p className="text-text-secondary mb-2">Registered Nutritionist in North Macedonia</p>
+                    <p className="text-text-secondary mb-2">Registered Nutritionist in Macedonia</p>
                     <p className="text-sm text-text-tertiary">Active membership in professional nutrition associations</p>
                   </div>
                 </div>

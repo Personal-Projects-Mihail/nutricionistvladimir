@@ -11,7 +11,7 @@ import ConsultationIllustration from '@/components/illustrations/ConsultationIll
 export const metadata: Metadata = generateMetadata('mk', {
   title: 'Закажи консултација | Нутриционист Владимир',
   description:
-    'Закажете вашата прва консултација за исхрана со регистриран нутриционист Владимир. Онлајн и лично достапно низ Северна Македонија.',
+    'Закажете вашата прва консултација за исхрана со регистриран нутриционист Владимир. Онлајн и лично достапно во Скопје.',
   path: '/booking',
   keywords: [
     'закажи консултација',
@@ -165,7 +165,7 @@ export default function BookingPage() {
                     </h3>
 
                     <p className="text-text-secondary mb-6">
-                      Удобна видео консултација од вашиот дом. Достапно за клиенти низ цела Северна Македонија.
+                      Удобна видео консултација од вашиот дом. Достапно за клиенти низ цела Македонија.
                     </p>
 
                     <ul className="space-y-3">

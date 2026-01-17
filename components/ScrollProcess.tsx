@@ -22,7 +22,7 @@ const steps: ProcessStep[] = [
   },
   {
     num: '2',
-    title: 'Поврзи се со нутриционист',
+    title: 'Поврзи се со Владимир',
     desc: 'Нашиот систем те поврзува со Владимир - експерт прилагоден на твоите потреби',
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">

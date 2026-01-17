@@ -63,7 +63,7 @@ export default function Header({ lang }: HeaderProps) {
               alt={lang === 'mk' ? 'Владимир' : 'Vladimir'}
               width={180}
               height={60}
-              className="h-14 w-auto md:h-16"
+              className="h-10 w-auto md:h-12"
               priority
             />
           </Link>

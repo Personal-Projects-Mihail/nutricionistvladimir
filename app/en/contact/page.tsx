@@ -138,7 +138,7 @@ export default function ContactPage() {
                   </svg>
                 </div>
                 <h3 className="text-xl font-semibold text-text mb-2">Location</h3>
-                <p className="text-text-secondary font-medium">North Macedonia</p>
+                <p className="text-text-secondary font-medium">Macedonia</p>
                 <p className="text-sm text-text-tertiary mt-2">
                   Online consultations available
                 </p>
@@ -365,10 +365,10 @@ export default function ContactPage() {
 
                 <div className="bg-gradient-to-br from-primary/10 to-emerald-50 border-2 border-primary/20 rounded-2xl p-6">
                   <h3 className="text-lg font-semibold text-text mb-2">
-                    Дали работите со клиенти надвор од North Macedonia?
+                    Дали работите со клиенти надвор од Macedonia?
                   </h3>
                   <p className="text-text-secondary">
-                    Моментално работам само со клиенти од North Macedonia.
+                    Моментално работам само со клиенти од Macedonia.
                     Онлајн консултации се достапни за сите региони во земјата.
                   </p>
                 </div>
