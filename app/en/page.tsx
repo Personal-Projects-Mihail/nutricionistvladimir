@@ -46,7 +46,7 @@ export default function HomePageEN() {
 
       <main id="main-content">
         {/* Hero Section */}
-        <section className="relative overflow-hidden bg-gradient-to-br from-primary/20 via-primary/10 to-background pt-4 pb-32">
+        <section className="relative overflow-hidden bg-gradient-to-br from-primary/20 via-primary/10 to-background pt-4 pb-16">
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
             <div className="absolute top-10 right-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-pulse-glow"></div>
             <div className="absolute bottom-20 left-10 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
@@ -163,7 +163,7 @@ export default function HomePageEN() {
               </h2>
             </div>
 
-            <div className="space-y-24">
+            <div className="space-y-12">
               {/* Weight Loss - Image Right */}
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div className="space-y-6">
@@ -322,7 +322,7 @@ export default function HomePageEN() {
         <ScrollProcessEN />
 
         {/* CTA SECTION - Full Width Vibrant */}
-        <section className="relative overflow-hidden bg-gradient-to-br from-primary via-primary-500 to-primary-700 py-24">
+        <section className="relative overflow-hidden bg-gradient-to-br from-primary via-primary-500 to-primary-700 py-16">
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
             <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full -mr-48 -mt-48"></div>
             <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/10 rounded-full -ml-32 -mb-32"></div>
