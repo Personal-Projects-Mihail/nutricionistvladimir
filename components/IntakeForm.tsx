@@ -46,7 +46,7 @@ export default function IntakeForm({ lang }: IntakeFormProps) {
     mainGoals: [],
         preferredDate: '',
         preferredTime: '',
-        appointmentDuration: '30',
+        appointmentDuration: '45',
         healthConditions: '',
     medications: '',
     mealsPerDay: '',
@@ -87,11 +87,7 @@ export default function IntakeForm({ lang }: IntakeFormProps) {
       preferredDate: 'Преферирана дата за консултација',
       preferredTime: 'Преферирано време за консултација',
       appointmentDuration: 'Времетраење на консултација',
-      appointmentDurations: {
-        '15': '15 минути',
-        '30': '30 минути',
-        '45': '45 минути',
-      },
+      appointmentDurationNote: 'Консултацијата трае 45 минути',
       mainGoal: 'Главна цел',
       mainGoalNote: '(Можеш да одбереш повеќе од една)',
       mainGoals: {
@@ -168,11 +164,7 @@ export default function IntakeForm({ lang }: IntakeFormProps) {
       preferredDate: 'Preferred Consultation Date',
       preferredTime: 'Preferred Consultation Time',
       appointmentDuration: 'Appointment Duration',
-      appointmentDurations: {
-        '15': '15 minutes',
-        '30': '30 minutes',
-        '45': '45 minutes',
-      },
+      appointmentDurationNote: 'The consultation is 45 minutes',
       mainGoal: 'Main Goal',
       mainGoalNote: '(You can select more than one)',
       mainGoals: {
@@ -286,10 +278,6 @@ export default function IntakeForm({ lang }: IntakeFormProps) {
       newErrors.preferredTime = t.required;
     }
 
-    if (!formData.appointmentDuration) {
-      newErrors.appointmentDuration = t.required;
-    }
-
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -347,7 +335,7 @@ export default function IntakeForm({ lang }: IntakeFormProps) {
         mainGoals: [],
         preferredDate: '',
         preferredTime: '',
-        appointmentDuration: '30',
+        appointmentDuration: '45',
         healthConditions: '',
         medications: '',
         mealsPerDay: '',
@@ -787,31 +775,12 @@ export default function IntakeForm({ lang }: IntakeFormProps) {
 
         {/* Appointment Duration */}
         <div>
-          <label htmlFor="appointmentDuration" className="block text-sm font-medium text-text mb-2">
-            {t.appointmentDuration} <span className="text-red-500">*</span>
+          <label className="block text-sm font-medium text-text mb-2">
+            {t.appointmentDuration}
           </label>
-          <select
-            id="appointmentDuration"
-            name="appointmentDuration"
-            value={formData.appointmentDuration}
-            onChange={handleChange}
-            className={`w-full px-4 py-3 rounded-lg border ${
-              errors.appointmentDuration ? 'border-red-500' : 'border-border'
-            } bg-background text-text focus:outline-none focus:ring-2 focus:ring-primary`}
-            aria-required="true"
-            aria-invalid={!!errors.appointmentDuration}
-            aria-describedby={errors.appointmentDuration ? 'appointmentDuration-error' : undefined}
-          >
-            <option value="">{t.selectOption}</option>
-            <option value="15">{t.appointmentDurations['15']}</option>
-            <option value="30">{t.appointmentDurations['30']}</option>
-            <option value="45">{t.appointmentDurations['45']}</option>
-          </select>
-          {errors.appointmentDuration && (
-            <p id="appointmentDuration-error" className="mt-1 text-sm text-red-500">
-              {errors.appointmentDuration}
-            </p>
-          )}
+          <p className="text-sm text-text-secondary">
+            {t.appointmentDurationNote}
+          </p>
         </div>
 
         {/* Availability Status */}
