@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface FooterProps {
   lang: 'mk' | 'en';
@@ -64,9 +65,13 @@ export default function Footer({ lang }: FooterProps) {
         <div className="py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand Column */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-text">
-              {lang === 'mk' ? 'Владимир' : 'Vladimir'}
-            </h3>
+            <Image
+              src="/logo.png"
+              alt={lang === 'mk' ? 'Владимир' : 'Vladimir'}
+              width={180}
+              height={60}
+              className="h-10 w-auto md:h-12"
+            />
             <p className="text-sm text-text-secondary">{t.tagline}</p>
           </div>
 
