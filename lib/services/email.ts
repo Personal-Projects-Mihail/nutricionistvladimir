@@ -466,56 +466,18 @@ Website: nutricionistvladimir.com
  * Interface for intake form data
  */
 export interface IntakeFormData {
-  fullName: string;
-  age: string;
-  height: string;
-  currentWeight: string;
-  gender: string;
+  firstName: string;
+  lastName: string;
   phone: string;
   email: string;
-  mainGoals: string[];
-  preferredDate: string;
-  preferredTime: string;
-  appointmentDuration?: string;
-  lang?: 'mk' | 'en'; // Language for calendar event
-  healthConditions?: string;
-  medications?: string;
-  mealsPerDay?: string;
-  mealsPerDayOther?: string;
-  eatingTime?: string;
-  foodRestrictions?: string;
-  preferredFoods?: string;
-  physicalActivity?: string;
-  physicalActivityOther?: string;
-  waterIntake?: string;
-  waterIntakeOther?: string;
-  startDate?: string;
-  hasLabResults?: string;
-  otherGoal?: string;
+  lang?: 'mk' | 'en';
 }
 
 /**
  * Generates HTML email content for intake form submission
  */
 function generateIntakeFormEmailHTML(data: IntakeFormData): string {
-  const goalLabels: Record<string, string> = {
-    weightLoss: 'Weight Loss / Намалување на телесна тежина',
-    weightGain: 'Weight Gain / Зголемување на телесна тежина',
-    muscleGain: 'Muscle Mass Increase / Зголемување мускулна маса',
-    weightMaintenance: 'Weight Maintenance / Одржување на телесна тежина',
-    healthImprovement: 'Health Improvement / Подобрување на здравје',
-    nutritionForCondition: 'Nutrition for Illness/Condition / Исхрана при болест/состојба',
-    other: 'Other / Друго',
-  };
-
-  const genderLabels: Record<string, string> = {
-    male: 'Male / Машки',
-    female: 'Female / Женски',
-  };
-
-  const formatGoals = (goals: string[]) => {
-    return goals.map(goal => goalLabels[goal] || goal).join(', ');
-  };
+  const fullName = `${data.firstName} ${data.lastName}`;
 
   return `
 <!DOCTYPE html>
@@ -523,13 +485,13 @@ function generateIntakeFormEmailHTML(data: IntakeFormData): string {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>New Intake Form Submission</title>
+  <title>New Contact Form Submission</title>
   <style>
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
       line-height: 1.6;
       color: #333;
-      max-width: 700px;
+      max-width: 600px;
       margin: 0 auto;
       padding: 20px;
       background-color: #f5f5f5;
@@ -553,11 +515,6 @@ function generateIntakeFormEmailHTML(data: IntakeFormData): string {
     }
     .section {
       margin-bottom: 20px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid #e0e0e0;
-    }
-    .section:last-child {
-      border-bottom: none;
     }
     .label {
       font-weight: 600;
@@ -571,12 +528,6 @@ function generateIntakeFormEmailHTML(data: IntakeFormData): string {
       color: #1a1a1a;
       margin-bottom: 15px;
     }
-    .highlight {
-      background-color: #fff9e6;
-      padding: 15px;
-      border-left: 4px solid #A8DF8E;
-      margin: 20px 0;
-    }
     .footer {
       margin-top: 30px;
       padding-top: 20px;
@@ -585,161 +536,32 @@ function generateIntakeFormEmailHTML(data: IntakeFormData): string {
       color: #999;
       text-align: center;
     }
-    .grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 15px;
-    }
-    @media (max-width: 600px) {
-      .grid {
-        grid-template-columns: 1fr;
-      }
-    }
   </style>
 </head>
 <body>
   <div class="container">
     <div class="header">
-      <h1>📋 New Intake Form Submission</h1>
+      <h1>📋 New Contact Form Submission</h1>
     </div>
-
-    ${data.preferredDate && data.preferredTime ? `
-    <div class="highlight">
-      <div class="label">Preferred Consultation Date & Time</div>
-      <div class="value" style="font-size: 18px; font-weight: 600;">
-        📅 ${data.preferredDate} at ${data.preferredTime}
-      </div>
-      <div class="value" style="margin-top: 10px;">
-        ⏱️ Duration: ${data.appointmentDuration || '30'} minutes
-      </div>
-    </div>
-    ` : ''}
 
     <div class="section">
-      <h2 style="margin-top: 0;">Client Information</h2>
-      
-      <div class="grid">
-        <div>
-          <div class="label">Full Name</div>
-          <div class="value">${data.fullName}</div>
-        </div>
-        <div>
-          <div class="label">Age</div>
-          <div class="value">${data.age}</div>
-        </div>
-      </div>
+      <h2 style="margin-top: 0;">Contact Information</h2>
 
-      <div class="grid">
-        <div>
-          <div class="label">Height</div>
-          <div class="value">${data.height} cm</div>
-        </div>
-        <div>
-          <div class="label">Current Weight</div>
-          <div class="value">${data.currentWeight} kg</div>
-        </div>
-      </div>
+      <div class="label">First Name / Име</div>
+      <div class="value">${data.firstName}</div>
 
-      <div class="grid">
-        <div>
-          <div class="label">Gender</div>
-          <div class="value">${genderLabels[data.gender] || data.gender}</div>
-        </div>
-        <div>
-          <div class="label">Phone</div>
-          <div class="value"><a href="tel:${data.phone}">${data.phone}</a></div>
-        </div>
-        <div>
-          <div class="label">Email</div>
-          <div class="value"><a href="mailto:${data.email}">${data.email}</a></div>
-        </div>
-      </div>
+      <div class="label">Last Name / Презиме</div>
+      <div class="value">${data.lastName}</div>
+
+      <div class="label">Email / Е-маил</div>
+      <div class="value"><a href="mailto:${data.email}">${data.email}</a></div>
+
+      <div class="label">Phone / Телефон</div>
+      <div class="value"><a href="tel:${data.phone}">${data.phone}</a></div>
     </div>
-
-    <div class="highlight">
-      <div class="label">Main Goals</div>
-      <div class="value" style="font-size: 18px; font-weight: 600;">
-        ${formatGoals(data.mainGoals)}
-      </div>
-      ${data.otherGoal ? `<div class="value" style="margin-top: 10px;"><strong>Other Goal:</strong> ${data.otherGoal}</div>` : ''}
-    </div>
-
-    ${data.healthConditions || data.medications ? `
-    <div class="section">
-      <h2>Health Information</h2>
-      
-      ${data.healthConditions ? `
-      <div class="label">Health Conditions</div>
-      <div class="value">${data.healthConditions}</div>
-      ` : ''}
-
-      ${data.medications ? `
-      <div class="label">Medications / Supplements</div>
-      <div class="value">${data.medications}</div>
-      ` : ''}
-    </div>
-    ` : ''}
-
-    ${data.mealsPerDay || data.eatingTime || data.foodRestrictions || data.preferredFoods ? `
-    <div class="section">
-      <h2>Nutrition Habits</h2>
-      
-      ${data.mealsPerDay ? `
-      <div class="label">Meals Per Day</div>
-      <div class="value">${data.mealsPerDay === 'other' ? data.mealsPerDayOther : data.mealsPerDay}</div>
-      ` : ''}
-
-      ${data.eatingTime ? `
-      <div class="label">Eating Time</div>
-      <div class="value">${data.eatingTime}</div>
-      ` : ''}
-
-      ${data.foodRestrictions ? `
-      <div class="label">Food Restrictions / Allergies</div>
-      <div class="value">${data.foodRestrictions}</div>
-      ` : ''}
-
-      ${data.preferredFoods ? `
-      <div class="label">Preferred Foods</div>
-      <div class="value">${data.preferredFoods}</div>
-      ` : ''}
-    </div>
-    ` : ''}
-
-    ${data.physicalActivity || data.waterIntake ? `
-    <div class="section">
-      <h2>Lifestyle</h2>
-      
-      ${data.physicalActivity ? `
-      <div class="label">Physical Activity</div>
-      <div class="value">${data.physicalActivity === 'other' ? data.physicalActivityOther : data.physicalActivity}</div>
-      ` : ''}
-
-      ${data.waterIntake ? `
-      <div class="label">Water Intake</div>
-      <div class="value">${data.waterIntake === 'other' ? data.waterIntakeOther : data.waterIntake}</div>
-      ` : ''}
-    </div>
-    ` : ''}
-
-    ${data.startDate || data.hasLabResults ? `
-    <div class="section">
-      <h2>Additional Information</h2>
-      
-      ${data.startDate ? `
-      <div class="label">Preferred Start Date</div>
-      <div class="value">${data.startDate}</div>
-      ` : ''}
-
-      ${data.hasLabResults ? `
-      <div class="label">Has Lab Results</div>
-      <div class="value">${data.hasLabResults === 'yes' ? 'Yes / Да' : 'No / Не'}</div>
-      ` : ''}
-    </div>
-    ` : ''}
 
     <div class="footer">
-      <p>This intake form was submitted via nutricionistvladimir.com</p>
+      <p>This form was submitted via nutricionistvladimir.com</p>
       <p>Timestamp: ${new Date().toLocaleString('en-US', { timeZone: 'Europe/Skopje' })} (Europe/Skopje)</p>
     </div>
   </div>
@@ -754,43 +576,30 @@ function generateIntakeFormEmailHTML(data: IntakeFormData): string {
 export async function sendIntakeFormEmail(data: IntakeFormData): Promise<void> {
   try {
     const transporter = createEmailTransporter();
-    
+    const fullName = `${data.firstName} ${data.lastName}`;
+
     const mailOptions = {
       from: `"Nutritionist Website" <${process.env.EMAIL_USER}>`,
       to: process.env.NUTRITIONIST_EMAIL || 'nutricionistvladimir@gmail.com',
-      subject: `📋 New Intake Form - ${data.fullName}`,
+      subject: `📋 New Contact - ${fullName}`,
       html: generateIntakeFormEmailHTML(data),
       text: `
-New Intake Form Submission
+New Contact Form Submission
 
-Client: ${data.fullName}
-Age: ${data.age}
-Height: ${data.height} cm
-Weight: ${data.currentWeight} kg
-Gender: ${data.gender}
-Phone: ${data.phone}
+First Name: ${data.firstName}
+Last Name: ${data.lastName}
 Email: ${data.email}
-${data.healthConditions ? `Health Conditions: ${data.healthConditions}` : ''}
-${data.medications ? `Medications: ${data.medications}` : ''}
-${data.mealsPerDay ? `Meals Per Day: ${data.mealsPerDay === 'other' ? data.mealsPerDayOther : data.mealsPerDay}` : ''}
-${data.eatingTime ? `Eating Time: ${data.eatingTime}` : ''}
-${data.foodRestrictions ? `Food Restrictions: ${data.foodRestrictions}` : ''}
-${data.preferredFoods ? `Preferred Foods: ${data.preferredFoods}` : ''}
-${data.physicalActivity ? `Physical Activity: ${data.physicalActivity === 'other' ? data.physicalActivityOther : data.physicalActivity}` : ''}
-${data.waterIntake ? `Water Intake: ${data.waterIntake === 'other' ? data.waterIntakeOther : data.waterIntake}` : ''}
-${data.startDate ? `Start Date: ${data.startDate}` : ''}
-${data.hasLabResults ? `Has Lab Results: ${data.hasLabResults}` : ''}
+Phone: ${data.phone}
 
 Submitted: ${new Date().toLocaleString()}
       `.trim(),
     };
 
     const result = await transporter.sendMail(mailOptions);
-    console.log('✅ Intake form email sent successfully:', result.messageId);
+    console.log('✅ Contact form email sent successfully:', result.messageId);
   } catch (error: any) {
-    console.error('❌ Failed to send intake form email:', error);
-    // Re-throw with more context
-    throw new Error(`Failed to send intake form email: ${error.message || error}`);
+    console.error('❌ Failed to send contact form email:', error);
+    throw new Error(`Failed to send contact form email: ${error.message || error}`);
   }
 }
 
@@ -799,6 +608,7 @@ Submitted: ${new Date().toLocaleString()}
  */
 function generateIntakeFormConfirmationEmailHTML(data: IntakeFormData, lang: 'mk' | 'en'): string {
   const isMacedonian = lang === 'mk';
+  const fullName = `${data.firstName} ${data.lastName}`;
 
   return `
 <!DOCTYPE html>
@@ -835,19 +645,6 @@ function generateIntakeFormConfirmationEmailHTML(data: IntakeFormData, lang: 'mk
       margin: 0;
       font-size: 24px;
     }
-    .highlight {
-      background-color: #f0fbe8;
-      padding: 20px;
-      border-radius: 8px;
-      margin: 20px 0;
-      text-align: center;
-    }
-    .highlight-large {
-      font-size: 18px;
-      font-weight: 600;
-      color: #2d5016;
-      margin: 5px 0;
-    }
     .content {
       margin: 20px 0;
     }
@@ -869,43 +666,24 @@ function generateIntakeFormConfirmationEmailHTML(data: IntakeFormData, lang: 'mk
 <body>
   <div class="container">
     <div class="header">
-      <h1>${isMacedonian ? '✅ Вашите информации се примени!' : '✅ Form Submission Received!'}</h1>
-      <p style="margin: 10px 0 0 0;">${isMacedonian ? 'Form Submission Received!' : 'Your information has been received!'}</p>
+      <h1>${isMacedonian ? '✅ Вашите информации се примени!' : '✅ Your Information Has Been Received!'}</h1>
     </div>
 
     <div class="content">
-      <p>${isMacedonian ? `Почитуван/а ${data.fullName},` : `Dear ${data.fullName},`}</p>
-      
-      <p>${isMacedonian 
-        ? 'Благодариме! Вашите информации се примени. Ќе ве контактираме наскоро за да го потврдиме вашиот термин и да го продолжиме процесот.' 
-        : 'Thank you! Your information has been received. We will contact you soon to confirm your appointment and continue the process.'}</p>
-      
-      ${data.preferredDate && data.preferredTime ? `
-      <div class="highlight">
-        <div style="color: #666; font-size: 14px; margin-bottom: 5px;">${isMacedonian ? 'ПРЕФЕРИРАН ДАТУМ И ВРЕМЕ' : 'PREFERRED DATE & TIME'}</div>
-        <div class="highlight-large">📅 ${data.preferredDate}</div>
-        <div class="highlight-large">🕐 ${data.preferredTime}</div>
-        ${data.appointmentDuration ? `<div style="margin-top: 5px; color: #666; font-size: 14px;">${isMacedonian ? `Времетраење: ${data.appointmentDuration} минути` : `Duration: ${data.appointmentDuration} minutes`}</div>` : ''}
-      </div>
-      ` : ''}
+      <p>${isMacedonian ? `Почитуван/а ${fullName},` : `Dear ${fullName},`}</p>
+
+      <p>${isMacedonian
+        ? 'Благодариме! Вашите информации се примени. Ќе ве контактираме наскоро.'
+        : 'Thank you! Your information has been received. We will contact you soon.'}</p>
     </div>
 
     <div class="contact-info">
       <p style="margin: 0 0 10px 0;"><strong>${isMacedonian ? 'Што се случува потоа?' : 'What happens next?'}</strong></p>
       <ul style="margin: 0; padding-left: 20px;">
-        <li>${isMacedonian ? 'Ќе ве контактираме во рок од 24 часа за да го потврдиме вашиот термин' : 'We will contact you within 24 hours to confirm your appointment'}</li>
+        <li>${isMacedonian ? 'Ќе ве контактираме во рок од 24 часа' : 'We will contact you within 24 hours'}</li>
         <li>${isMacedonian ? 'Ќе разговараме за вашите цели и потреби' : 'We will discuss your goals and needs'}</li>
         <li>${isMacedonian ? 'Ако имате прашања, слободно контактирајте нè' : 'If you have any questions, feel free to contact us'}</li>
       </ul>
-    </div>
-
-    <div class="content">
-      <p><strong>${isMacedonian ? 'Вашите информации:' : 'Your Information:'}</strong></p>
-      <p>
-        ${isMacedonian ? 'Име и презиме:' : 'Full Name:'} ${data.fullName}<br>
-        ${isMacedonian ? 'Телефон:' : 'Phone:'} ${data.phone}<br>
-        ${isMacedonian ? 'Е-маил:' : 'Email:'} ${data.email}
-      </p>
     </div>
 
     <div class="footer">
@@ -932,28 +710,24 @@ export async function sendIntakeFormConfirmationToClient(data: IntakeFormData, l
   try {
     const transporter = createEmailTransporter();
     const isMacedonian = lang === 'mk';
-    
+    const fullName = `${data.firstName} ${data.lastName}`;
+
     const mailOptions = {
       from: `"Vladimir - Nutritionist" <${process.env.EMAIL_USER}>`,
       to: data.email,
-      subject: isMacedonian 
-        ? 'Вашите информации се примени - Form Submission Received'
-        : 'Form Submission Received - Вашите информации се примени',
+      subject: isMacedonian
+        ? 'Вашите информации се примени - Your Information Has Been Received'
+        : 'Your Information Has Been Received - Вашите информации се примени',
       html: generateIntakeFormConfirmationEmailHTML(data, lang),
       text: `
-${isMacedonian ? `Почитуван/а ${data.fullName},` : `Dear ${data.fullName},`}
+${isMacedonian ? `Почитуван/а ${fullName},` : `Dear ${fullName},`}
 
-${isMacedonian 
-  ? 'Благодариме! Вашите информации се примени. Ќе ве контактираме наскоро за да го потврдиме вашиот термин и да го продолжиме процесот.' 
-  : 'Thank you! Your information has been received. We will contact you soon to confirm your appointment and continue the process.'}
-
-${data.preferredDate && data.preferredTime ? `
-${isMacedonian ? 'Префериран датум и време:' : 'Preferred Date & Time:'} ${data.preferredDate} at ${data.preferredTime}
-${data.appointmentDuration ? `${isMacedonian ? 'Времетраење:' : 'Duration:'} ${data.appointmentDuration} minutes` : ''}
-` : ''}
+${isMacedonian
+  ? 'Благодариме! Вашите информации се примени. Ќе ве контактираме наскоро.'
+  : 'Thank you! Your information has been received. We will contact you soon.'}
 
 ${isMacedonian ? 'Што се случува потоа?' : 'What happens next?'}
-- ${isMacedonian ? 'Ќе ве контактираме во рок од 24 часа за да го потврдиме вашиот термин' : 'We will contact you within 24 hours to confirm your appointment'}
+- ${isMacedonian ? 'Ќе ве контактираме во рок од 24 часа' : 'We will contact you within 24 hours'}
 - ${isMacedonian ? 'Ќе разговараме за вашите цели и потреби' : 'We will discuss your goals and needs'}
 - ${isMacedonian ? 'Ако имате прашања, слободно контактирајте нè' : 'If you have any questions, feel free to contact us'}
 
@@ -961,18 +735,13 @@ ${isMacedonian ? 'Контакт информации:' : 'Contact Information:'
 Email: nutricionistvladimir@gmail.com
 ${isMacedonian ? 'Телефон:' : 'Phone:'} +389 75 453 434
 Website: nutricionistvladimir.com
-
-${isMacedonian ? '---' : '---'}
-${isMacedonian ? 'If you did not make this request, please ignore this email.' : 'Ако не го направивте ова барање, ве молиме занемарајте го овој емаил.'}
       `.trim(),
     };
 
     const result = await transporter.sendMail(mailOptions);
-    console.log('✅ Intake form confirmation email sent successfully:', result.messageId);
+    console.log('✅ Confirmation email sent successfully:', result.messageId);
   } catch (error: any) {
-    console.error('❌ Failed to send intake form confirmation email:', error);
-    // Don't throw error - confirmation email failure shouldn't block form submission
-    // Log the error but continue
+    console.error('❌ Failed to send confirmation email:', error);
     console.warn('⚠️ Continuing despite confirmation email failure');
   }
 }

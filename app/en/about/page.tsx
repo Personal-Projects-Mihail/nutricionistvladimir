@@ -103,16 +103,16 @@ export default function AboutPageEN() {
                 </div>
 
                 <div className="space-y-6">
-                  <h2 className="text-3xl md:text-4xl font-bold text-text">My Story</h2>
+                  <h2 className="text-3xl md:text-4xl font-bold text-text">Welcome!</h2>
                   <div className="space-y-4 text-text-secondary leading-relaxed">
                     <p>
-                      Welcome! I'm <span className="font-semibold text-primary">Vladimir</span>, a registered nutritionist with a passion for helping people achieve optimal health through the science of nutrition.
+                      I'm <span className="font-semibold text-primary">Vladimir</span>, a certified nutritionist who believes that healthy eating doesn't have to be complicated. I work with an individual approach, real menus, and clear guidelines that you can apply in your daily life.
                     </p>
                     <p>
-                      My journey into nutrition began from personal experience with the power of proper nutrition to transform health. This passion motivated me to dedicate my life to studying the science of nutrition and helping others achieve their health goals.
+                      My goal is not just results, but habits that last.
                     </p>
                     <p>
-                      Today, I work with clients throughout Macedonia, providing evidence-based consultations that are tailored to their unique needs, lifestyle, and health goals.
+                      Today I work with clients throughout Macedonia, as well as outside of Macedonia. Book a consultation and let's create a plan that really works.
                     </p>
                   </div>
                 </div>
@@ -137,7 +137,7 @@ export default function AboutPageEN() {
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div className="group relative overflow-hidden bg-gradient-to-br from-primary/10 to-emerald-50 dark:from-primary/20 dark:to-emerald-900/20 rounded-2xl p-8 hover:shadow-xl transition-all duration-300 hover:scale-105">
                   <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full -mr-16 -mt-16"></div>
                   <div className="relative z-10">
@@ -146,9 +146,9 @@ export default function AboutPageEN() {
                         <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z" />
                       </svg>
                     </div>
-                    <h3 className="text-xl font-bold text-text mb-2">Masters in Nutrition</h3>
+                    <h3 className="text-xl font-bold text-text mb-2">Certified Nutritionist</h3>
                     <p className="text-text-secondary mb-2">Ss. Cyril and Methodius University</p>
-                    <p className="text-sm text-text-tertiary">Specialization in clinical nutrition, nutritional biochemistry, and weight management</p>
+                    <p className="text-sm text-text-tertiary">Faculty of Natural Sciences and Mathematics, Institute of Biology - Skopje, Republic of Macedonia</p>
                   </div>
                 </div>
 
@@ -157,12 +157,26 @@ export default function AboutPageEN() {
                   <div className="relative z-10">
                     <div className="w-16 h-16 bg-gradient-to-br from-green-600 to-teal-600 rounded-2xl flex items-center justify-center mb-4 shadow-lg">
                       <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z" />
+                      </svg>
+                    </div>
+                    <h3 className="text-xl font-bold text-text mb-2">Masters in Biochemistry and Physiology</h3>
+                    <p className="text-text-secondary mb-2">Ss. Cyril and Methodius University</p>
+                    <p className="text-sm text-text-tertiary">Faculty of Natural Sciences and Mathematics, Institute of Biology - Skopje, Republic of Macedonia</p>
+                  </div>
+                </div>
+
+                <div className="group relative overflow-hidden bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-2xl p-8 hover:shadow-xl transition-all duration-300 hover:scale-105">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full -mr-16 -mt-16"></div>
+                  <div className="relative z-10">
+                    <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-2xl flex items-center justify-center mb-4 shadow-lg">
+                      <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
                         <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z" />
                       </svg>
                     </div>
-                    <h3 className="text-xl font-bold text-text mb-2">Doctorate</h3>
-                    <p className="text-text-secondary mb-2">Currently pursuing Doctorate</p>
-                    <p className="text-sm text-text-tertiary">Advanced research and academic development</p>
+                    <h3 className="text-xl font-bold text-text mb-2">Doctorate in Biochemistry and Physiology</h3>
+                    <p className="text-text-secondary mb-2">Ss. Cyril and Methodius University</p>
+                    <p className="text-sm text-text-tertiary">Faculty of Natural Sciences and Mathematics, Institute of Biology - Skopje, Republic of Macedonia</p>
                   </div>
                 </div>
               </div>

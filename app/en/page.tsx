@@ -144,23 +144,23 @@ export default function HomePageEN() {
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-center">
                 <div className="space-y-6">
                   <h3 className="text-3xl md:text-4xl font-bold text-text">
-                    Weight Loss
+                    Body Weight Loss
                   </h3>
                   <p className="text-lg text-text-secondary leading-relaxed">
-                    Evidence-based science for sustainable weight loss without extreme diets or starvation. Focus on long-term habits and a healthy relationship with food.
+                    Weight loss without extreme diets or starvation. Focus on long-term habits and a healthy relationship with nutrition.
                   </p>
                   <ul className="space-y-3">
                     <li className="flex items-start gap-3">
                       <svg className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                       </svg>
-                      <span className="text-text-secondary">Caloric deficit with satisfaction</span>
+                      <span className="text-text-secondary">Personalized nutrition plan</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <svg className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                       </svg>
-                      <span className="text-text-secondary">Metabolism management</span>
+                      <span className="text-text-secondary">Appropriate caloric deficit</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <svg className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
@@ -187,12 +187,12 @@ export default function HomePageEN() {
                 </div>
               </div>
 
-              {/* Gut Health - Image Left */}
+              {/* Insulin Resistance - Image Left */}
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-center">
                 <div className="relative h-[300px] md:h-[400px] lg:h-[600px] bg-gradient-to-br from-primary/20 to-primary/5 rounded-3xl overflow-hidden flex items-center justify-center order-2 lg:order-1">
                   <Image
                     src="/front-page/gut_health_illustration.svg"
-                    alt="Illustration for gut health - digestive system with probiotics and balanced microbiome"
+                    alt="Illustration for insulin resistance nutrition - balanced diet and healthy habits"
                     width={600}
                     height={600}
                     className="object-contain w-full h-full p-6"
@@ -200,29 +200,29 @@ export default function HomePageEN() {
                 </div>
                 <div className="space-y-6 order-1 lg:order-2">
                   <h3 className="text-3xl md:text-4xl font-bold text-text">
-                    Gut Health
+                    Nutrition for Insulin Resistance
                   </h3>
                   <p className="text-lg text-text-secondary leading-relaxed">
-                    Improve your digestive system health and resolve issues with bloating, IBS, and other disorders. Natural approach to balanced microbiome.
+                    Personalized nutrition without starvation and complete elimination of sugars. Building healthy habits and improving health.
                   </p>
                   <ul className="space-y-3">
                     <li className="flex items-start gap-3">
                       <svg className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                       </svg>
-                      <span className="text-text-secondary">Microbiome optimization</span>
+                      <span className="text-text-secondary">Personalized nutrition plan</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <svg className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                       </svg>
-                      <span className="text-text-secondary">IBS management</span>
+                      <span className="text-text-secondary">Nutritional habit advice</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <svg className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                       </svg>
-                      <span className="text-text-secondary">Trigger identification</span>
+                      <span className="text-text-secondary">Addressing insulin resistance</span>
                     </li>
                   </ul>
                   <Link href="/en/services" className="inline-flex items-center gap-2 text-primary font-medium hover:gap-3 transition-all">
@@ -234,33 +234,33 @@ export default function HomePageEN() {
                 </div>
               </div>
 
-              {/* Sports Nutrition - Image Right */}
+              {/* Metabolic Conditions - Image Right */}
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-center">
                 <div className="space-y-6">
                   <h3 className="text-3xl md:text-4xl font-bold text-text">
-                    Sports Nutrition
+                    Nutrition for Metabolic Conditions
                   </h3>
                   <p className="text-lg text-text-secondary leading-relaxed">
-                    Optimize your performance, recovery, and muscle building with precise sports nutrition. Ideal for athletes and active people.
+                    Diabetes, high cholesterol, elevated triglycerides, and fatty liver. For such metabolic conditions, nutrition is key. Evidence-based nutrition and strategic problem solving.
                   </p>
                   <ul className="space-y-3">
                     <li className="flex items-start gap-3">
                       <svg className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                       </svg>
-                      <span className="text-text-secondary">Macro and micro nutrients</span>
+                      <span className="text-text-secondary">Continuous monitoring of metabolic status</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <svg className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                       </svg>
-                      <span className="text-text-secondary">Nutrition around training</span>
+                      <span className="text-text-secondary">Personalized nutrition based on client needs</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <svg className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                       </svg>
-                      <span className="text-text-secondary">Recovery strategies</span>
+                      <span className="text-text-secondary">Improving metabolic health</span>
                     </li>
                   </ul>
                   <Link href="/en/services" className="inline-flex items-center gap-2 text-primary font-medium hover:gap-3 transition-all">
@@ -273,7 +273,7 @@ export default function HomePageEN() {
                 <div className="relative h-[300px] md:h-[400px] lg:h-[600px] bg-gradient-to-br from-primary/20 to-primary/5 rounded-3xl overflow-hidden flex items-center justify-center">
                   <Image
                     src="/front-page/sports_nutrition_illustration.svg"
-                    alt="Illustration for sports nutrition - athlete with optimal nutrition and performance"
+                    alt="Illustration for nutrition for metabolic conditions - healthy diet for diabetes, cholesterol, and triglycerides"
                     width={600}
                     height={600}
                     className="object-contain w-full h-full p-6"

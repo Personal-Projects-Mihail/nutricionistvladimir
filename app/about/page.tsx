@@ -103,16 +103,16 @@ export default function AboutPage() {
                 </div>
 
                 <div className="space-y-6 order-1 lg:order-2">
-                  <h2 className="text-3xl md:text-4xl font-bold text-text">Моја приказна</h2>
+                  <h2 className="text-3xl md:text-4xl font-bold text-text">Добредојде!</h2>
                   <div className="space-y-4 text-text-secondary leading-relaxed">
                     <p>
-                      Добредојдовте! Јас сум <span className="font-semibold text-primary">Владимир</span>, регистриран нутриционист со страст кон помагање на луѓето да го постигнат оптималното здравје преку науката за исхраната.
+                      Јас сум <span className="font-semibold text-primary">Владимир</span>, дипломиран нутриционист, кој верува дека здравата исхрана не мора да биде комплицирана. Работам со индивидуален пристап, реални менија и јасни насоки што можеш да ги примениш во секојдневието.
                     </p>
                     <p>
-                      Мојот пат во нутриционизмот започна од личното искуство со моќта на правилната исхрана за трансформирање на здравјето. Оваа страст ме мотивираше да го посветам мојот живот на проучување на науката за исхраната и помагање на другите да ги постигнат нивните здравствени цели.
+                      Моја цел е не само резултати, туку и навики што траат.
                     </p>
                     <p>
-                      Денес работам со клиенти низ цела Македонија, обезбедувајќи консултации базирани на докази кои се прилагодени на нивните уникатни потреби, животен стил и здравствени цели.
+                      Денес работам со клиенти низ цела Македонија, а воедно и надвор од Македонија. Закажи консултација и ајде да направиме план што навистина функционира.
                     </p>
                   </div>
                 </div>
@@ -137,7 +137,7 @@ export default function AboutPage() {
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div className="group relative overflow-hidden bg-gradient-to-br from-primary/10 to-emerald-50 dark:from-primary/20 dark:to-emerald-900/20 rounded-2xl p-8 hover:shadow-xl transition-all duration-300 hover:scale-105">
                   <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full -mr-16 -mt-16"></div>
                   <div className="relative z-10">
@@ -146,9 +146,9 @@ export default function AboutPage() {
                         <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z" />
                       </svg>
                     </div>
-                    <h3 className="text-xl font-bold text-text mb-2">Магистер по Нутриција</h3>
-                    <p className="text-text-secondary mb-2">Универзитет „Св. Кирил и Методиј"</p>
-                    <p className="text-sm text-text-tertiary">Специјализација во клиничка нутриција, нутритивна биохемија и управување со тежината</p>
+                    <h3 className="text-xl font-bold text-text mb-2">Дипломиран нутриционист</h3>
+                    <p className="text-text-secondary mb-2">„Св. Кирил и Методиј"</p>
+                    <p className="text-sm text-text-tertiary">Природно-математички факултет, Институт биологија - Скопје, Република Македонија</p>
                   </div>
                 </div>
 
@@ -157,12 +157,26 @@ export default function AboutPage() {
                   <div className="relative z-10">
                     <div className="w-16 h-16 bg-gradient-to-br from-green-600 to-teal-600 rounded-2xl flex items-center justify-center mb-4 shadow-lg">
                       <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z" />
+                      </svg>
+                    </div>
+                    <h3 className="text-xl font-bold text-text mb-2">Магистер по Биохемија и физиологија</h3>
+                    <p className="text-text-secondary mb-2">„Св. Кирил и Методиј"</p>
+                    <p className="text-sm text-text-tertiary">Природно-математички факултет, Институт биологија - Скопје, Република Македонија</p>
+                  </div>
+                </div>
+
+                <div className="group relative overflow-hidden bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-2xl p-8 hover:shadow-xl transition-all duration-300 hover:scale-105">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full -mr-16 -mt-16"></div>
+                  <div className="relative z-10">
+                    <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-2xl flex items-center justify-center mb-4 shadow-lg">
+                      <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
                         <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z" />
                       </svg>
                     </div>
-                    <h3 className="text-xl font-bold text-text mb-2">Докторски Студии</h3>
-                    <p className="text-text-secondary mb-2">Моментално студирам Докторат</p>
-                    <p className="text-sm text-text-tertiary">Напредни истражувања и академски развој</p>
+                    <h3 className="text-xl font-bold text-text mb-2">Докторски студии по Биохемија и физиологија</h3>
+                    <p className="text-text-secondary mb-2">„Св. Кирил и Методиј"</p>
+                    <p className="text-sm text-text-tertiary">Природно-математички факултет, Институт биологија - Скопје, Република Македонија</p>
                   </div>
                 </div>
               </div>

@@ -144,23 +144,23 @@ export default function HomePage() {
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-center">
                 <div className="space-y-6">
                   <h3 className="text-3xl md:text-4xl font-bold text-text">
-                    Намалување на тежина
+                    Намалување на телесната тежина
                   </h3>
                   <p className="text-lg text-text-secondary leading-relaxed">
-                    Науката засновани на докази за одржливо намалување на тежина без екстремни диети или гладување. Фокус на долгорочни навики и здрав однос со храната.
+                    Намалување на тежина без екстремни диети или гладување. Фокус на долгорочни навики и здрав однос со исхраната.
                   </p>
                   <ul className="space-y-3">
                     <li className="flex items-start gap-3">
                       <svg className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                       </svg>
-                      <span className="text-text-secondary">Калоричен дефицит со задоволување</span>
+                      <span className="text-text-secondary">Персонализиран план за исхрана</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <svg className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                       </svg>
-                      <span className="text-text-secondary">Управување со метаболизам</span>
+                      <span className="text-text-secondary">Соодветен калориски дефицит</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <svg className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
@@ -187,12 +187,12 @@ export default function HomePage() {
                 </div>
               </div>
 
-              {/* Gut Health - Image Left */}
+              {/* Insulin Resistance - Image Left */}
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-center">
                 <div className="relative h-[300px] md:h-[400px] lg:h-[600px] bg-gradient-to-br from-primary/20 to-primary/5 rounded-3xl overflow-hidden flex items-center justify-center order-2 lg:order-1">
                   <Image
                     src="/front-page/gut_health_illustration.svg"
-                    alt="Илустрација за здравје на цревата - дигестивен систем со пробиотици и балансиран микробиом"
+                    alt="Илустрација за исхрана за инсулинска резистенција - балансирана исхрана и здрави навики"
                     width={600}
                     height={600}
                     className="object-contain w-full h-full p-6"
@@ -200,29 +200,29 @@ export default function HomePage() {
                 </div>
                 <div className="space-y-6 order-1 lg:order-2">
                   <h3 className="text-3xl md:text-4xl font-bold text-text">
-                    Здравје на цревата
+                    Исхрана за инсулинска резистенција
                   </h3>
                   <p className="text-lg text-text-secondary leading-relaxed">
-                    Подобрете го здравјето на вашиот дигестивен систем и решете проблеми со надување, ИБС и други нарушувања. Природен пристап кон балансиран микробиом.
+                    Персонализирана исхрана без гладувања и целосно отфрлање на шеќерите. Создавање на здрави навики и подобрување на здравјето.
                   </p>
                   <ul className="space-y-3">
                     <li className="flex items-start gap-3">
                       <svg className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                       </svg>
-                      <span className="text-text-secondary">Оптимизација на микробиом</span>
+                      <span className="text-text-secondary">Персонализиран план за исхрана</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <svg className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                       </svg>
-                      <span className="text-text-secondary">Управување со ИБС</span>
+                      <span className="text-text-secondary">Совети за навиките во исхраната</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <svg className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                       </svg>
-                      <span className="text-text-secondary">Идентификација на триггери</span>
+                      <span className="text-text-secondary">Решавање на проблемот со инсулинска резистенција</span>
                     </li>
                   </ul>
                   <Link href="/services" className="inline-flex items-center gap-2 text-primary font-medium hover:gap-3 transition-all">
@@ -234,33 +234,33 @@ export default function HomePage() {
                 </div>
               </div>
 
-              {/* Sports Nutrition - Image Right */}
+              {/* Metabolic Conditions - Image Right */}
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-center">
                 <div className="space-y-6">
                   <h3 className="text-3xl md:text-4xl font-bold text-text">
-                    Спортска исхрана
+                    Исхрана при метаболички состојби
                   </h3>
                   <p className="text-lg text-text-secondary leading-relaxed">
-                    Оптимизирајте ги вашите перформанси, опоравување и градење на мускули со прецизна спортска исхрана. Идеално за атлети и активни луѓе.
+                    Дијабетичари, покачен холестерол, покачени триглицериди и замастен џигер. При вакви метаболички состојби исхраната е клучот. Исхрана базирана на научни факти и стратешки решавање на проблемот.
                   </p>
                   <ul className="space-y-3">
                     <li className="flex items-start gap-3">
                       <svg className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                       </svg>
-                      <span className="text-text-secondary">Макро и микро нутриенти</span>
+                      <span className="text-text-secondary">Континуирано следење на метаболичката состојба</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <svg className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                       </svg>
-                      <span className="text-text-secondary">Исхрана околу тренинг</span>
+                      <span className="text-text-secondary">Персонализирана исхрана според потребите на клиентот</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <svg className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                       </svg>
-                      <span className="text-text-secondary">Стратегии за опоравување</span>
+                      <span className="text-text-secondary">Подобрување на метаболичката состојба</span>
                     </li>
                   </ul>
                   <Link href="/services" className="inline-flex items-center gap-2 text-primary font-medium hover:gap-3 transition-all">
@@ -273,7 +273,7 @@ export default function HomePage() {
                 <div className="relative h-[300px] md:h-[400px] lg:h-[600px] bg-gradient-to-br from-primary/20 to-primary/5 rounded-3xl overflow-hidden flex items-center justify-center">
                   <Image
                     src="/front-page/sports_nutrition_illustration.svg"
-                    alt="Илустрација за спортска исхрана - атлет со оптимална исхрана и перформанси"
+                    alt="Илустрација за исхрана при метаболички состојби - здрава исхрана за дијабетес, холестерол и триглицериди"
                     width={600}
                     height={600}
                     className="object-contain w-full h-full p-6"

@@ -286,8 +286,8 @@ export default function ServicesPageEN() {
               {[
                 { num: '01', title: 'Initial Consultation', desc: 'Detailed review of your nutrition, health history, lifestyle, and goals. Duration: 45 minutes.', color: 'from-primary to-primary-600', left: '0', top: '0' },
                 { num: '02', title: 'Personalized Plan', desc: 'You receive a detailed nutrition plan tailored to your needs, with specific recommendations and recipes.', color: 'from-emerald-400 to-emerald-600', left: '20%', top: '150px' },
-                { num: '03', title: 'Regular Follow-ups', desc: 'Progress monitoring, plan adjustments, and addressing challenges. Usually every 2-4 weeks.', color: 'from-green-400 to-green-600', left: '40%', top: '300px' },
-                { num: '04', title: 'Ongoing Support', desc: 'Email support between consultations for questions and motivation throughout the process.', color: 'from-teal-400 to-teal-600', left: '60%', top: '450px' }
+                { num: '03', title: 'Regular Follow-ups', desc: 'Progress monitoring, plan adjustments, and addressing challenges. Progress check-ins every 2 weeks.', color: 'from-green-400 to-green-600', left: '40%', top: '300px' },
+                { num: '04', title: 'Ongoing Support', desc: 'Email/Viber support between consultations for questions and motivation throughout the process.', color: 'from-teal-400 to-teal-600', left: '60%', top: '450px' }
               ].map((step, idx) => (
                 <div
                   key={idx}

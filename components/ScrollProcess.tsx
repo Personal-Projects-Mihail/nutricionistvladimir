@@ -12,8 +12,8 @@ interface ProcessStep {
 const steps: ProcessStep[] = [
   {
     num: '1',
-    title: 'Регистрирај се и сподели ни потреби',
-    desc: 'Креирај профил и сподели ги твоите цели и преференции за исхрана',
+    title: 'Закажи консултација со Владимир',
+    desc: 'Одбери термин и испрати барање',
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
@@ -33,7 +33,7 @@ const steps: ProcessStep[] = [
   {
     num: '3',
     title: 'Добиј персонализиран план',
-    desc: 'Прими детален план за исхрана креиран специјално за тебе и твојот животен стил',
+    desc: 'Персонализиран план за твоите цели и потреби',
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -109,10 +109,10 @@ export default function ScrollProcess() {
             Како работиме
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-text mb-4">
-            Вашиот пат до успех
+            Вашиот пат до поздраво тело
           </h2>
           <p className="text-xl text-text-secondary max-w-2xl mx-auto">
-            Едноставен и ефективен процес за постигнување на вашите цели
+            Едноставен и здрав начин за постигнување на вашите цели
           </p>
         </div>
 

@@ -12,8 +12,8 @@ interface ProcessStep {
 const steps: ProcessStep[] = [
   {
     num: '1',
-    title: 'Register & Tell Us Your Needs',
-    desc: 'Create your profile and share your nutrition goals and preferences',
+    title: 'Book a Consultation with Vladimir',
+    desc: 'Choose a time slot and send your request',
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
@@ -32,8 +32,8 @@ const steps: ProcessStep[] = [
   },
   {
     num: '3',
-    title: 'Follow Your Personalized Roadmap',
-    desc: 'Receive a detailed nutrition plan created specifically for you and your lifestyle',
+    title: 'Get Your Personalized Plan',
+    desc: 'A personalized plan for your goals and needs',
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -109,10 +109,10 @@ export default function ScrollProcessEN() {
             How It Works
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-text mb-4">
-            Your Path to Success
+            Your Path to a Healthier Body
           </h2>
           <p className="text-xl text-text-secondary max-w-2xl mx-auto">
-            A simple and effective process to achieve your goals
+            A simple and healthy way to achieve your goals
           </p>
         </div>
 
