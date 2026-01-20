@@ -1,6 +1,14 @@
 import { google } from 'googleapis';
 import type { BookingEmailData } from './email';
 
+export interface IntakeFormCalendarData {
+  fullName: string;
+  email: string;
+  phone: string;
+  preferredDate: string;
+  preferredTime: string;
+}
+
 /**
  * Creates and configures Google Calendar API client
  */
@@ -158,6 +166,78 @@ export async function addBookingToCalendar(data: BookingEmailData): Promise<stri
 }
 
 /**
+ * Adds an intake form appointment to Google Calendar (45-minute duration)
+ */
+export async function addIntakeFormToCalendar(data: IntakeFormCalendarData): Promise<string> {
+  const calendar = createCalendarClient();
+  
+  // Parse the date and time
+  const [year, month, day] = data.preferredDate.split('-').map(Number);
+  const [hours, minutes] = data.preferredTime.split(':').map(Number);
+  
+  // Format start date/time as ISO string in Europe/Skopje timezone
+  const startDateTimeStr = formatDateTimeForTimezone(year, month, day, hours, minutes);
+  
+  // Intake form appointment duration: 45 minutes
+  const startDate = new Date(year, month - 1, day, hours, minutes);
+  const endDate = new Date(startDate);
+  endDate.setMinutes(endDate.getMinutes() + 45);
+  
+  // Format end date/time
+  const endDateTimeStr = formatDateTimeForTimezone(
+    endDate.getFullYear(),
+    endDate.getMonth() + 1,
+    endDate.getDate(),
+    endDate.getHours(),
+    endDate.getMinutes()
+  );
+
+  // Create event description
+  let description = `Name: ${data.fullName}
+Email: ${data.email}
+Phone: ${data.phone}
+
+Booking submitted: ${new Date().toLocaleString('en-US', { timeZone: 'Europe/Skopje' })}
+Via: nutricionistvladimir.com`;
+
+  const event = {
+    summary: `${data.fullName} - ${data.preferredTime}`,
+    description: description,
+    start: {
+      dateTime: startDateTimeStr,
+    },
+    end: {
+      dateTime: endDateTimeStr,
+    },
+    attendees: [
+      { email: data.email, displayName: data.fullName },
+    ],
+    reminders: {
+      useDefault: false,
+      overrides: [
+        { method: 'email', minutes: 24 * 60 }, // 1 day before
+        { method: 'popup', minutes: 60 },      // 1 hour before
+      ],
+    },
+    colorId: '10', // Green color for nutrition consultations
+    status: 'tentative', // Mark as tentative until confirmed
+  };
+
+  try {
+    const response = await calendar.events.insert({
+      calendarId: process.env.GOOGLE_CALENDAR_ID || 'primary',
+      requestBody: event,
+      sendUpdates: 'none', // Don't send automatic Google invites (we're sending custom emails)
+    });
+
+    return response.data.htmlLink || '';
+  } catch (error) {
+    console.error('Error adding intake form event to calendar:', error);
+    throw new Error('Failed to add event to Google Calendar');
+  }
+}
+
+/**
  * Gets all unavailable time slots for a given date
  * Returns an array of time strings (HH:MM) that are blocked
  */
@@ -200,7 +280,9 @@ export async function getUnavailableTimeSlots(date: string): Promise<string[]> {
           slotEnd.setMinutes(slotEnd.getMinutes() + 15);
 
           // Check if this 15-minute slot overlaps with the event
-          // A slot is unavailable if it starts before the event ends AND ends after the event starts
+          // A slot is unavailable if it overlaps with the event
+          // We use <= and >= to allow bookings exactly when events end/start
+          // So if an event ends at 12:45, a slot starting at 12:45 is available
           if (slotStart < eventEnd && slotEnd > eventStart) {
             const timeString = `${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}`;
             unavailableSlots.add(timeString);
@@ -220,6 +302,7 @@ export async function getUnavailableTimeSlots(date: string): Promise<string[]> {
 /**
  * Checks if a time slot is available in the calendar
  * Returns true if the slot is free, false if there's a conflict
+ * Allows bookings exactly when another appointment ends (no buffer before)
  */
 export async function checkAvailability(date: string, time: string, duration: number = 60): Promise<boolean> {
   const calendar = createCalendarClient();
@@ -228,12 +311,17 @@ export async function checkAvailability(date: string, time: string, duration: nu
   const [year, month, day] = date.split('-').map(Number);
   const [hours, minutes] = time.split(':').map(Number);
   
-  const requestedDateTime = new Date(year, month - 1, day, hours, minutes);
-  const timeMin = new Date(requestedDateTime);
-  timeMin.setMinutes(timeMin.getMinutes() - 15); // Check 15 min before
+  const requestedStartTime = new Date(year, month - 1, day, hours, minutes);
+  const requestedEndTime = new Date(requestedStartTime);
+  requestedEndTime.setMinutes(requestedEndTime.getMinutes() + duration);
   
-  const timeMax = new Date(requestedDateTime);
-  timeMax.setMinutes(timeMax.getMinutes() + duration + 15); // Check duration + 15 min buffer
+  // Check for events that overlap with the requested slot
+  // We check slightly before and after to catch any overlaps
+  const timeMin = new Date(requestedStartTime);
+  timeMin.setSeconds(timeMin.getSeconds() - 1); // Check 1 second before to catch overlapping events
+  
+  const timeMax = new Date(requestedEndTime);
+  timeMax.setSeconds(timeMax.getSeconds() + 1); // Check 1 second after to catch overlapping events
 
   try {
     const response = await calendar.events.list({
@@ -244,8 +332,23 @@ export async function checkAvailability(date: string, time: string, duration: nu
       orderBy: 'startTime',
     });
 
-    // If there are any events in this time window, the slot is not available
-    return (response.data.items?.length || 0) === 0;
+    const events = response.data.items || [];
+    
+    // Check if any event actually overlaps with our requested time slot
+    for (const event of events) {
+      if (!event.start?.dateTime || !event.end?.dateTime) continue;
+      
+      const eventStart = new Date(event.start.dateTime);
+      const eventEnd = new Date(event.end.dateTime);
+      
+      // An event overlaps if it starts before our slot ends AND ends after our slot starts
+      // We use <= for eventEnd and >= for eventStart to allow bookings exactly when events end/start
+      if (eventStart < requestedEndTime && eventEnd > requestedStartTime) {
+        return false; // Conflict found
+      }
+    }
+
+    return true; // No conflicts found
   } catch (error) {
     console.error('Error checking calendar availability:', error);
     // In case of error, assume slot is available (fail open)

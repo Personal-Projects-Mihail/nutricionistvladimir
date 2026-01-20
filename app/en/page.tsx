@@ -52,9 +52,9 @@ export default function HomePageEN() {
             <div className="absolute bottom-20 left-10 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
           </div>
 
-          <div className="container-custom relative z-10 py-4">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-              <div className="space-y-6 pt-4 flex flex-col">
+          <div className="container-custom relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 pt-4">
+              <div className="space-y-6">
                 <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight m-0">
                   Your journey to{' '}
                   <span className="text-primary relative inline-block">
@@ -84,19 +84,17 @@ export default function HomePageEN() {
               </div>
 
               {/* Right Illustration */}
-              <div className="relative flex items-start">
-                <div className="relative z-10 w-full max-w-lg mx-auto">
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-primary/10 rounded-full blur-2xl"></div>
-                  <div className="relative rounded-3xl overflow-hidden">
-                    <Image
-                      src="/front-page/vladimir.png"
-                      alt="Vladimir - Registered Nutritionist"
-                      width={600}
-                      height={600}
-                      className="object-cover w-full h-auto object-top m-0"
-                      priority
-                    />
-                  </div>
+              <div className="relative w-full max-w-lg">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-primary/10 rounded-full blur-2xl -z-10"></div>
+                <div className="overflow-hidden rounded-3xl">
+                  <Image
+                    src="/front-page/vladimir.png"
+                    alt="Vladimir - Registered Nutritionist"
+                    width={600}
+                    height={600}
+                    className="object-cover w-full h-auto object-top block mt-0 md:-mt-32 lg:-mt-36"
+                    priority
+                  />
                 </div>
               </div>
             </div>
@@ -108,20 +106,20 @@ export default function HomePageEN() {
           <div className="container-custom">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               <div className="text-center">
-                <div className="text-4xl md:text-5xl font-bold mb-2">200+</div>
+                <div className="text-4xl md:text-5xl font-bold mb-2">100+</div>
                 <div className="text-white/90">Clients</div>
               </div>
               <div className="text-center">
-                <div className="text-4xl md:text-5xl font-bold mb-2">95%</div>
-                <div className="text-white/90">Success Rate</div>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl md:text-5xl font-bold mb-2">5+</div>
+                <div className="text-4xl md:text-5xl font-bold mb-2">2+</div>
                 <div className="text-white/90">Years Experience</div>
               </div>
               <div className="text-center">
-                <div className="text-4xl md:text-5xl font-bold mb-2">4.9</div>
-                <div className="text-white/90">Average Rating</div>
+                <div className="text-4xl md:text-5xl font-bold mb-2">100%</div>
+                <div className="text-white/90">Personalized Program</div>
+              </div>
+              <div className="text-center">
+                <div className="text-4xl md:text-5xl font-bold mb-2">24/7</div>
+                <div className="text-white/90">Support</div>
               </div>
             </div>
           </div>

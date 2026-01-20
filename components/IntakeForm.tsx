@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 interface IntakeFormProps {
   lang: 'mk' | 'en';
@@ -11,6 +11,8 @@ interface FormData {
   lastName: string;
   phone: string;
   email: string;
+  date: string;
+  time: string;
 }
 
 export default function IntakeForm({ lang }: IntakeFormProps) {
@@ -19,11 +21,15 @@ export default function IntakeForm({ lang }: IntakeFormProps) {
     lastName: '',
     phone: '',
     email: '',
+    date: '',
+    time: '',
   });
 
   const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [availableTimes, setAvailableTimes] = useState<string[]>([]);
+  const [loadingTimes, setLoadingTimes] = useState(false);
 
   const content = {
     mk: {
@@ -32,12 +38,19 @@ export default function IntakeForm({ lang }: IntakeFormProps) {
       lastName: 'Презиме',
       phone: 'Телефон',
       email: 'Е-маил',
+      date: 'Датум',
+      time: 'Време',
       submit: 'Испрати',
       submitting: 'Се праќа...',
       successMessage: 'Благодариме! Вашите информации се примени. Ќе ве контактираме наскоро.',
       errorMessage: 'Се појави грешка. Ве молиме обидете се повторно.',
       required: 'Ова поле е задолжително',
       invalidEmail: 'Внесете валидна е-маил адреса',
+      selectDate: 'Изберете датум',
+      selectTime: 'Изберете време',
+      loadingTimes: 'Се вчитуваат достапни времиња...',
+      noTimesAvailable: 'Нема достапни времиња за овој датум',
+      appointmentNote: 'Секоја консултација трае 45 минути.',
     },
     en: {
       title: 'Please fill in these brief information about you',
@@ -45,16 +58,118 @@ export default function IntakeForm({ lang }: IntakeFormProps) {
       lastName: 'Last Name',
       phone: 'Phone',
       email: 'Email',
+      date: 'Date',
+      time: 'Time',
       submit: 'Submit',
       submitting: 'Submitting...',
       successMessage: 'Thank you! Your information has been received. We will contact you soon.',
       errorMessage: 'An error occurred. Please try again.',
       required: 'This field is required',
       invalidEmail: 'Please enter a valid email address',
+      selectDate: 'Select a date',
+      selectTime: 'Select a time',
+      loadingTimes: 'Loading available times...',
+      noTimesAvailable: 'No available times for this date',
+      appointmentNote: 'Each appointment is 45 minutes long.',
     },
   };
 
   const t = content[lang];
+
+  // Generate available time slots (09:00 to 17:00, excluding unavailable ones)
+  useEffect(() => {
+    const fetchAvailableTimes = async () => {
+      if (!formData.date) {
+        setAvailableTimes([]);
+        return;
+      }
+
+      setLoadingTimes(true);
+      try {
+        // Fetch unavailable slots for the selected date
+        const response = await fetch(`/api/unavailable-slots?date=${formData.date}`);
+        const data = await response.json();
+
+        if (data.success) {
+          const unavailableSlots = new Set(data.unavailableSlots || []);
+          const times: string[] = [];
+          
+          // Generate time slots from 09:00 to 16:30 (each slot is 45 minutes)
+          // Check every 15-minute interval starting from 09:00
+          for (let hour = 9; hour <= 16; hour++) {
+            for (let minute = 0; minute < 60; minute += 15) {
+              // Calculate end time (45 minutes later)
+              const endHour = minute + 45 >= 60 ? hour + 1 : hour;
+              const endMinute = minute + 45 >= 60 ? (minute + 45) % 60 : minute + 45;
+              
+              // Don't allow slots that end after 17:00
+              if (endHour > 17 || (endHour === 17 && endMinute > 0)) {
+                break;
+              }
+
+              const timeString = `${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}`;
+              
+              // Check if this slot conflicts with any unavailable 15-minute intervals
+              let isAvailable = true;
+              
+              // Check all 15-minute intervals within this 45-minute slot
+              let checkHour = hour;
+              let checkMinute = minute;
+              
+              for (let i = 0; i < 3; i++) {
+                const checkTimeString = `${checkHour.toString().padStart(2, '0')}:${checkMinute.toString().padStart(2, '0')}`;
+                if (unavailableSlots.has(checkTimeString)) {
+                  isAvailable = false;
+                  break;
+                }
+                
+                // Move to next 15-minute interval
+                checkMinute += 15;
+                if (checkMinute >= 60) {
+                  checkMinute = 0;
+                  checkHour += 1;
+                }
+              }
+              
+              if (isAvailable) {
+                times.push(timeString);
+              }
+            }
+          }
+
+          setAvailableTimes(times.sort());
+        }
+      } catch (error) {
+        console.error('Error fetching available times:', error);
+        // On error, show all possible times
+        const allTimes: string[] = [];
+        for (let hour = 9; hour <= 16; hour++) {
+          for (let minute = 0; minute < 60; minute += 15) {
+            const endHour = minute + 45 >= 60 ? hour + 1 : hour;
+            const endMinute = minute + 45 >= 60 ? (minute + 45) % 60 : minute + 45;
+            if (endHour < 17 || (endHour === 17 && endMinute === 0)) {
+              const timeString = `${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}`;
+              if (!allTimes.includes(timeString)) {
+                allTimes.push(timeString);
+              }
+            }
+          }
+        }
+        setAvailableTimes(allTimes.sort());
+      } finally {
+        setLoadingTimes(false);
+      }
+    };
+
+    fetchAvailableTimes();
+  }, [formData.date]);
+
+  // Reset time when date changes
+  useEffect(() => {
+    if (formData.date) {
+      setFormData(prev => ({ ...prev, time: '' }));
+    }
+  }, [formData.date]);
 
   const validateForm = (): boolean => {
     const newErrors: Partial<Record<keyof FormData, string>> = {};
@@ -80,6 +195,14 @@ export default function IntakeForm({ lang }: IntakeFormProps) {
       }
     }
 
+    if (!formData.date.trim()) {
+      newErrors.date = t.required;
+    }
+
+    if (!formData.time.trim()) {
+      newErrors.time = t.required;
+    }
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -101,7 +224,12 @@ export default function IntakeForm({ lang }: IntakeFormProps) {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          ...formData,
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          phone: formData.phone,
+          email: formData.email,
+          date: formData.date,
+          time: formData.time,
           lang,
         }),
       });
@@ -119,6 +247,8 @@ export default function IntakeForm({ lang }: IntakeFormProps) {
         lastName: '',
         phone: '',
         email: '',
+        date: '',
+        time: '',
       });
     } catch (error: any) {
       console.error('Form submission error:', error);
@@ -129,7 +259,7 @@ export default function IntakeForm({ lang }: IntakeFormProps) {
   };
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target;
     const stringValue = value || '';
@@ -138,6 +268,12 @@ export default function IntakeForm({ lang }: IntakeFormProps) {
     if (errors[name as keyof FormData]) {
       setErrors((prev) => ({ ...prev, [name]: undefined }));
     }
+  };
+
+  // Get minimum date (today)
+  const getMinDate = () => {
+    const today = new Date();
+    return today.toISOString().split('T')[0];
   };
 
   return (
@@ -261,6 +397,71 @@ export default function IntakeForm({ lang }: IntakeFormProps) {
           {errors.phone && (
             <p className="mt-1 text-sm text-red-500">{errors.phone}</p>
           )}
+        </div>
+
+        {/* Date */}
+        <div>
+          <label htmlFor="date" className="block text-sm font-medium text-text mb-2">
+            {t.date} <span className="text-red-500">*</span>
+          </label>
+          <input
+            type="date"
+            id="date"
+            name="date"
+            value={formData.date}
+            onChange={handleChange}
+            min={getMinDate()}
+            className={`w-full px-4 py-3 rounded-lg border ${
+              errors.date ? 'border-red-500' : 'border-border'
+            } bg-background text-text focus:outline-none focus:ring-2 focus:ring-primary`}
+            required
+          />
+          {errors.date && (
+            <p className="mt-1 text-sm text-red-500">{errors.date}</p>
+          )}
+        </div>
+
+        {/* Time */}
+        <div>
+          <label htmlFor="time" className="block text-sm font-medium text-text mb-2">
+            {t.time} <span className="text-red-500">*</span>
+          </label>
+          <select
+            id="time"
+            name="time"
+            value={formData.time}
+            onChange={handleChange}
+            disabled={!formData.date || loadingTimes}
+            className={`w-full px-4 py-3 rounded-lg border ${
+              errors.time ? 'border-red-500' : 'border-border'
+            } bg-background text-text focus:outline-none focus:ring-2 focus:ring-primary disabled:opacity-50 disabled:cursor-not-allowed`}
+            required
+          >
+            <option value="">
+              {loadingTimes ? t.loadingTimes : !formData.date ? t.selectDate : t.selectTime}
+            </option>
+            {availableTimes.length > 0 ? (
+              availableTimes.map((time) => (
+                <option key={time} value={time}>
+                  {time}
+                </option>
+              ))
+            ) : formData.date && !loadingTimes ? (
+              <option value="" disabled>
+                {t.noTimesAvailable}
+              </option>
+            ) : null}
+          </select>
+          {errors.time && (
+            <p className="mt-1 text-sm text-red-500">{errors.time}</p>
+          )}
+        </div>
+
+        {/* Appointment Note */}
+        <div className="p-2 px-4 bg-blue-50 dark:bg-blue-900/10 border border-blue-200 dark:border-blue-800 rounded-lg flex items-center">
+          <p className="text-sm text-blue-700 dark:text-blue-300 m-0">
+            <strong>{t.appointmentNote}</strong>
+          </p>
         </div>
 
         {/* Submit Button */}

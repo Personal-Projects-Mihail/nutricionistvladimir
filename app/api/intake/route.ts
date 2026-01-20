@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { sendIntakeFormEmail, sendIntakeFormConfirmationToClient, type IntakeFormData } from '@/lib/services/email';
+import { addIntakeFormToCalendar, checkAvailability } from '@/lib/services/calendar';
 
 /**
  * POST /api/intake
@@ -13,7 +14,7 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
 
     // Validate required fields
-    const requiredFields = ['firstName', 'lastName', 'phone', 'email'];
+    const requiredFields = ['firstName', 'lastName', 'phone', 'email', 'date', 'time'];
 
     for (const field of requiredFields) {
       if (!body[field]) {
@@ -39,6 +40,30 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Validate date format
+    const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
+    if (!dateRegex.test(body.date)) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: 'Invalid date format. Use YYYY-MM-DD'
+        },
+        { status: 400 }
+      );
+    }
+
+    // Validate time format
+    const timeRegex = /^\d{2}:\d{2}$/;
+    if (!timeRegex.test(body.time)) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: 'Invalid time format. Use HH:MM'
+        },
+        { status: 400 }
+      );
+    }
+
     const intakeData: IntakeFormData = {
       firstName: body.firstName,
       lastName: body.lastName,
@@ -46,6 +71,58 @@ export async function POST(request: NextRequest) {
       email: body.email,
       lang: body.lang || 'en',
     };
+
+    // Check if calendar is configured
+    const isCalendarConfigured = process.env.GOOGLE_CLIENT_ID && 
+                                 process.env.GOOGLE_CLIENT_SECRET && 
+                                 process.env.GOOGLE_REFRESH_TOKEN;
+
+    let calendarLink = '';
+    let availabilityChecked = false;
+
+    // Check calendar availability if configured
+    if (isCalendarConfigured && process.env.CHECK_AVAILABILITY === 'true') {
+      try {
+        const isAvailable = await checkAvailability(
+          body.date, 
+          body.time,
+          45 // 45-minute duration for intake form appointments
+        );
+        
+        availabilityChecked = true;
+        
+        if (!isAvailable) {
+          return NextResponse.json(
+            { 
+              success: false, 
+              error: 'The requested time slot is not available. Please choose a different time.',
+              code: 'SLOT_UNAVAILABLE'
+            },
+            { status: 409 }
+          );
+        }
+      } catch (error) {
+        console.error('Availability check failed:', error);
+        // Continue with booking even if availability check fails
+      }
+    }
+
+    // Add to Google Calendar if configured
+    if (isCalendarConfigured) {
+      try {
+        calendarLink = await addIntakeFormToCalendar({
+          fullName: `${body.firstName} ${body.lastName}`,
+          email: body.email,
+          phone: body.phone,
+          preferredDate: body.date,
+          preferredTime: body.time,
+        });
+        console.log('✅ Intake form event added to Google Calendar');
+      } catch (error: any) {
+        console.error('❌ Failed to add intake form event to calendar:', error);
+        // Continue even if calendar creation fails
+      }
+    }
 
     // Check if email is configured
     const isEmailConfigured = process.env.EMAIL_USER &&
@@ -91,6 +168,9 @@ export async function POST(request: NextRequest) {
       success: true,
       message: 'Contact form submitted successfully',
       emailSent: true,
+      calendarEventCreated: !!calendarLink,
+      calendarLink: calendarLink || undefined,
+      availabilityChecked,
     });
 
   } catch (error: any) {
