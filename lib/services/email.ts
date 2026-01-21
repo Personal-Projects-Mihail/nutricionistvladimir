@@ -470,6 +470,8 @@ export interface IntakeFormData {
   lastName: string;
   phone: string;
   email: string;
+  date: string;
+  time: string;
   lang?: 'mk' | 'en';
 }
 
@@ -528,6 +530,12 @@ function generateIntakeFormEmailHTML(data: IntakeFormData): string {
       color: #1a1a1a;
       margin-bottom: 15px;
     }
+    .highlight {
+      background-color: #fff9e6;
+      padding: 15px;
+      border-left: 4px solid #A8DF8E;
+      margin: 20px 0;
+    }
     .footer {
       margin-top: 30px;
       padding-top: 20px;
@@ -542,6 +550,13 @@ function generateIntakeFormEmailHTML(data: IntakeFormData): string {
   <div class="container">
     <div class="header">
       <h1>📋 New Contact Form Submission</h1>
+    </div>
+
+    <div class="highlight">
+      <div class="label">Requested Date & Time / Датум и време</div>
+      <div class="value" style="font-size: 18px; font-weight: 600;">
+        📅 ${data.date} at ${data.time}
+      </div>
     </div>
 
     <div class="section">
@@ -581,10 +596,12 @@ export async function sendIntakeFormEmail(data: IntakeFormData): Promise<void> {
     const mailOptions = {
       from: `"Nutritionist Website" <${process.env.EMAIL_USER}>`,
       to: process.env.NUTRITIONIST_EMAIL || 'nutricionistvladimir@gmail.com',
-      subject: `📋 New Contact - ${fullName}`,
+      subject: `📋 New Contact - ${fullName} (${data.date})`,
       html: generateIntakeFormEmailHTML(data),
       text: `
 New Contact Form Submission
+
+Requested Date & Time: ${data.date} at ${data.time}
 
 First Name: ${data.firstName}
 Last Name: ${data.lastName}
@@ -661,6 +678,19 @@ function generateIntakeFormConfirmationEmailHTML(data: IntakeFormData, lang: 'mk
       border-radius: 8px;
       margin: 20px 0;
     }
+    .highlight {
+      background-color: #f0fbe8;
+      padding: 20px;
+      border-radius: 8px;
+      margin: 20px 0;
+      text-align: center;
+    }
+    .highlight-large {
+      font-size: 20px;
+      font-weight: 600;
+      color: #2d5016;
+      margin: 10px 0;
+    }
   </style>
 </head>
 <body>
@@ -675,6 +705,12 @@ function generateIntakeFormConfirmationEmailHTML(data: IntakeFormData, lang: 'mk
       <p>${isMacedonian
         ? 'Благодариме! Вашите информации се примени. Ќе ве контактираме наскоро.'
         : 'Thank you! Your information has been received. We will contact you soon.'}</p>
+    </div>
+
+    <div class="highlight">
+      <div style="color: #666; font-size: 14px; margin-bottom: 5px;">${isMacedonian ? 'ДАТУМ И ВРЕМЕ НА ТЕРМИНОТ' : 'REQUESTED DATE & TIME'}</div>
+      <div class="highlight-large">📅 ${data.date}</div>
+      <div class="highlight-large">🕐 ${data.time}</div>
     </div>
 
     <div class="contact-info">
@@ -725,6 +761,8 @@ ${isMacedonian ? `Почитуван/а ${fullName},` : `Dear ${fullName},`}
 ${isMacedonian
   ? 'Благодариме! Вашите информации се примени. Ќе ве контактираме наскоро.'
   : 'Thank you! Your information has been received. We will contact you soon.'}
+
+${isMacedonian ? 'Датум и време на терминот:' : 'Requested Date & Time:'} ${data.date} at ${data.time}
 
 ${isMacedonian ? 'Што се случува потоа?' : 'What happens next?'}
 - ${isMacedonian ? 'Ќе ве контактираме во рок од 24 часа' : 'We will contact you within 24 hours'}

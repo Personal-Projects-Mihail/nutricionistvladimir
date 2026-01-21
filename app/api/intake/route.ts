@@ -69,6 +69,8 @@ export async function POST(request: NextRequest) {
       lastName: body.lastName,
       phone: body.phone,
       email: body.email,
+      date: body.date,
+      time: body.time,
       lang: body.lang || 'en',
     };
 
