@@ -59,7 +59,7 @@ export default function IntakeForm({ lang }: IntakeFormProps) {
       {/* Calendly Inline Widget */}
       <div
         className="calendly-inline-widget rounded-lg overflow-hidden"
-        data-url="https://calendly.com/nutricionistvladimir/30min?hide_gdpr_banner=1"
+        data-url="https://calendly.com/nutricionistvladimir/45min?hide_gdpr_banner=1"
         style={{ minWidth: '320px', height: '950px' }}
       />
     </div>
