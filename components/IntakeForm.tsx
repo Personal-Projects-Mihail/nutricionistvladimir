@@ -1,478 +1,67 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 
 interface IntakeFormProps {
   lang: 'mk' | 'en';
 }
 
-interface FormData {
-  firstName: string;
-  lastName: string;
-  phone: string;
-  email: string;
-  date: string;
-  time: string;
+declare global {
+  interface Window {
+    Calendly?: {
+      initInlineWidget: (options: {
+        url: string;
+        parentElement: Element;
+        prefill?: Record<string, string>;
+        utm?: Record<string, string>;
+      }) => void;
+    };
+  }
 }
 
 export default function IntakeForm({ lang }: IntakeFormProps) {
-  const [formData, setFormData] = useState<FormData>({
-    firstName: '',
-    lastName: '',
-    phone: '',
-    email: '',
-    date: '',
-    time: '',
-  });
-
-  const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
-  const [availableTimes, setAvailableTimes] = useState<string[]>([]);
-  const [loadingTimes, setLoadingTimes] = useState(false);
-
   const content = {
     mk: {
-      title: 'Пополнете ги овие кратки информации за вас',
-      firstName: 'Име',
-      lastName: 'Презиме',
-      phone: 'Телефон',
-      email: 'Е-маил',
-      date: 'Датум',
-      time: 'Време',
-      submit: 'Испрати',
-      submitting: 'Се праќа...',
-      successMessage: 'Благодариме! Вашите информации се примени. Ќе ве контактираме наскоро.',
-      errorMessage: 'Се појави грешка. Ве молиме обидете се повторно.',
-      required: 'Ова поле е задолжително',
-      invalidEmail: 'Внесете валидна е-маил адреса',
-      selectDate: 'Изберете датум',
-      selectTime: 'Изберете време',
-      loadingTimes: 'Се вчитуваат достапни времиња...',
-      noTimesAvailable: 'Нема достапни времиња за овој датум',
-      appointmentNote: 'Секоја консултација трае 45 минути.',
+      title: 'Закажете консултација',
+      subtitle: 'Изберете време кое ви одговара',
     },
     en: {
-      title: 'Please fill in these brief information about you',
-      firstName: 'First Name',
-      lastName: 'Last Name',
-      phone: 'Phone',
-      email: 'Email',
-      date: 'Date',
-      time: 'Time',
-      submit: 'Submit',
-      submitting: 'Submitting...',
-      successMessage: 'Thank you! Your information has been received. We will contact you soon.',
-      errorMessage: 'An error occurred. Please try again.',
-      required: 'This field is required',
-      invalidEmail: 'Please enter a valid email address',
-      selectDate: 'Select a date',
-      selectTime: 'Select a time',
-      loadingTimes: 'Loading available times...',
-      noTimesAvailable: 'No available times for this date',
-      appointmentNote: 'Each appointment is 45 minutes long.',
+      title: 'Book a consultation',
+      subtitle: 'Choose a time that works for you',
     },
   };
 
   const t = content[lang];
 
-  // Generate available time slots (09:00 to 17:00, excluding unavailable ones)
   useEffect(() => {
-    const fetchAvailableTimes = async () => {
-      if (!formData.date) {
-        setAvailableTimes([]);
-        return;
-      }
+    // Load Calendly widget script
+    const script = document.createElement('script');
+    script.src = 'https://assets.calendly.com/assets/external/widget.js';
+    script.async = true;
+    document.body.appendChild(script);
 
-      setLoadingTimes(true);
-      try {
-        // Fetch unavailable slots for the selected date
-        const response = await fetch(`/api/unavailable-slots?date=${formData.date}`);
-        const data = await response.json();
-
-        if (data.success) {
-          const unavailableSlots = new Set(data.unavailableSlots || []);
-          const times: string[] = [];
-          
-          // Generate time slots from 09:00 to 16:30 (each slot is 45 minutes)
-          // Check every 15-minute interval starting from 09:00
-          for (let hour = 9; hour <= 16; hour++) {
-            for (let minute = 0; minute < 60; minute += 15) {
-              // Calculate end time (45 minutes later)
-              const endHour = minute + 45 >= 60 ? hour + 1 : hour;
-              const endMinute = minute + 45 >= 60 ? (minute + 45) % 60 : minute + 45;
-              
-              // Don't allow slots that end after 17:00
-              if (endHour > 17 || (endHour === 17 && endMinute > 0)) {
-                break;
-              }
-
-              const timeString = `${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}`;
-              
-              // Check if this slot conflicts with any unavailable 15-minute intervals
-              let isAvailable = true;
-              
-              // Check all 15-minute intervals within this 45-minute slot
-              let checkHour = hour;
-              let checkMinute = minute;
-              
-              for (let i = 0; i < 3; i++) {
-                const checkTimeString = `${checkHour.toString().padStart(2, '0')}:${checkMinute.toString().padStart(2, '0')}`;
-                if (unavailableSlots.has(checkTimeString)) {
-                  isAvailable = false;
-                  break;
-                }
-                
-                // Move to next 15-minute interval
-                checkMinute += 15;
-                if (checkMinute >= 60) {
-                  checkMinute = 0;
-                  checkHour += 1;
-                }
-              }
-              
-              if (isAvailable) {
-                times.push(timeString);
-              }
-            }
-          }
-
-          setAvailableTimes(times.sort());
-        }
-      } catch (error) {
-        console.error('Error fetching available times:', error);
-        // On error, show all possible times
-        const allTimes: string[] = [];
-        for (let hour = 9; hour <= 16; hour++) {
-          for (let minute = 0; minute < 60; minute += 15) {
-            const endHour = minute + 45 >= 60 ? hour + 1 : hour;
-            const endMinute = minute + 45 >= 60 ? (minute + 45) % 60 : minute + 45;
-            if (endHour < 17 || (endHour === 17 && endMinute === 0)) {
-              const timeString = `${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}`;
-              if (!allTimes.includes(timeString)) {
-                allTimes.push(timeString);
-              }
-            }
-          }
-        }
-        setAvailableTimes(allTimes.sort());
-      } finally {
-        setLoadingTimes(false);
+    return () => {
+      // Cleanup script on unmount
+      const existingScript = document.querySelector('script[src="https://assets.calendly.com/assets/external/widget.js"]');
+      if (existingScript) {
+        existingScript.remove();
       }
     };
-
-    fetchAvailableTimes();
-  }, [formData.date]);
-
-  // Reset time when date changes
-  useEffect(() => {
-    if (formData.date) {
-      setFormData(prev => ({ ...prev, time: '' }));
-    }
-  }, [formData.date]);
-
-  const validateForm = (): boolean => {
-    const newErrors: Partial<Record<keyof FormData, string>> = {};
-
-    if (!formData.firstName.trim()) {
-      newErrors.firstName = t.required;
-    }
-
-    if (!formData.lastName.trim()) {
-      newErrors.lastName = t.required;
-    }
-
-    if (!formData.phone.trim()) {
-      newErrors.phone = t.required;
-    }
-
-    if (!formData.email.trim()) {
-      newErrors.email = t.required;
-    } else {
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(formData.email.trim())) {
-        newErrors.email = t.invalidEmail;
-      }
-    }
-
-    if (!formData.date.trim()) {
-      newErrors.date = t.required;
-    }
-
-    if (!formData.time.trim()) {
-      newErrors.time = t.required;
-    }
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    if (!validateForm()) {
-      return;
-    }
-
-    setIsSubmitting(true);
-    setSubmitStatus('idle');
-
-    try {
-      const response = await fetch('/api/intake', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          firstName: formData.firstName,
-          lastName: formData.lastName,
-          phone: formData.phone,
-          email: formData.email,
-          date: formData.date,
-          time: formData.time,
-          lang,
-        }),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error || 'Failed to submit intake form');
-      }
-
-      setSubmitStatus('success');
-
-      setFormData({
-        firstName: '',
-        lastName: '',
-        phone: '',
-        email: '',
-        date: '',
-        time: '',
-      });
-    } catch (error: any) {
-      console.error('Form submission error:', error);
-      setSubmitStatus('error');
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) => {
-    const { name, value } = e.target;
-    const stringValue = value || '';
-    setFormData((prev) => ({ ...prev, [name]: stringValue }));
-
-    if (errors[name as keyof FormData]) {
-      setErrors((prev) => ({ ...prev, [name]: undefined }));
-    }
-  };
-
-  // Get minimum date (today)
-  const getMinDate = () => {
-    const today = new Date();
-    return today.toISOString().split('T')[0];
-  };
+  }, []);
 
   return (
-    <>
-      {/* Success Modal Popup */}
-      {submitStatus === 'success' && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in">
-          <div className="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full mx-4 p-8 text-center animate-scale-in">
-            <div className="mb-6">
-              <div className="w-16 h-16 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-green-600 dark:text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                </svg>
-              </div>
-              <h3 className="text-2xl font-bold text-text mb-2">
-                {lang === 'mk' ? 'Успешно!' : 'Success!'}
-              </h3>
-            </div>
-            <p className="text-lg text-text-secondary mb-6 leading-relaxed">
-              {t.successMessage}
-            </p>
-            <button
-              onClick={() => setSubmitStatus('idle')}
-              className="w-full bg-primary hover:bg-primary-600 text-white font-semibold px-6 py-3 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
-            >
-              {lang === 'mk' ? 'Затвори' : 'Close'}
-            </button>
-          </div>
-        </div>
-      )}
+    <div className="w-full">
+      <div className="text-center mb-6">
+        <h2 className="text-2xl md:text-3xl font-bold text-text mb-2">{t.title}</h2>
+        <p className="text-text-secondary">{t.subtitle}</p>
+      </div>
 
-      <form onSubmit={handleSubmit} className="space-y-6 max-w-3xl mx-auto">
-        <h2 className="text-2xl md:text-3xl font-bold text-text mb-6">{t.title}</h2>
-
-        {/* Error Message */}
-        {submitStatus === 'error' && (
-          <div className="p-4 bg-red-50 dark:bg-red-900/10 border border-red-200 dark:border-red-800 rounded-lg">
-            <p className="text-red-600 dark:text-red-400 font-medium">{t.errorMessage}</p>
-          </div>
-        )}
-
-        {/* First Name */}
-        <div>
-          <label htmlFor="firstName" className="block text-sm font-medium text-text mb-2">
-            {t.firstName} <span className="text-red-500">*</span>
-          </label>
-          <input
-            type="text"
-            id="firstName"
-            name="firstName"
-            value={formData.firstName}
-            onChange={handleChange}
-            className={`w-full px-4 py-3 rounded-lg border ${
-              errors.firstName ? 'border-red-500' : 'border-border'
-            } bg-background text-text focus:outline-none focus:ring-2 focus:ring-primary`}
-            required
-          />
-          {errors.firstName && (
-            <p className="mt-1 text-sm text-red-500">{errors.firstName}</p>
-          )}
-        </div>
-
-        {/* Last Name */}
-        <div>
-          <label htmlFor="lastName" className="block text-sm font-medium text-text mb-2">
-            {t.lastName} <span className="text-red-500">*</span>
-          </label>
-          <input
-            type="text"
-            id="lastName"
-            name="lastName"
-            value={formData.lastName}
-            onChange={handleChange}
-            className={`w-full px-4 py-3 rounded-lg border ${
-              errors.lastName ? 'border-red-500' : 'border-border'
-            } bg-background text-text focus:outline-none focus:ring-2 focus:ring-primary`}
-            required
-          />
-          {errors.lastName && (
-            <p className="mt-1 text-sm text-red-500">{errors.lastName}</p>
-          )}
-        </div>
-
-        {/* Email */}
-        <div>
-          <label htmlFor="email" className="block text-sm font-medium text-text mb-2">
-            {t.email} <span className="text-red-500">*</span>
-          </label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            className={`w-full px-4 py-3 rounded-lg border ${
-              errors.email ? 'border-red-500' : 'border-border'
-            } bg-background text-text focus:outline-none focus:ring-2 focus:ring-primary`}
-            required
-          />
-          {errors.email && (
-            <p className="mt-1 text-sm text-red-500">{errors.email}</p>
-          )}
-        </div>
-
-        {/* Phone */}
-        <div>
-          <label htmlFor="phone" className="block text-sm font-medium text-text mb-2">
-            {t.phone} <span className="text-red-500">*</span>
-          </label>
-          <input
-            type="tel"
-            id="phone"
-            name="phone"
-            value={formData.phone}
-            onChange={handleChange}
-            className={`w-full px-4 py-3 rounded-lg border ${
-              errors.phone ? 'border-red-500' : 'border-border'
-            } bg-background text-text focus:outline-none focus:ring-2 focus:ring-primary`}
-            required
-          />
-          {errors.phone && (
-            <p className="mt-1 text-sm text-red-500">{errors.phone}</p>
-          )}
-        </div>
-
-        {/* Date */}
-        <div>
-          <label htmlFor="date" className="block text-sm font-medium text-text mb-2">
-            {t.date} <span className="text-red-500">*</span>
-          </label>
-          <input
-            type="date"
-            id="date"
-            name="date"
-            value={formData.date}
-            onChange={handleChange}
-            min={getMinDate()}
-            className={`w-full px-4 py-3 rounded-lg border ${
-              errors.date ? 'border-red-500' : 'border-border'
-            } bg-background text-text focus:outline-none focus:ring-2 focus:ring-primary`}
-            required
-          />
-          {errors.date && (
-            <p className="mt-1 text-sm text-red-500">{errors.date}</p>
-          )}
-        </div>
-
-        {/* Time */}
-        <div>
-          <label htmlFor="time" className="block text-sm font-medium text-text mb-2">
-            {t.time} <span className="text-red-500">*</span>
-          </label>
-          <select
-            id="time"
-            name="time"
-            value={formData.time}
-            onChange={handleChange}
-            disabled={!formData.date || loadingTimes}
-            className={`w-full px-4 py-3 rounded-lg border ${
-              errors.time ? 'border-red-500' : 'border-border'
-            } bg-background text-text focus:outline-none focus:ring-2 focus:ring-primary disabled:opacity-50 disabled:cursor-not-allowed`}
-            required
-          >
-            <option value="">
-              {loadingTimes ? t.loadingTimes : !formData.date ? t.selectDate : t.selectTime}
-            </option>
-            {availableTimes.length > 0 ? (
-              availableTimes.map((time) => (
-                <option key={time} value={time}>
-                  {time}
-                </option>
-              ))
-            ) : formData.date && !loadingTimes ? (
-              <option value="" disabled>
-                {t.noTimesAvailable}
-              </option>
-            ) : null}
-          </select>
-          {errors.time && (
-            <p className="mt-1 text-sm text-red-500">{errors.time}</p>
-          )}
-        </div>
-
-        {/* Appointment Note */}
-        <div className="p-2 px-4 bg-blue-50 dark:bg-blue-900/10 border border-blue-200 dark:border-blue-800 rounded-lg flex items-center">
-          <p className="text-sm text-blue-700 dark:text-blue-300 m-0">
-            <strong>{t.appointmentNote}</strong>
-          </p>
-        </div>
-
-        {/* Submit Button */}
-        <button
-          type="submit"
-          disabled={isSubmitting}
-          className="btn-primary w-full text-lg py-4 disabled:opacity-50 disabled:cursor-not-allowed"
-        >
-          {isSubmitting ? t.submitting : t.submit}
-        </button>
-      </form>
-    </>
+      {/* Calendly Inline Widget */}
+      <div
+        className="calendly-inline-widget rounded-lg overflow-hidden"
+        data-url="https://calendly.com/nutricionistvladimir/30min?hide_gdpr_banner=1"
+        style={{ minWidth: '320px', height: '950px' }}
+      />
+    </div>
   );
 }
