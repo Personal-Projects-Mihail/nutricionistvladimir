@@ -44,6 +44,8 @@ export async function POST(request: NextRequest) {
       lastName: 'User',
       phone: '+38970123456',
       email: 'mihailtalevtest@gmail.com',
+      date: new Date().toISOString().split('T')[0], // Today's date
+      time: '10:00',
       lang, // Use the selected language
     };
 
