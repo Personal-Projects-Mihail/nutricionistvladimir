@@ -5,13 +5,16 @@ This document details all animation and design enhancements made to the Nutritio
 
 ## Technology Stack Upgrades
 
-### 1. Tailwind CSS 4.0
-- **Upgraded from**: Tailwind CSS 3.4
-- **New Features**:
-  - `@tailwindcss/postcss` for Next.js 16 compatibility
-  - P3 Color Space support for modern displays
-  - Enhanced color vibrancy on compatible devices
-  - Improved CSS-in-JS integration
+### 1. Tailwind CSS 3.4 (Stable)
+- **Version**: Tailwind CSS 3.4.17 (stable, production-ready)
+- **Note**: Originally upgraded to Tailwind 4.0 alpha, but reverted to 3.4 for production stability
+- **Features Used**:
+  - Standard utility classes
+  - Custom animations via @keyframes
+  - CSS variables for theming
+  - Dark mode support
+  - Extended color palette
+  - P3 Color Space via CSS (see below)
 
 ### 2. Motion.dev / Framer Motion
 - **Package**: `framer-motion` (latest)
