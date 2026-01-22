@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ScrollProcessEN from '@/components/ScrollProcessEN';
+import SocialMediaLinks from '@/components/SocialMediaLinks';
 import { generateMetadata } from '@/lib/metadata';
 import {
   generatePersonSchema,
@@ -46,38 +47,38 @@ export default function HomePageEN() {
 
       <main id="main-content">
         {/* Hero Section */}
-        <section className="relative overflow-hidden bg-gradient-to-br from-primary/20 via-primary/10 to-background pt-4 pb-16">
+        <section className="relative overflow-hidden bg-primary-600 dark:bg-[#7AC45A] pt-4 pb-16">
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <div className="absolute top-10 right-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-pulse-glow"></div>
-            <div className="absolute bottom-20 left-10 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
+            <div className="absolute top-10 right-10 w-72 h-72 bg-white/10 rounded-full blur-3xl animate-pulse-glow"></div>
+            <div className="absolute bottom-20 left-10 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div>
           </div>
 
           <div className="container-custom relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 pt-4">
               <div className="space-y-6">
-                <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight m-0">
+                <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight m-0 text-text dark:text-[#1A1A1A]">
                   Your journey to{' '}
-                  <span className="text-primary relative inline-block">
+                  <span className="text-text dark:text-[#1A1A1A] relative inline-block">
                     healthy nutrition
                     <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 300 12" fill="none">
-                      <path d="M2 10 Q150 2, 298 10" stroke="#A8DF8E" strokeWidth="3" strokeLinecap="round" fill="none"/>
+                      <path d="M2 10 Q150 2, 298 10" stroke="#1a1a1a" strokeWidth="3" strokeLinecap="round" fill="none"/>
                     </svg>
                   </span>{' '}
                   starts here
                 </h1>
-                
-                <p className="text-xl text-text-secondary leading-relaxed">
+
+                <p className="text-xl text-text/80 dark:text-[#1A1A1A]/80 leading-relaxed">
                   Professional consultations based on evidence. Personalized approach for long-term results.
                 </p>
-                
+
                 <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                  <Link href="/en/booking" className="group relative overflow-hidden bg-primary hover:bg-primary-600 text-white font-semibold text-lg px-8 py-4 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 flex items-center justify-center gap-2">
+                  <Link href="/en/booking" className="group relative overflow-hidden bg-text dark:bg-[#1A1A1A] hover:bg-text/90 dark:hover:bg-[#1A1A1A]/90 text-white font-semibold text-lg px-8 py-4 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 flex items-center justify-center gap-2">
                     <span>Book Consultation</span>
                     <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                     </svg>
                   </Link>
-                  <Link href="/en/about" className="border-2 border-primary text-primary hover:bg-primary hover:text-white font-semibold text-lg px-8 py-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2">
+                  <Link href="/en/about" className="border-2 border-text dark:border-[#1A1A1A] text-text dark:text-[#1A1A1A] hover:bg-text dark:hover:bg-[#1A1A1A] hover:text-white font-semibold text-lg px-8 py-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2">
                     Get to Know Me
                   </Link>
                 </div>
@@ -102,7 +103,7 @@ export default function HomePageEN() {
         </section>
 
         {/* STATS BAR */}
-        <section className="py-12 bg-gradient-to-r from-primary via-primary-500 to-primary-600 text-white">
+        <section className="py-12 bg-primary-700 dark:bg-[#5DA945] text-white">
           <div className="container-custom">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               <div className="text-center">
@@ -291,6 +292,9 @@ export default function HomePageEN() {
             </div>
           </div>
         </section>
+
+        {/* SOCIAL MEDIA LINKS */}
+        <SocialMediaLinks lang="en" />
 
         {/* PROCESS ROADMAP - Scroll-based highlighting */}
         <ScrollProcessEN />
