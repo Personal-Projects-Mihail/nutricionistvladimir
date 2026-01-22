@@ -1,13 +1,8 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-/* Tailwind 4.0 with P3 Color Space Support */
-@media (color-gamut: p3) {
-  @supports (color: color(display-p3 1 1 1)) {
-    :root {
-      color-scheme: light dark;
-    }
-  }
-}
+/* Tailwind 3.4 with Enhanced Animations and P3 Color Support */
 
 /* ============================================
    DESIGN TOKEN SYSTEM - COLOR VARIABLES
