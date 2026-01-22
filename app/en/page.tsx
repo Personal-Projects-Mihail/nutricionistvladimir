@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ScrollProcessEN from '@/components/ScrollProcessEN';
+import SocialMediaLinks from '@/components/SocialMediaLinks';
 import { generateMetadata } from '@/lib/metadata';
 import {
   generatePersonSchema,
@@ -291,6 +292,9 @@ export default function HomePageEN() {
             </div>
           </div>
         </section>
+
+        {/* SOCIAL MEDIA LINKS */}
+        <SocialMediaLinks lang="en" />
 
         {/* PROCESS ROADMAP - Scroll-based highlighting */}
         <ScrollProcessEN />
