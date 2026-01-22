@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { motion, AnimatePresence } from 'framer-motion';
 import WeightLossIcon from '@/components/icons/WeightLossIcon';
 import HormoneIcon from '@/components/icons/HormoneIcon';
 import DumbbellIcon from '@/components/icons/DumbbellIcon';
@@ -46,17 +47,38 @@ export default function ExpandableServiceCards({ services, lang = 'mk' }: Expand
         const isExpanded = expandedIndex === idx;
         
         return (
-          <div
+          <motion.div
             key={idx}
-            className={`group relative overflow-hidden bg-white dark:bg-gray-800 rounded-lg md:rounded-xl shadow-sm transition-all duration-500 cursor-pointer ${
+            layout
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ 
+              duration: 0.4, 
+              delay: idx * 0.1,
+              layout: { duration: 0.5, ease: [0.22, 1, 0.36, 1] }
+            }}
+            className={`group relative overflow-hidden bg-white dark:bg-gray-800 rounded-lg md:rounded-xl shadow-sm cursor-pointer ${
               isExpanded ? 'md:col-span-5 rounded-3xl shadow-xl' : ''
             } ${!isExpanded ? 'hover:shadow-md' : ''}`}
             onClick={() => toggleCard(idx)}
+            whileHover={!isExpanded ? { scale: 1.02, transition: { duration: 0.2 } } : {}}
           >
-            <div className={`absolute inset-0 bg-gradient-to-br ${service.bgGradient} ${isExpanded ? 'opacity-50' : 'opacity-30'} dark:opacity-20 transition-opacity duration-500`}></div>
-            {isExpanded && (
-              <div className="absolute top-0 right-0 w-32 h-32 bg-white/20 rounded-full -mr-16 -mt-16 transition-transform duration-500"></div>
-            )}
+            <motion.div 
+              className={`absolute inset-0 bg-gradient-to-br ${service.bgGradient} dark:opacity-20`}
+              animate={{ opacity: isExpanded ? 0.5 : 0.3 }}
+              transition={{ duration: 0.5 }}
+            />
+            <AnimatePresence>
+              {isExpanded && (
+                <motion.div 
+                  initial={{ scale: 0, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  exit={{ scale: 0, opacity: 0 }}
+                  transition={{ duration: 0.4 }}
+                  className="absolute top-0 right-0 w-32 h-32 bg-white/20 rounded-full -mr-16 -mt-16"
+                />
+              )}
+            </AnimatePresence>
 
             <div className={`relative z-10 transition-all duration-500 ${isExpanded ? 'p-6' : 'px-4 py-3'}`}>
               {/* Header - Compact Preview or Full When Expanded */}
