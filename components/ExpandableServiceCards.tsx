@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import WeightLossIcon from '@/components/icons/WeightLossIcon';
 import HormoneIcon from '@/components/icons/HormoneIcon';
 import DumbbellIcon from '@/components/icons/DumbbellIcon';
@@ -68,17 +68,15 @@ export default function ExpandableServiceCards({ services, lang = 'mk' }: Expand
               animate={{ opacity: isExpanded ? 0.5 : 0.3 }}
               transition={{ duration: 0.5 }}
             />
-            <AnimatePresence>
-              {isExpanded && (
-                <motion.div 
-                  initial={{ scale: 0, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  exit={{ scale: 0, opacity: 0 }}
-                  transition={{ duration: 0.4 }}
-                  className="absolute top-0 right-0 w-32 h-32 bg-white/20 rounded-full -mr-16 -mt-16"
-                />
-              )}
-            </AnimatePresence>
+            {isExpanded && (
+              <motion.div 
+                initial={{ scale: 0, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0, opacity: 0 }}
+                transition={{ duration: 0.4 }}
+                className="absolute top-0 right-0 w-32 h-32 bg-white/20 rounded-full -mr-16 -mt-16"
+              />
+            )}
 
             <div className={`relative z-10 transition-all duration-500 ${isExpanded ? 'p-6' : 'px-4 py-3'}`}>
               {/* Header - Compact Preview or Full When Expanded */}
@@ -118,39 +116,67 @@ export default function ExpandableServiceCards({ services, lang = 'mk' }: Expand
               </div>
 
               {/* Expanded Content */}
-              <div
-                className={`overflow-hidden transition-all duration-500 ease-in-out ${
-                  isExpanded ? 'max-h-[1000px] opacity-100 mt-4' : 'max-h-0 opacity-0 mt-0'
-                }`}
-              >
-                <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
-                  <ul className="space-y-3 mb-6">
-                    {service.features.map((feature, featureIdx) => (
-                      <li key={featureIdx} className="flex items-center gap-3 text-sm md:text-base text-text-secondary">
-                        <div className={`w-5 h-5 rounded-full bg-gradient-to-br ${service.gradient} flex items-center justify-center flex-shrink-0`}>
-                          <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
-                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                          </svg>
-                        </div>
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
+              {isExpanded && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: 'auto', opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                  className="overflow-hidden mt-4"
+                >
+                  <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
+                    <motion.ul 
+                      className="space-y-3 mb-6"
+                      initial="hidden"
+                      animate="visible"
+                      variants={{
+                        visible: {
+                          transition: {
+                            staggerChildren: 0.05
+                          }
+                        }
+                      }}
+                    >
+                      {service.features.map((feature, featureIdx) => (
+                        <motion.li 
+                          key={featureIdx} 
+                          variants={{
+                            hidden: { opacity: 0, x: -20 },
+                            visible: { opacity: 1, x: 0 }
+                          }}
+                          className="flex items-center gap-3 text-sm md:text-base text-text-secondary"
+                        >
+                          <div className={`w-5 h-5 rounded-full bg-gradient-to-br ${service.gradient} flex items-center justify-center flex-shrink-0`}>
+                            <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                              <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                            </svg>
+                          </div>
+                          {feature}
+                        </motion.li>
+                      ))}
+                    </motion.ul>
 
-                  <Link
-                    href={bookingLink}
-                    onClick={(e) => e.stopPropagation()}
-                    className="inline-flex items-center gap-2 text-primary font-semibold hover:gap-3 transition-all"
-                  >
-                    {bookingText}
-                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </Link>
-                </div>
-              </div>
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.3 }}
+                    >
+                      <Link
+                        href={bookingLink}
+                        onClick={(e) => e.stopPropagation()}
+                        className="inline-flex items-center gap-2 text-primary font-semibold hover:gap-3 transition-all"
+                      >
+                        {bookingText}
+                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </Link>
+                    </motion.div>
+                  </div>
+                </motion.div>
+              )}
             </div>
-          </div>
+          </motion.div>
         );
       })}
     </div>
