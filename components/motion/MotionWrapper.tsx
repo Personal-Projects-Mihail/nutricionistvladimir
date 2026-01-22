@@ -155,7 +155,7 @@ export function AntigravityElement({
   className = '',
   intensity = 1,
 }: {
-  children: ReactNode;
+  children?: ReactNode;
   className?: string;
   intensity?: number;
 }) {
