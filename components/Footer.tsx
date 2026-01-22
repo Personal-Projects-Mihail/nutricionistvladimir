@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { FaInstagram, FaLinkedin, FaFacebook, FaTiktok } from 'react-icons/fa';
 
 interface FooterProps {
   lang: 'mk' | 'en';
@@ -179,6 +180,52 @@ export default function Footer({ lang }: FooterProps) {
                   +389 75 453 434
                 </a>
               </li>
+               
+               {/* Social Media */}
+<li className="pt-3">
+  <div className="flex items-center gap-4 text-text-secondary">
+    <a
+      href="http://instagram.com/nutricionistvladimir"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Instagram"
+      className="hover:text-primary transition-colors"
+    >
+      <FaInstagram size={20} />
+    </a>
+
+    <a
+      href="https://www.linkedin.com/company/nutricionist-vladimir/"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="LinkedIn"
+      className="hover:text-primary transition-colors"
+    >
+      <FaLinkedin size={20} />
+    </a>
+
+    <a
+      href="https://www.facebook.com/profile.php?id=61564846086745"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Facebook"
+      className="hover:text-primary transition-colors"
+    >
+      <FaFacebook size={20} />
+    </a>
+
+    <a
+      href="https://www.tiktok.com/@vladimir.nutricionist"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="TikTok"
+      className="hover:text-primary transition-colors"
+    >
+      <FaTiktok size={20} />
+    </a>
+  </div>
+</li>
+
             </ul>
           </div>
         </div>
