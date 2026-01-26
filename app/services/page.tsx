@@ -104,32 +104,33 @@ export default function ServicesPage() {
       <Header lang="mk" />
 
       <main id="main-content">
-        {/* VIBRANT HERO SECTION */}
-        <section className="relative overflow-hidden bg-gradient-to-br from-primary/20 via-emerald-50/50 to-background pt-12 pb-16">
+        {/* HERO SECTION - Compact & Atmospheric */}
+        <section className="relative overflow-hidden bg-atmosphere-depth pt-8 pb-12">
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <div className="absolute top-20 right-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-pulse-glow"></div>
-            <div className="absolute bottom-20 left-10 w-96 h-96 bg-emerald-100/50 rounded-full blur-3xl"></div>
+            <div className="blur-circle blur-circle-green w-[350px] h-[350px] absolute top-10 -right-20 animate-float-organic"></div>
+            <div className="blur-circle blur-circle-accent w-[280px] h-[280px] absolute bottom-10 -left-20 animate-float-gentle delay-300"></div>
+            <div className="absolute inset-0 bg-pattern-dots opacity-20"></div>
           </div>
 
           <div className="container-custom relative z-10">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div className="space-y-6">
-                <div className="inline-flex items-center gap-2 bg-primary/20 text-primary-800 dark:text-primary-200 px-4 py-2 rounded-full text-sm font-medium">
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+              <div className="space-y-6 animate-reveal-up">
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary-800 dark:text-primary-300 text-sm font-semibold">
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z" />
                   </svg>
                   Персонализирани услуги
                 </div>
 
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-                  Нашите <span className="text-primary">Услуги</span>
+                <h1 className="font-serif">
+                  Нашите <span className="text-gradient">Услуги</span>
                 </h1>
 
-                <p className="text-xl text-text-secondary leading-relaxed">
+                <p className="lead">
                   Професионални консултации за исхрана прилагодени на вашите уникатни потреби, цели и животен стил
                 </p>
 
-                <Link href="/booking" className="inline-flex items-center gap-2 bg-primary hover:bg-primary-600 text-white font-semibold text-lg px-8 py-4 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105">
+                <Link href="/booking" className="btn-primary">
                   Закажи консултација
                   <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
@@ -137,29 +138,32 @@ export default function ServicesPage() {
                 </Link>
               </div>
 
-              <div className="relative">
-                <ServicesHeroIllustration className="w-full h-auto" />
+              <div className="relative animate-scale-in delay-200">
+                <div className="absolute -inset-4 bg-gradient-to-br from-primary/20 to-accent/10 rounded-[2rem] blur-2xl"></div>
+                <div className="relative">
+                  <ServicesHeroIllustration className="w-full h-auto animate-float-gentle" />
+                </div>
               </div>
             </div>
           </div>
         </section>
 
         {/* MAIN SERVICE CARD */}
-        <section className="section">
+        <section className="section bg-atmosphere-warm">
           <div className="container-custom">
             <div className="max-w-5xl mx-auto">
-              <div className="relative overflow-hidden bg-gradient-to-br from-primary/10 via-primary/5 to-emerald-50/50 dark:from-primary/20 dark:to-emerald-900/10 rounded-3xl p-10 md:p-12 border-2 border-primary/20 shadow-2xl">
-                <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full -mr-32 -mt-32 blur-3xl"></div>
+              <div className="card p-8 md:p-12 bg-gradient-to-br from-primary/5 via-primary/10 to-accent/5">
+                <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-primary/10 to-primary/5 rounded-full -mr-32 -mt-32 blur-3xl"></div>
 
                 <div className="relative z-10">
                   <div className="flex items-start gap-6 mb-8">
-                    <div className="w-20 h-20 bg-gradient-to-br from-primary to-primary-600 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-xl">
-                      <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <div className="w-16 h-16 bg-gradient-to-br from-primary to-primary-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg">
+                      <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
                         <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z" />
                       </svg>
                     </div>
                     <div>
-                      <h2 className="text-3xl md:text-4xl font-bold text-text mb-3">
+                      <h2 className="font-serif text-text mb-3">
                         1-на-1 Консултација за Исхрана
                       </h2>
                       <p className="text-lg text-text-secondary">
@@ -168,22 +172,22 @@ export default function ServicesPage() {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {[
                       { title: 'Детална анализа на исхрана', desc: 'Комплетен преглед на моменталната исхрана и здравствена историја' },
                       { title: 'Персонализиран план', desc: 'Приспособен на вашите цели, преференции и алергии' },
                       { title: 'Редовни follow-ups', desc: 'Континуирана поддршка и приспособување на планот' },
                       { title: 'Email поддршка', desc: 'Одговор на прашања меѓу консултациите' }
                     ].map((item, idx) => (
-                      <div key={idx} className="flex items-start gap-3 p-4 bg-white/60 dark:bg-gray-800/60 rounded-xl backdrop-blur-sm">
-                        <div className="w-6 h-6 bg-primary rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                          <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                      <div key={idx} className="flex items-start gap-3 p-4 bg-white/80 dark:bg-gray-800/80 rounded-xl backdrop-blur-sm hover:bg-white dark:hover:bg-gray-800 transition-colors">
+                        <div className="w-6 h-6 bg-primary rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                          <svg className="w-3.5 h-3.5 text-white" fill="currentColor" viewBox="0 0 20 20">
                             <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                           </svg>
                         </div>
                         <div>
                           <p className="font-semibold text-text mb-1">{item.title}</p>
-                          <p className="text-sm text-text-secondary">{item.desc}</p>
+                          <p className="text-sm text-text-secondary leading-relaxed">{item.desc}</p>
                         </div>
                       </div>
                     ))}
@@ -194,18 +198,18 @@ export default function ServicesPage() {
           </div>
         </section>
 
-        {/* COLORFUL SPECIALIZED SERVICES */}
-        <section className="section bg-gradient-to-b from-background via-emerald-50/20 to-background">
+        {/* SPECIALIZED SERVICES */}
+        <section className="section bg-atmosphere-green">
           <div className="container-custom">
             <div className="max-w-6xl mx-auto">
               <div className="text-center mb-16">
-                <span className="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-4">
+                <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary-800 dark:text-primary-300 text-sm font-semibold mb-4">
                   Специјализации
                 </span>
-                <h2 className="text-3xl md:text-4xl font-bold text-text mb-4">
+                <h2 className="font-serif text-text mb-4">
                   Специјализирани Услуги
                 </h2>
-                <p className="text-lg text-text-secondary max-w-2xl mx-auto">
+                <p className="lead max-w-2xl mx-auto">
                   Секоја услуга е прилагодена според вашите специфични здравствени потреби
                 </p>
               </div>
@@ -215,20 +219,20 @@ export default function ServicesPage() {
           </div>
         </section>
 
-        {/* WHO IT'S FOR - COLORFUL GRID */}
+        {/* WHO IT'S FOR */}
         <section className="section">
           <div className="container-custom">
             <div className="max-w-5xl mx-auto">
-              <div className="text-center mb-16">
-                <span className="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-4">
+              <div className="text-center mb-12">
+                <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary-800 dark:text-primary-300 text-sm font-semibold mb-4">
                   За кого
                 </span>
-                <h2 className="text-3xl md:text-4xl font-bold text-text mb-4">
+                <h2 className="font-serif text-text mb-4">
                   За кого е ова?
                 </h2>
               </div>
 
-              <div className="flex flex-wrap justify-center gap-4 md:gap-6">
+              <div className="flex flex-wrap justify-center gap-4">
                 {[
                   'Луѓе кои сакаат да изгубат тежина',
                   'Оние со дигестивни проблеми',
@@ -237,9 +241,8 @@ export default function ServicesPage() {
                   'Жени со хормонални проблеми',
                   'Луѓе со хронични состојби'
                 ].map((title, idx) => (
-                  <span key={idx} className="text-base md:text-lg text-text-secondary font-medium">
+                  <span key={idx} className="inline-flex items-center gap-2 bg-white dark:bg-gray-800 text-text border border-primary/20 px-4 py-2.5 rounded-xl text-sm font-medium hover:bg-primary/10 hover:border-primary transition-all hover:scale-105 shadow-sm">
                     {title}
-                    {idx < 5 && <span className="mx-2 text-primary">•</span>}
                   </span>
                 ))}
               </div>
@@ -248,61 +251,31 @@ export default function ServicesPage() {
         </section>
 
         {/* PROCESS TIMELINE */}
-        <section className="section bg-gradient-to-br from-primary/5 via-background to-emerald-50/20">
+        <section className="section bg-gradient-to-br from-primary/5 via-background to-accent/5">
           <div className="container-custom">
-            <div className="text-center mb-12 md:mb-16">
-              <span className="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-4">
+            <div className="text-center mb-16">
+              <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary-800 dark:text-primary-300 text-sm font-semibold mb-4">
                 Процес
               </span>
-              <h2 className="text-3xl md:text-4xl font-bold text-text mb-4">
+              <h2 className="font-serif text-text mb-4">
                 Што да очекувате
               </h2>
             </div>
 
-            <div className="relative w-full min-h-[600px] md:min-h-[700px] py-8">
-              {/* Connecting diagonal lines */}
-              <svg className="hidden md:block absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 0 }}>
-                {[0, 1, 2].map((idx) => {
-                  const startX = idx === 0 ? '8%' : idx === 1 ? '30%' : '52%';
-                  const startY = idx === 0 ? '80px' : idx === 1 ? '230px' : '380px';
-                  const endX = idx === 0 ? '28%' : idx === 1 ? '50%' : '72%';
-                  const endY = idx === 0 ? '230px' : idx === 1 ? '380px' : '530px';
-                  return (
-                    <line
-                      key={idx}
-                      x1={startX}
-                      y1={startY}
-                      x2={endX}
-                      y2={endY}
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeDasharray="4 4"
-                      className="text-primary/20"
-                    />
-                  );
-                })}
-              </svg>
-
+            <div className="max-w-4xl mx-auto space-y-6">
               {[
-                { num: '01', title: 'Првична Консултација', desc: 'Детален преглед на вашата исхрана, здравствена историја, животен стил и цели. Траење: 45 минути.', color: 'from-primary to-primary-600', left: '0', top: '0' },
-                { num: '02', title: 'Персонализиран План', desc: 'Добивате детален план за исхрана прилагоден на вашите потреби, со конкретни препораки и рецепти.', color: 'from-emerald-400 to-emerald-600', left: '20%', top: '150px' },
-                { num: '03', title: 'Редовни Follow-ups', desc: 'Следење на напредокот, приспособување на планот и решавање на предизвици. Следење напредок на 2 недели.', color: 'from-green-400 to-green-600', left: '40%', top: '300px' },
-                { num: '04', title: 'Континуирана Поддршка', desc: 'Email/Viber поддршка меѓу консултациите за прашања и мотивација во текот на целиот процес.', color: 'from-teal-400 to-teal-600', left: '60%', top: '450px' }
+                { num: '01', title: 'Првична Консултација', desc: 'Детален преглед на вашата исхрана, здравствена историја, животен стил и цели. Траење: 45 минути.', color: 'from-primary to-primary-600' },
+                { num: '02', title: 'Персонализиран План', desc: 'Добивате детален план за исхрана прилагоден на вашите потреби, со конкретни препораки и рецепти.', color: 'from-primary-600 to-primary-700' },
+                { num: '03', title: 'Редовни Follow-ups', desc: 'Следење на напредокот, приспособување на планот и решавање на предизвици. Следење напредок на 2 недели.', color: 'from-primary-700 to-primary-800' },
+                { num: '04', title: 'Континуирана Поддршка', desc: 'Email/Viber поддршка меѓу консултациите за прашања и мотивација во текот на целиот процес.', color: 'from-primary-800 to-primary-900' }
               ].map((step, idx) => (
-                <div
-                  key={idx}
-                  className="absolute flex gap-4 md:gap-6 w-full md:w-auto max-w-sm md:max-w-md z-10"
-                  style={{
-                    left: step.left,
-                    top: step.top,
-                  }}
-                >
-                  <div className={`flex-shrink-0 w-14 h-14 md:w-16 md:h-16 bg-gradient-to-br ${step.color} rounded-2xl flex items-center justify-center text-white font-bold text-lg md:text-xl shadow-xl relative z-10`}>
+                <div key={idx} className="card flex items-start gap-6 hover:border-primary/30">
+                  <div className={`flex-shrink-0 w-14 h-14 bg-gradient-to-br ${step.color} rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg`}>
                     {step.num}
                   </div>
-                  <div className="bg-white dark:bg-gray-800 rounded-2xl p-4 md:p-6 shadow-lg hover:shadow-xl transition-shadow relative z-10">
-                    <h3 className="text-base md:text-lg lg:text-xl font-bold text-text mb-2">{step.title}</h3>
-                    <p className="text-sm md:text-base text-text-secondary leading-relaxed">{step.desc}</p>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-semibold text-text mb-2">{step.title}</h3>
+                    <p className="text-text-secondary leading-relaxed">{step.desc}</p>
                   </div>
                 </div>
               ))}
@@ -311,21 +284,22 @@ export default function ServicesPage() {
         </section>
 
         {/* CTA SECTION */}
-        <section className="relative overflow-hidden bg-gradient-to-br from-primary via-primary-500 to-primary-700 py-16">
+        <section className="relative overflow-hidden py-20 bg-gradient-to-br from-primary via-primary-600 to-primary-700 animate-gradient-xy">
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full -mr-48 -mt-48"></div>
-            <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/10 rounded-full -ml-32 -mb-32"></div>
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/10 rounded-full -mr-32 -mt-32 animate-pulse-glow"></div>
+            <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-accent/10 rounded-full -ml-24 -mb-24 animate-pulse-glow delay-300"></div>
+            <div className="absolute inset-0 bg-pattern-dots opacity-10"></div>
           </div>
 
           <div className="container-custom relative z-10">
             <div className="max-w-3xl mx-auto text-center text-white space-y-8">
-              <h2 className="text-4xl md:text-5xl font-bold">
+              <h2 className="font-serif text-white">
                 Подготвени да започнете?
               </h2>
-              <p className="text-xl text-white/90">
+              <p className="text-xl text-white/90 leading-relaxed">
                 Закажете вашата прва консултација и направете го првиот чекор кон подобро здравје
               </p>
-              <Link href="/booking" className="inline-flex items-center gap-2 bg-white text-primary hover:bg-gray-50 font-semibold text-lg px-10 py-4 rounded-xl transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105">
+              <Link href="/booking" className="inline-flex items-center gap-2 bg-white text-primary-700 hover:bg-background-secondary font-semibold text-lg px-10 py-4 rounded-xl transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105">
                 Закажи консултација
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
