@@ -348,6 +348,8 @@ export default function HomePageEN() {
                 </div>
               </div>
 
+            </div>
+
             {/* View All Services */}
             <div className="text-center mt-8">
               <Link href="/en/services" className="inline-flex items-center gap-2 bg-primary hover:bg-primary-600 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl">

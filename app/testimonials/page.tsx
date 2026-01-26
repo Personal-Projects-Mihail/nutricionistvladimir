@@ -112,6 +112,7 @@ export default function TestimonialsPage() {
                 </div>
               </div>
           </div>
+          </div>
         </section>
 
         {/* CTA Section */}
