@@ -104,32 +104,33 @@ export default function ServicesPageEN() {
       <Header lang="en" />
 
       <main id="main-content">
-        {/* VIBRANT HERO SECTION */}
-        <section className="relative overflow-hidden bg-gradient-to-br from-primary/20 via-emerald-50/50 to-background pt-12 pb-16">
+        {/* HERO SECTION - Compact & Atmospheric */}
+        <section className="relative overflow-hidden bg-atmosphere-depth pt-8 pb-12">
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <div className="absolute top-20 right-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-pulse-glow"></div>
-            <div className="absolute bottom-20 left-10 w-96 h-96 bg-emerald-100/50 rounded-full blur-3xl"></div>
+            <div className="blur-circle blur-circle-green w-[350px] h-[350px] absolute top-10 -right-20 animate-float-organic"></div>
+            <div className="blur-circle blur-circle-accent w-[280px] h-[280px] absolute bottom-10 -left-20 animate-float-gentle delay-300"></div>
+            <div className="absolute inset-0 bg-pattern-dots opacity-20"></div>
           </div>
 
           <div className="container-custom relative z-10">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div className="space-y-6">
-                <div className="inline-flex items-center gap-2 bg-primary/20 text-primary-800 dark:text-primary-200 px-4 py-2 rounded-full text-sm font-medium">
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+              <div className="space-y-6 animate-reveal-up">
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary-800 dark:text-primary-300 text-sm font-semibold">
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z" />
                   </svg>
                   Personalized Services
                 </div>
 
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-                  Our <span className="text-primary">Services</span>
+                <h1 className="font-serif">
+                  Our <span className="text-gradient">Services</span>
                 </h1>
 
-                <p className="text-xl text-text-secondary leading-relaxed">
+                <p className="lead">
                   Professional nutrition consultations tailored to your unique needs, goals, and lifestyle
                 </p>
 
-                <Link href="/en/booking" className="inline-flex items-center gap-2 bg-primary hover:bg-primary-600 text-white font-semibold text-lg px-8 py-4 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105">
+                <Link href="/en/booking" className="btn-primary">
                   Book Consultation
                   <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
@@ -137,8 +138,11 @@ export default function ServicesPageEN() {
                 </Link>
               </div>
 
-              <div className="relative">
-                <ServicesHeroIllustration className="w-full h-auto" />
+              <div className="relative animate-scale-in delay-200">
+                <div className="absolute -inset-4 bg-gradient-to-br from-primary/20 to-accent/10 rounded-[2rem] blur-2xl"></div>
+                <div className="relative">
+                  <ServicesHeroIllustration className="w-full h-auto animate-float-gentle" />
+                </div>
               </div>
             </div>
           </div>
