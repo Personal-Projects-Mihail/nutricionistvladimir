@@ -41,15 +41,15 @@ const config: Config = {
       },
       fontFamily: {
         sans: [
-          'Inter',
+          'Source Sans 3',
           'system-ui',
           '-apple-system',
-          'BlinkMacSystemFont',
-          'Segoe UI',
-          'Roboto',
-          'Helvetica Neue',
-          'Arial',
           'sans-serif',
+        ],
+        serif: [
+          'Cormorant Garamond',
+          'Georgia',
+          'serif',
         ],
       },
       fontSize: {
