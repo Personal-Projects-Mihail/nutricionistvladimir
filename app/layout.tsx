@@ -48,11 +48,6 @@ export default function RootLayout({
       </head>
       <body className="antialiased">
         <ThemeProvider>
-          {/* Skip to main content link for accessibility */}
-          <a href="#main-content" className="skip-link">
-            Премини на главната содржина
-          </a>
-          
           {children}
         </ThemeProvider>
       </body>

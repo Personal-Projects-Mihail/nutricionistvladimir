@@ -47,16 +47,16 @@ export default function HomePage() {
 
       <main id="main-content">
         {/* HERO SECTION - Atmospheric & Elegant */}
-        <section className="relative min-h-screen flex items-center overflow-hidden bg-atmosphere-depth">
+        <section className="relative overflow-hidden bg-atmosphere-depth pt-8 pb-16">
           {/* Decorative Elements */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <div className="blur-circle blur-circle-green w-[500px] h-[500px] absolute top-20 -right-32 animate-float-organic"></div>
-            <div className="blur-circle blur-circle-accent w-[400px] h-[400px] absolute -bottom-20 -left-32 animate-float-gentle delay-300"></div>
+            <div className="blur-circle blur-circle-green w-[400px] h-[400px] absolute top-10 -right-24 animate-float-organic"></div>
+            <div className="blur-circle blur-circle-accent w-[300px] h-[300px] absolute bottom-10 -left-24 animate-float-gentle delay-300"></div>
             <div className="absolute top-0 right-0 w-full h-full bg-pattern-dots opacity-30"></div>
           </div>
 
-          <div className="container-custom relative z-10 py-20">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="container-custom relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               {/* Left Content - Staggered Reveal */}
               <div className="space-y-8">
                 <div className="inline-block animate-reveal-down">
@@ -129,28 +129,21 @@ export default function HomePage() {
               </div>
 
               {/* Right Image - Elegant Float */}
-              <div className="relative animate-scale-in delay-200">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary-600/10 rounded-[3rem] blur-3xl -z-10 animate-pulse-glow"></div>
-                <div className="relative overflow-hidden rounded-[3rem] border border-primary/20 shadow-xl">
+              <div className="relative animate-scale-in delay-200 max-w-md mx-auto lg:mx-0">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary-600/10 rounded-[2rem] blur-2xl -z-10 animate-pulse-glow"></div>
+                <div className="relative overflow-hidden rounded-[2rem] border border-primary/20 shadow-xl">
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/5 pointer-events-none"></div>
                   <Image
                     src="/front-page/vladimir.png"
                     alt="Владимир - Регистриран нутриционист"
-                    width={700}
-                    height={700}
+                    width={500}
+                    height={500}
                     className="object-cover w-full h-auto object-top block"
                     priority
                   />
                 </div>
               </div>
             </div>
-          </div>
-
-          {/* Scroll Indicator */}
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-            <svg className="w-6 h-6 text-text-tertiary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-            </svg>
           </div>
         </section>
 
