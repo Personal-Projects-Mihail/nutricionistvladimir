@@ -148,162 +148,205 @@ export default function HomePageEN() {
         </section>
 
         {/* SPECIALTY AREAS - Creative Split Layout */}
-        <section className="section bg-gradient-subtle">
+        <section className="section bg-atmosphere-warm">
           <div className="container-custom">
-            <div className="text-center mb-16 animate-reveal-up">
-              <span className="inline-block bg-gradient-to-r from-primary/10 to-green-400/10 text-primary-800 dark:text-primary-300 px-5 py-2 rounded-full text-sm font-semibold mb-6 border border-primary/10">
+            {/* Section Header */}
+            <div className="text-center mb-16 max-w-3xl mx-auto">
+              <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary-800 dark:text-primary-300 text-sm font-semibold mb-4">
                 My Expertise
               </span>
-              <h2 className="font-serif text-4xl md:text-5xl font-bold mb-4">
+              <h2 className="font-serif mb-6">
                 Areas of Specialization
               </h2>
-              <p className="text-text-secondary max-w-2xl mx-auto">
-                Evidence-based nutrition approaches tailored to your unique needs
+              <p className="lead">
+                Personalized nutrition solutions based on scientific evidence and individual needs
               </p>
             </div>
 
-            <div className="space-y-0">
-              {/* Weight Loss - Image Right */}
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-center">
+            <div className="space-y-32">
+              {/* Specialty 1 - Weight Loss */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div className="space-y-6">
-                  <h3 className="text-3xl md:text-4xl font-bold text-text">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-100 text-primary-800 text-xs font-semibold">
+                    <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                      <circle cx="10" cy="10" r="3"/>
+                    </svg>
+                    Popular Service
+                  </div>
+                  
+                  <h3 className="font-serif text-text">
                     Body Weight Loss
                   </h3>
-                  <p className="text-lg text-text-secondary leading-relaxed">
+                  
+                  <p className="text-text-secondary text-lg leading-relaxed">
                     Weight loss without extreme diets or starvation. Focus on long-term habits and a healthy relationship with nutrition.
                   </p>
-                  <ul className="space-y-3">
-                    <li className="flex items-start gap-3">
-                      <svg className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                      </svg>
-                      <span className="text-text-secondary">Personalized nutrition plan</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <svg className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                      </svg>
-                      <span className="text-text-secondary">Appropriate caloric deficit</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <svg className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                      </svg>
-                      <span className="text-text-secondary">Muscle mass maintenance</span>
-                    </li>
+                  
+                  <ul className="space-y-4">
+                    {[
+                      'Personalized nutrition plan',
+                      'Appropriate caloric deficit',
+                      'Muscle mass maintenance',
+                      'Psychological support'
+                    ].map((item, index) => (
+                      <li key={index} className="flex items-start gap-3 group">
+                        <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:bg-primary/20 transition-colors">
+                          <svg className="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                          </svg>
+                        </div>
+                        <span className="text-text-secondary">{item}</span>
+                      </li>
+                    ))}
                   </ul>
-                  <Link href="/en/services" className="inline-flex items-center gap-2 text-primary font-medium hover:gap-3 transition-all">
-                    Learn More
-                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  
+                  <Link 
+                    href="/en/services" 
+                    className="inline-flex items-center gap-2 text-primary-700 font-semibold hover:gap-3 transition-all group"
+                  >
+                    <span>Learn More</span>
+                    <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
                   </Link>
                 </div>
-                <div className="relative h-[300px] md:h-[400px] lg:h-[600px] bg-gradient-to-br from-primary/20 to-primary/5 rounded-3xl overflow-hidden flex items-center justify-center">
-                  <Image
-                    src="/front-page/weight_loss_illustration.svg"
-                    alt="Illustration for sustainable weight loss - human body with balanced nutrition and metabolism"
-                    width={600}
-                    height={600}
-                    className="object-contain w-full h-full p-6"
-                  />
+                
+                <div className="relative lg:order-last">
+                  <div className="absolute -inset-4 bg-gradient-to-br from-primary/20 to-primary-600/5 rounded-[3rem] blur-2xl"></div>
+                  <div className="relative aspect-square rounded-[2.5rem] overflow-hidden bg-gradient-to-br from-primary-50 to-primary-100 dark:from-primary-900 dark:to-primary-800 p-8 shadow-lg">
+                    <Image
+                      src="/front-page/weight_loss_illustration.svg"
+                      alt="Sustainable weight loss"
+                      width={600}
+                      height={600}
+                      className="object-contain w-full h-full animate-float-gentle"
+                    />
+                  </div>
                 </div>
               </div>
 
-              {/* Insulin Resistance - Image Left */}
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-center">
-                <div className="relative h-[300px] md:h-[400px] lg:h-[600px] bg-gradient-to-br from-primary/20 to-primary/5 rounded-3xl overflow-hidden flex items-center justify-center order-2 lg:order-1">
-                  <Image
-                    src="/front-page/gut_health_illustration.svg"
-                    alt="Illustration for insulin resistance nutrition - balanced diet and healthy habits"
-                    width={600}
-                    height={600}
-                    className="object-contain w-full h-full p-6"
-                  />
+              {/* Specialty 2 - Insulin Resistance */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div className="relative">
+                  <div className="absolute -inset-4 bg-gradient-to-br from-accent/15 to-primary/10 rounded-[3rem] blur-2xl"></div>
+                  <div className="relative aspect-square rounded-[2.5rem] overflow-hidden bg-gradient-to-br from-accent/10 to-primary-100 dark:from-accent/5 dark:to-primary-900 p-8 shadow-lg">
+                    <Image
+                      src="/front-page/gut_health_illustration.svg"
+                      alt="Nutrition for insulin resistance"
+                      width={600}
+                      height={600}
+                      className="object-contain w-full h-full animate-float-organic"
+                    />
+                  </div>
                 </div>
-                <div className="space-y-6 order-1 lg:order-2">
-                  <h3 className="text-3xl md:text-4xl font-bold text-text">
-                    Nutrition for Insulin Resistance
+                
+                <div className="space-y-6">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-accent-dark text-xs font-semibold">
+                    <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
+                      <path fillRule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clipRule="evenodd" />
+                    </svg>
+                    Specialization
+                  </div>
+                  
+                  <h3 className="font-serif text-text">
+                    Nutrition for insulin resistance
                   </h3>
-                  <p className="text-lg text-text-secondary leading-relaxed">
+                  
+                  <p className="text-text-secondary text-lg leading-relaxed">
                     Personalized nutrition without starvation and complete elimination of sugars. Building healthy habits and improving health.
                   </p>
-                  <ul className="space-y-3">
-                    <li className="flex items-start gap-3">
-                      <svg className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                      </svg>
-                      <span className="text-text-secondary">Personalized nutrition plan</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <svg className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                      </svg>
-                      <span className="text-text-secondary">Nutritional habit advice</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <svg className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                      </svg>
-                      <span className="text-text-secondary">Addressing insulin resistance</span>
-                    </li>
+                  
+                  <ul className="space-y-4">
+                    {[
+                      'Personalized nutrition plan',
+                      'Nutrition habit coaching',
+                      'Addressing insulin resistance',
+                      'Continuous monitoring'
+                    ].map((item, index) => (
+                      <li key={index} className="flex items-start gap-3 group">
+                        <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:bg-primary/20 transition-colors">
+                          <svg className="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                          </svg>
+                        </div>
+                        <span className="text-text-secondary">{item}</span>
+                      </li>
+                    ))}
                   </ul>
-                  <Link href="/en/services" className="inline-flex items-center gap-2 text-primary font-medium hover:gap-3 transition-all">
-                    Learn More
-                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  
+                  <Link 
+                    href="/en/services" 
+                    className="inline-flex items-center gap-2 text-primary-700 font-semibold hover:gap-3 transition-all group"
+                  >
+                    <span>Learn More</span>
+                    <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
                   </Link>
                 </div>
               </div>
 
-              {/* Metabolic Conditions - Image Right */}
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-center">
+              {/* Specialty 3 - Metabolic Conditions */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div className="space-y-6">
-                  <h3 className="text-3xl md:text-4xl font-bold text-text">
-                    Nutrition for Metabolic Conditions
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-100 text-primary-800 text-xs font-semibold">
+                    <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11 4a1 1 0 10-2 0v4a1 1 0 102 0V7zm-3 1a1 1 0 10-2 0v3a1 1 0 102 0V8zM8 9a1 1 0 00-2 0v2a1 1 0 102 0V9z" clipRule="evenodd" />
+                    </svg>
+                    Comprehensive Care
+                  </div>
+                  
+                  <h3 className="font-serif text-text">
+                    Nutrition for metabolic conditions
                   </h3>
-                  <p className="text-lg text-text-secondary leading-relaxed">
-                    Diabetes, high cholesterol, elevated triglycerides, and fatty liver. For such metabolic conditions, nutrition is key. Evidence-based nutrition and strategic problem solving.
+                  
+                  <p className="text-text-secondary text-lg leading-relaxed">
+                    Diabetes, high cholesterol, elevated triglycerides, and fatty liver. Nutrition is key for these metabolic conditions.
                   </p>
-                  <ul className="space-y-3">
-                    <li className="flex items-start gap-3">
-                      <svg className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                      </svg>
-                      <span className="text-text-secondary">Continuous monitoring of metabolic status</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <svg className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                      </svg>
-                      <span className="text-text-secondary">Personalized nutrition based on client needs</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <svg className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                      </svg>
-                      <span className="text-text-secondary">Improving metabolic health</span>
-                    </li>
+                  
+                  <ul className="space-y-4">
+                    {[
+                      'Continuous monitoring на метаболичката состојба',
+                      'Personalized nutrition based on needs',
+                      'Improving metabolic health',
+                      'Coordination with physician'
+                    ].map((item, index) => (
+                      <li key={index} className="flex items-start gap-3 group">
+                        <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:bg-primary/20 transition-colors">
+                          <svg className="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                          </svg>
+                        </div>
+                        <span className="text-text-secondary">{item}</span>
+                      </li>
+                    ))}
                   </ul>
-                  <Link href="/en/services" className="inline-flex items-center gap-2 text-primary font-medium hover:gap-3 transition-all">
-                    Learn More
-                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  
+                  <Link 
+                    href="/en/services" 
+                    className="inline-flex items-center gap-2 text-primary-700 font-semibold hover:gap-3 transition-all group"
+                  >
+                    <span>Learn More</span>
+                    <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
                   </Link>
                 </div>
-                <div className="relative h-[300px] md:h-[400px] lg:h-[600px] bg-gradient-to-br from-primary/20 to-primary/5 rounded-3xl overflow-hidden flex items-center justify-center">
-                  <Image
-                    src="/front-page/sports_nutrition_illustration.svg"
-                    alt="Illustration for nutrition for metabolic conditions - healthy diet for diabetes, cholesterol, and triglycerides"
-                    width={600}
-                    height={600}
-                    className="object-contain w-full h-full p-6"
-                  />
+                
+                <div className="relative lg:order-last">
+                  <div className="absolute -inset-4 bg-gradient-to-br from-primary/20 to-accent/10 rounded-[3rem] blur-2xl"></div>
+                  <div className="relative aspect-square rounded-[2.5rem] overflow-hidden bg-gradient-to-br from-primary-50 to-accent/10 dark:from-primary-900 dark:to-accent/5 p-8 shadow-lg">
+                    <Image
+                      src="/front-page/sports_nutrition_illustration.svg"
+                      alt="Nutrition for metabolic conditions"
+                      width={600}
+                      height={600}
+                      className="object-contain w-full h-full animate-float-gentle delay-200"
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
 
             {/* View All Services */}
             <div className="text-center mt-8">
