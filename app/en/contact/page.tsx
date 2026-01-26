@@ -30,23 +30,23 @@ export default function ContactPage() {
 
       <main id="main-content">
         {/* Hero Section with Illustration */}
-        <section className="relative overflow-hidden bg-gradient-to-br from-primary/20 via-emerald-50/50 to-background">
+        <section className="relative min-h-[50vh] flex items-center overflow-hidden bg-gradient-to-br from-cream via-white to-primary/5">
           {/* Decorative blur circles */}
-          <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl -mr-48 -mt-48"></div>
-          <div className="absolute bottom-0 left-0 w-80 h-80 bg-emerald-200/20 rounded-full blur-3xl -ml-40 -mb-40"></div>
+          <div className="absolute -top-24 -right-24 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-float" />
+          <div className="absolute bottom-0 -left-24 w-80 h-80 bg-green-300/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }} />
           
-          <div className="container-custom relative z-10">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center section">
+          <div className="container-custom relative z-10 py-12">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div className="space-y-6">
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-text leading-tight">
+                <h1 className="font-serif text-5xl md:text-6xl font-bold bg-gradient-to-br from-gray-900 via-primary-800 to-green-700 bg-clip-text text-transparent dark:from-gray-100 dark:via-primary-300 dark:to-green-400 leading-tight animate-fade-in">
                   Contact Us
                 </h1>
-                <p className="text-lg md:text-xl text-text-secondary max-w-2xl">
+                <p className="text-xl text-gray-700 dark:text-gray-300 max-w-2xl animate-fade-in" style={{ animationDelay: '0.2s' }}>
                   Have questions? We're happy to help
                 </p>
               </div>
               
-              <div className="relative">
+              <div className="relative animate-fade-in" style={{ animationDelay: '0.3s' }}>
                 <ContactIllustration className="w-full h-auto animate-float" />
               </div>
             </div>
@@ -58,8 +58,8 @@ export default function ContactPage() {
           <div className="container-custom">
             <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
               {/* Email */}
-              <div className="group relative overflow-hidden bg-gradient-to-br from-primary/10 to-emerald-50 border-2 border-primary/20 rounded-2xl p-8 text-center hover:shadow-lg transition-all duration-300 hover:scale-[1.02]">
-                <div className="w-16 h-16 bg-gradient-to-br from-primary to-primary-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+              <div className="group relative overflow-hidden bg-gradient-to-br from-primary/10 to-green-50/50 border-2 border-primary/20 rounded-2xl p-8 text-center hover:shadow-soft-xl transition-all duration-500 hover:scale-[1.02]">
+                <div className="w-16 h-16 bg-gradient-to-br from-primary via-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="32"
@@ -77,21 +77,21 @@ export default function ContactPage() {
                     <polyline points="22,6 12,13 2,6" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-semibold text-text mb-2">Email</h3>
+                <h3 className="font-serif text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">Email</h3>
                 <a
                   href="mailto:nutricionistvladimir@gmail.com"
                   className="text-primary hover:underline break-all font-medium"
                 >
                   nutricionistvladimir@gmail.com
                 </a>
-                <p className="text-sm text-text-tertiary mt-2">
+                <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">
                   Response within 24 hours
                 </p>
               </div>
 
               {/* Phone */}
-              <div className="group relative overflow-hidden bg-gradient-to-br from-emerald-50 to-green-100 border-2 border-emerald-200 rounded-2xl p-8 text-center hover:shadow-lg transition-all duration-300 hover:scale-[1.02]">
-                <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+              <div className="group relative overflow-hidden bg-gradient-to-br from-green-50/50 to-emerald-50/50 border-2 border-green-300/30 rounded-2xl p-8 text-center hover:shadow-soft-xl transition-all duration-500 hover:scale-[1.02]">
+                <div className="w-16 h-16 bg-gradient-to-br from-green-500 via-emerald-500 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="32"
