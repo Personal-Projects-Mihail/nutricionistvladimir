@@ -100,18 +100,18 @@ export default function PricingPage() {
               {pricingPlans.map((plan, index) => (
                 <div
                   key={plan.id}
-                  className={`group relative overflow-hidden rounded-3xl bg-gradient-to-br ${plan.gradient} backdrop-blur-sm transition-all duration-500 hover:scale-105 animate-fade-in`}
+                  className={`group relative flex overflow-hidden rounded-3xl bg-gradient-to-br ${plan.gradient} backdrop-blur-sm transition-all duration-500 hover:scale-105 animate-fade-in`}
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  {/* Popular badge */}
+                  {/* Popular badge - top right of card */}
                   {plan.popular && (
-                    <div className="absolute top-6 right-6 bg-gradient-to-r from-primary via-green-500 to-emerald-500 text-white px-4 py-1.5 rounded-full text-xs font-bold shadow-lg">
+                    <div className="absolute top-4 right-4 z-10 bg-gradient-to-r from-primary via-green-500 to-emerald-500 text-white px-4 py-1.5 rounded-full text-xs font-bold shadow-lg whitespace-nowrap">
                       НАЈПОПУЛАРЕН
                     </div>
                   )}
 
                   {/* Card content */}
-                  <div className={`relative h-full p-8 rounded-3xl bg-white/80 dark:bg-background-secondary/80 backdrop-blur-xl shadow-soft-lg ring-1 ring-primary/10 ${plan.borderGlow} transition-all duration-500`}>
+                  <div className={`relative flex flex-col h-full w-full p-8 rounded-3xl bg-white/80 dark:bg-background-secondary/80 backdrop-blur-xl shadow-soft-lg ring-1 ring-primary/10 ${plan.borderGlow} transition-all duration-500`}>
                     {/* Plan header */}
                     <div className="text-center mb-8 space-y-2">
                       <h3 className="text-sm font-bold text-primary-700 dark:text-primary-400 tracking-wider">
@@ -136,7 +136,7 @@ export default function PricingPage() {
                     </div>
 
                     {/* Features */}
-                    <div className="space-y-4 mb-8">
+                    <div className="flex-1 space-y-4 mb-8">
                       <h4 className="font-semibold text-text mb-4">Што вклучува:</h4>
                       <ul className="space-y-3">
                         {plan.features.map((feature, idx) => (
