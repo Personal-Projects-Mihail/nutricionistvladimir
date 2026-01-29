@@ -29,13 +29,15 @@ export default function Header({ lang }: HeaderProps) {
           { href: `${basePath}/about`, label: 'За мене' },
           { href: `${basePath}/services`, label: 'Услуги' },
           { href: `${basePath}/testimonials`, label: 'Рецензии' },
+          { href: `${basePath}/pricing`, label: 'Ценовник' },
           { href: `${basePath}/contact`, label: 'Контакт' },
         ]
       : [
           { href: `${basePath}`, label: 'Home' },
           { href: `${basePath}/about`, label: 'About' },
           { href: `${basePath}/services`, label: 'Services' },
-          { href: `${basePath}/testimonials`, label: 'Testimonials' },
+          { href: `${basePath}/testimonials`, label: 'Reviews' },
+          { href: `${basePath}/pricing`, label: 'Pricing' },
           { href: `${basePath}/contact`, label: 'Contact' },
         ];
 
