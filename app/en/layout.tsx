@@ -10,7 +10,7 @@ export const metadata: Metadata = generateMetadata('en', {
     'dietitian',
     'nutrition',
     'weight loss',
-    'gut health',
+    'digestive health',
     'hormonal balance',
     'sports nutrition',
     'family nutrition',

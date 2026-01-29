@@ -15,14 +15,14 @@ import {
 export const metadata: Metadata = generateMetadata('en', {
   title: 'Vladimir Nutritionist | Registered Nutritionist in Macedonia',
   description:
-    'Professional nutrition consultations with a registered nutritionist. Specializing in weight loss, gut health, hormonal balance, and sports nutrition.',
+    'Professional nutrition consultations with a registered nutritionist. Specializing in weight loss, digestive health, hormonal balance, and sports nutrition.',
   path: '',
   keywords: [
     'nutritionist',
     'dietitian',
     'nutrition',
     'weight loss',
-    'gut health',
+    'digestive health',
     'hormonal balance',
     'sports nutrition',
   ],

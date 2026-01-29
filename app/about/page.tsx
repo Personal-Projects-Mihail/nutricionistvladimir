@@ -253,7 +253,7 @@ export default function AboutPage() {
               <div className="flex flex-wrap gap-3 justify-center">
                 {[
                   'Намалување на тежина',
-                  'Здравје на цревата',
+                  'дигестивно здравје',
                   'Хормонален баланс',
                   'Спортска исхрана',
                   'Семејна исхрана',

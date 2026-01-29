@@ -7,8 +7,8 @@ const siteConfig = {
   email: 'nutricionistvladimir@gmail.com',
   phone: '+389 75 453 434',
   description: {
-    mk: 'Регистриран нутриционист во Северна Македонија. Консултации за намалување на тежина, здравје на цревата, хормонален баланс, спортска исхрана и семејна исхрана.',
-    en: 'Registered nutritionist in North Macedonia. Consultations for weight loss, gut health, hormonal balance, sports nutrition, and family nutrition.',
+    mk: 'Регистриран нутриционист во Северна Македонија. Консултации за намалување на тежина, Дигестивно здравје, хормонален баланс, спортска исхрана и семејна исхрана.',
+    en: 'Registered nutritionist in North Macedonia. Consultations for weight loss, digestive health, hormonal balance, sports nutrition, and family nutrition.',
   },
   author: 'Владимир | Vladimir',
   location: 'North Macedonia',

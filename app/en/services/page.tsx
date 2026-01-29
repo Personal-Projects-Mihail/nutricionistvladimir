@@ -10,7 +10,7 @@ import ExpandableServiceCards from '@/components/ExpandableServiceCards';
 export const metadata: Metadata = generateMetadata('en', {
   title: 'Services | Vladimir Nutritionist',
   description:
-    '1-on-1 nutrition consultations with a registered nutritionist. Specialized services for weight loss, gut health, hormonal balance, and sports nutrition.',
+    '1-on-1 nutrition consultations with a registered nutritionist. Specialized services for weight loss, digestive health, hormonal balance, and sports nutrition.',
   path: '/services',
   keywords: [
     'nutrition consultations',

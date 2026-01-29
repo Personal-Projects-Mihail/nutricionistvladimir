@@ -11,8 +11,8 @@ export function generatePersonSchema(lang: 'mk' | 'en') {
   const jobTitle = lang === 'mk' ? 'Регистриран нутриционист' : 'Registered Nutritionist';
   const description =
     lang === 'mk'
-      ? 'Лиценциран нутриционист со специјализација во намалување на тежина, здравје на цревата, хормонален баланс и спортска исхрана.'
-      : 'Licensed nutritionist specializing in weight loss, gut health, hormonal balance, and sports nutrition.';
+      ? 'Лиценциран нутриционист со специјализација во намалување на тежина, Дигестивно здравје, хормонален баланс и спортска исхрана.'
+      : 'Licensed nutritionist specializing in weight loss, digestive health, hormonal balance, and sports nutrition.';
 
   return {
     '@context': 'https://schema.org',
@@ -32,7 +32,7 @@ export function generatePersonSchema(lang: 'mk' | 'en') {
       'Nutrition',
       'Dietetics',
       'Weight Loss',
-      'Gut Health',
+      'Digestive Health',
       'Hormonal Balance',
       'Sports Nutrition',
       'Family Nutrition',

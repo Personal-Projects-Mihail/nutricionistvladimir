@@ -253,7 +253,7 @@ export default function AboutPageEN() {
               <div className="flex flex-wrap gap-3 justify-center">
                 {[
                   'Weight Loss',
-                  'Gut Health',
+                  'Digestive Health',
                   'Hormonal Balance',
                   'Sports Nutrition',
                   'Family Nutrition',

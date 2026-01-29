@@ -65,7 +65,7 @@ export function createEmailTransporter() {
 function generateNutritionistEmailHTML(data: BookingEmailData): string {
   const consultationTypeLabels: Record<string, string> = {
     weightLoss: 'Weight Loss / Намалување на тежина',
-    gutHealth: 'Gut Health / Здравје на цревата',
+    gutHealth: 'Digestive Health / Дигестивно здравје',
     hormonalBalance: 'Hormonal Balance / Хормонален баланс',
     sportsNutrition: 'Sports Nutrition / Спортска исхрана',
     familyNutrition: 'Family Nutrition / Семејна исхрана',
@@ -249,7 +249,7 @@ function generateNutritionistEmailHTML(data: BookingEmailData): string {
 function generateClientEmailHTML(data: BookingEmailData): string {
   const consultationTypeLabels: Record<string, string> = {
     weightLoss: 'Weight Loss / Намалување на тежина',
-    gutHealth: 'Gut Health / Здравје на цревата',
+    gutHealth: 'Digestive Health / Дигестивно здравје',
     hormonalBalance: 'Hormonal Balance / Хормонален баланс',
     sportsNutrition: 'Sports Nutrition / Спортска исхрана',
     familyNutrition: 'Family Nutrition / Семејна исхрана',

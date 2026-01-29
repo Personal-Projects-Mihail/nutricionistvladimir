@@ -177,7 +177,7 @@
   <circle cx="170" cy="720" r="7" fill="#5DA945" opacity="0.4"/>
   <circle cx="630" cy="710" r="9" fill="#A8DF8E" opacity="0.5"/>
   
-  <!-- Hearts floating (gut health connection) -->
+  <!-- Hearts floating (digestive health connection) -->
   <g transform="translate(260, 150)">
     <path d="M 0 5 Q -5 0 -5 -5 Q -5 -12 0 -12 Q 5 -12 5 -5 Q 5 0 0 5 Z" fill="#7AC45A" opacity="0.6"/>
   </g>

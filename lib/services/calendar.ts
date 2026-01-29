@@ -35,7 +35,7 @@ export function createCalendarClient() {
 function createEventDescription(data: BookingEmailData): string {
   const consultationTypeLabels: Record<string, string> = {
     weightLoss: 'Weight Loss / Намалување на тежина',
-    gutHealth: 'Gut Health / Здравје на цревата',
+    gutHealth: 'Digestive Health / Дигестивно здравје',
     hormonalBalance: 'Hormonal Balance / Хормонален баланс',
     sportsNutrition: 'Sports Nutrition / Спортска исхрана',
     familyNutrition: 'Family Nutrition / Семејна исхрана',
@@ -117,7 +117,7 @@ export async function addBookingToCalendar(data: BookingEmailData): Promise<stri
   
   const consultationTypeLabels: Record<string, string> = {
     weightLoss: 'Weight Loss',
-    gutHealth: 'Gut Health',
+    gutHealth: 'Digestive Health',
     hormonalBalance: 'Hormonal Balance',
     sportsNutrition: 'Sports Nutrition',
     familyNutrition: 'Family Nutrition',
