@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
+import './transitions.css';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import { generateMetadata, siteConfig } from '@/lib/metadata';
 
@@ -46,9 +47,11 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
       </head>
-      <body className="antialiased">
+      <body className="antialiased page-transition-enter">
         <ThemeProvider>
-          {children}
+          <div className="page-content-enter">
+            {children}
+          </div>
         </ThemeProvider>
       </body>
     </html>

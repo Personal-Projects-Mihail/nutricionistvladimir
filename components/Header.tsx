@@ -77,11 +77,12 @@ export default function Header({ lang }: HeaderProps) {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className={`text-sm font-medium transition-colors hover:text-primary ${
+                    className={`text-sm font-medium transition-colors hover:text-primary no-underline relative ${
                       isActive(link.href)
-                        ? 'text-primary'
+                        ? 'text-primary after:absolute after:bottom-[-2px] after:left-0 after:right-0 after:h-[2px] after:bg-primary after:rounded-full'
                         : 'text-text-secondary'
                     }`}
+                    style={{ backgroundImage: 'none' }}
                   >
                     {link.label}
                   </Link>
@@ -148,23 +149,24 @@ export default function Header({ lang }: HeaderProps) {
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
           <div className="md:hidden py-4 border-t border-border">
-            <ul className="flex flex-col gap-4">
+            <ul className="flex flex-col gap-6">
               {navigation.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className={`block text-base font-medium transition-colors hover:text-primary ${
+                    className={`block text-base font-medium transition-colors hover:text-primary no-underline ${
                       isActive(link.href)
-                        ? 'text-primary'
+                        ? 'text-primary font-semibold'
                         : 'text-text-secondary'
                     }`}
                     onClick={() => setMobileMenuOpen(false)}
+                    style={{ backgroundImage: 'none' }}
                   >
                     {link.label}
                   </Link>
                 </li>
               ))}
-              <li className="pt-2">
+              <li className="pt-2 border-t border-border">
                 <Link
                   href={bookingHref}
                   className="btn-primary w-full"
@@ -173,7 +175,7 @@ export default function Header({ lang }: HeaderProps) {
                   {bookingLabel}
                 </Link>
               </li>
-              <li className="flex items-center gap-4 pt-2">
+              <li className="flex flex-col gap-4 pt-2">
                 <ThemeToggle lang={lang} />
                 <LanguageSwitcher currentLang={lang} />
               </li>

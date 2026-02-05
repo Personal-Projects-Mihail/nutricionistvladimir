@@ -63,7 +63,7 @@ export default function Footer({ lang }: FooterProps) {
     <footer className="border-t border-border bg-background-secondary">
       <div className="container-custom">
         {/* Main Footer Content */}
-        <div className="py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand Column */}
           <div className="space-y-4">
             <Image

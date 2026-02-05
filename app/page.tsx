@@ -46,13 +46,11 @@ export default function HomePage() {
       <Header lang="mk" />
 
       <main id="main-content">
-        {/* HERO SECTION - Atmospheric & Elegant */}
-        <section className="relative overflow-hidden bg-atmosphere-depth pt-8 pb-16">
-          {/* Decorative Elements */}
+        {/* HERO SECTION - Clean & Focused */}
+        <section className="relative overflow-hidden bg-gradient-to-b from-primary-50/30 to-background pt-8 pb-16">
+          {/* Subtle Decorative Element */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <div className="blur-circle blur-circle-green w-[400px] h-[400px] absolute top-10 -right-24 animate-float-organic"></div>
-            <div className="blur-circle blur-circle-accent w-[300px] h-[300px] absolute bottom-10 -left-24 animate-float-gentle delay-300"></div>
-            <div className="absolute top-0 right-0 w-full h-full bg-pattern-dots opacity-30"></div>
+            <div className="absolute top-0 right-0 w-full h-full bg-pattern-dots opacity-5"></div>
           </div>
 
           <div className="container-custom relative z-10">
@@ -60,8 +58,8 @@ export default function HomePage() {
               {/* Left Content - Staggered Reveal */}
               <div className="space-y-8">
                 <div className="inline-block animate-reveal-down">
-                  <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary-800 dark:text-primary-300 text-sm font-semibold">
-                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                  <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary-800 dark:text-primary-300 text-xs font-medium">
+                    <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
                       <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                     </svg>
                     Регистриран Нутриционист
@@ -70,11 +68,8 @@ export default function HomePage() {
 
                 <h1 className="font-serif animate-reveal-up delay-100">
                   Вашиот пат кон{' '}
-                  <span className="text-gradient relative">
+                  <span className="text-gradient">
                     здрава исхрана
-                    <svg className="absolute -bottom-3 left-0 w-full opacity-60" viewBox="0 0 400 20" fill="none" preserveAspectRatio="none">
-                      <path d="M2 15 Q 200 5, 398 15" stroke="currentColor" strokeWidth="3" strokeLinecap="round" className="text-primary-500"/>
-                    </svg>
                   </span>{' '}
                   почнува тука
                 </h1>
@@ -83,7 +78,7 @@ export default function HomePage() {
                   Професионални консултации базирани на докази. Персонализиран пристап за долгорочни резултати и трајна промена на навиките.
                 </p>
 
-                <div className="flex flex-col sm:flex-row gap-4 animate-reveal-up delay-300">
+                <div className="space-y-3 animate-reveal-up delay-300">
                   <Link 
                     href="/booking" 
                     className="btn-primary group"
@@ -93,46 +88,39 @@ export default function HomePage() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                     </svg>
                   </Link>
-                  <Link 
-                    href="/about" 
-                    className="btn-secondary group"
-                  >
-                    <span>Запознај ме</span>
-                    <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </Link>
+                  <div className="text-center sm:text-left">
+                    <Link 
+                      href="/about" 
+                      className="inline-flex items-center gap-2 text-primary-700 font-medium text-sm hover:gap-3 transition-all"
+                    >
+                      <span>Запознај ме</span>
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </Link>
+                  </div>
                 </div>
 
                 {/* Trust Indicators */}
-                <div className="flex flex-wrap items-center gap-6 pt-4 animate-reveal-up delay-400">
-                  <div className="flex items-center gap-2 text-text-secondary">
-                    <svg className="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                <div className="flex flex-wrap items-center gap-8 pt-6 animate-reveal-up delay-400">
+                  <div className="flex items-center gap-3 px-4 py-3 bg-primary-50 rounded-xl">
+                    <svg className="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                     </svg>
-                    <span className="text-sm font-medium">100+ Клиенти</span>
+                    <span className="text-sm font-semibold text-text">100+ Клиенти</span>
                   </div>
-                  <div className="flex items-center gap-2 text-text-secondary">
-                    <svg className="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
-                      <path fillRule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm9.707 5.707a1 1 0 00-1.414-1.414L9 12.586l-1.293-1.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                    </svg>
-                    <span className="text-sm font-medium">2+ Години искуство</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-text-secondary">
-                    <svg className="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                  <div className="flex items-center gap-3 px-4 py-3 bg-primary-50 rounded-xl">
+                    <svg className="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 20 20">
                       <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
                     </svg>
-                    <span className="text-sm font-medium">100% Персонализирано</span>
+                    <span className="text-sm font-semibold text-text">100% Персонализирано</span>
                   </div>
                 </div>
               </div>
 
-              {/* Right Image - Elegant Float */}
+              {/* Right Image - Clean & Focused */}
               <div className="relative animate-scale-in delay-200 max-w-md mx-auto lg:mx-0">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary-600/10 rounded-[2rem] blur-2xl -z-10 animate-pulse-glow"></div>
-                <div className="relative overflow-hidden rounded-[2rem] border border-primary/20 shadow-xl">
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/5 pointer-events-none"></div>
+                <div className="relative overflow-hidden rounded-[2rem] border border-primary/10 shadow-xl">
                   <Image
                     src="/front-page/vladimir.png"
                     alt="Владимир - Регистриран нутриционист"
@@ -147,8 +135,8 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* SPECIALTY AREAS - Creative Split Layout */}
-        <section className="section bg-atmosphere-warm">
+        {/* SPECIALTY AREAS - Clean Layout */}
+        <section className="section bg-gradient-to-b from-background to-primary-50/20">
           <div className="container-custom">
             {/* Section Header */}
             <div className="text-center mb-16 max-w-3xl mx-auto">
@@ -212,8 +200,7 @@ export default function HomePage() {
                 </div>
                 
                 <div className="relative lg:order-last">
-                  <div className="absolute -inset-4 bg-gradient-to-br from-primary/20 to-primary-600/5 rounded-[3rem] blur-2xl"></div>
-                  <div className="relative aspect-square rounded-[2.5rem] overflow-hidden bg-gradient-to-br from-primary-50 to-primary-100 dark:from-primary-900 dark:to-primary-800 p-8 shadow-lg">
+                  <div className="relative aspect-square rounded-[2.5rem] overflow-hidden bg-primary-50 dark:bg-primary-900 p-8 shadow-lg border border-primary/10">
                     <Image
                       src="/front-page/weight_loss_illustration.svg"
                       alt="Одржливо намалување на тежина"
@@ -228,20 +215,19 @@ export default function HomePage() {
               {/* Specialty 2 - Insulin Resistance */}
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div className="relative">
-                  <div className="absolute -inset-4 bg-gradient-to-br from-accent/15 to-primary/10 rounded-[3rem] blur-2xl"></div>
-                  <div className="relative aspect-square rounded-[2.5rem] overflow-hidden bg-gradient-to-br from-accent/10 to-primary-100 dark:from-accent/5 dark:to-primary-900 p-8 shadow-lg">
+                  <div className="relative aspect-square rounded-[2.5rem] overflow-hidden bg-primary-50 dark:bg-primary-900 p-8 shadow-lg border border-primary/10">
                     <Image
                       src="/front-page/gut_health_illustration.svg"
                       alt="Исхрана за инсулинска резистенција"
                       width={600}
                       height={600}
-                      className="object-contain w-full h-full animate-float-organic"
+                      className="object-contain w-full h-full animate-float-gentle"
                     />
                   </div>
                 </div>
                 
                 <div className="space-y-6">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-accent-dark text-xs font-semibold">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-100 text-primary-800 text-xs font-semibold">
                     <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
                       <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
                       <path fillRule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clipRule="evenodd" />
@@ -335,14 +321,13 @@ export default function HomePage() {
                 </div>
                 
                 <div className="relative lg:order-last">
-                  <div className="absolute -inset-4 bg-gradient-to-br from-primary/20 to-accent/10 rounded-[3rem] blur-2xl"></div>
-                  <div className="relative aspect-square rounded-[2.5rem] overflow-hidden bg-gradient-to-br from-primary-50 to-accent/10 dark:from-primary-900 dark:to-accent/5 p-8 shadow-lg">
+                  <div className="relative aspect-square rounded-[2.5rem] overflow-hidden bg-primary-50 dark:bg-primary-900 p-8 shadow-lg border border-primary/10">
                     <Image
                       src="/front-page/sports_nutrition_illustration.svg"
                       alt="Исхрана при метаболички состојби"
                       width={600}
                       height={600}
-                      className="object-contain w-full h-full animate-float-gentle delay-200"
+                      className="object-contain w-full h-full animate-float-gentle"
                     />
                   </div>
                 </div>
@@ -367,12 +352,10 @@ export default function HomePage() {
         {/* PROCESS ROADMAP */}
         <ScrollProcess />
 
-        {/* FINAL CTA - Atmospheric */}
-        <section className="relative overflow-hidden py-24 bg-gradient-to-br from-primary via-primary-600 to-primary-700 animate-gradient-xy">
+        {/* FINAL CTA - Clear & Confident */}
+        <section className="relative overflow-hidden py-24 bg-gradient-to-br from-primary via-primary-600 to-primary-700">
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-white/10 rounded-full -mr-48 -mt-48 animate-pulse-glow"></div>
-            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-accent/10 rounded-full -ml-32 -mb-32 animate-pulse-glow delay-300"></div>
-            <div className="absolute inset-0 bg-pattern-dots opacity-10"></div>
+            <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-white/5 rounded-full -mr-48 -mt-48"></div>
           </div>
 
           <div className="container-custom relative z-10">
